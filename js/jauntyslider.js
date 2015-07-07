@@ -32,6 +32,7 @@ function jauntyslider(list) {
 
 	var self = this;
 	this.list = $(list);
+	this.labelActive = 'active';
 	
 	this.init = function() {
 		this.getParameters();
@@ -64,12 +65,11 @@ function jauntyslider(list) {
 				this.height = this.list.parent().height();
 			}
 		}
-		this.slideshow = (this.slideshow === 'true');
+		this.slideshow = (this.slideshow === undefined) ? true : (this.slideshow === 'true');
 		this.interval = (this.interval === undefined) ? 5000 : parseInt(this.interval.replace('s', '')) * 1000;
 		this.step = (this.step === undefined) ? 1 : parseInt(this.step);
-		this.currentSlide = (this.start === undefined) ? 0 : this.start - 1;
 		this.showNavigation = (this.navigation === undefined) ? true : (this.navigation === 'true');
-		this.labelActive = 'active';
+		this.currentSlide = (this.start === undefined) ? 0 : this.start - 1;
 	}
 	
 	this.setSpeed = function() {
@@ -138,6 +138,11 @@ function jauntyslider(list) {
 			self.navigate(this);
 			event.preventDefault();
 		});
+		if(this.slideshow) {
+			this.previousArrow.add(this.nextArrow).add(this.navigationSlides).on('click', function(event) {
+				self.restartSlideshow();
+			});
+		}
 	}
 
 	this.finishing = function() {
@@ -233,6 +238,11 @@ function jauntyslider(list) {
 	
 	this.stopSlideshow = function() {
 		clearInterval(this.progressSlideshow);
+	}
+	
+	this.restartSlideshow = function() {
+		this.stopSlideshow();
+		this.startSlideshow();
 	}
 
 }
