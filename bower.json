@@ -1,0 +1,25 @@
+{
+  "name": "jauntyslider",
+  "version": "1.0",
+  "homepage": "http://jauntyslider.luizgustavoweb.com",
+  "description": "The quick way to slide a HTML list",
+  "main": "js/jauntyslider.js",
+  "keywords": [
+    "Jaunty",
+    "Slider"
+  ],
+  "authors": [
+    "Luiz Gustavo Martins <contato@luizgustavoweb.com>"
+  ],
+  "license": "BSD",
+  "dependencies": {
+    "jquery": ">=1.11.3",
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
