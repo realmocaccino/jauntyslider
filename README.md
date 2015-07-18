@@ -2,27 +2,27 @@
 The quick way to slide a HTML list
 http://jauntyslider.luizgustavoweb.com
 
+<p>Jauntyslide is a powerful slider with a simple configuration.<br>
+All you need to do is attach the html5 attibute data <em>jauntyslider</em> on a html list and if you like set some options within it to customize.<br>
+In order to be able to use Jauntyslider, include the javascript file in the Head section of your page:</p>
 
-Jauntyslide is a powerful slider with a simple configuration. 
-All you need to do is attach the html5 attibute data <em>jauntyslider</em> on a html list and if you like set some options within it to customize.
-In order to be able to use Jauntyslider, include the javascript file in the Head section of your page:
+<code><script src="js/jauntyslider.js"></script></code>
 
-<script src="js/jauntyslider.js"></script>
-
-Now you can start to use it like the example below:
+<p>Now you can start to use it like the example below:</p>
 
 <ul data-jauntyslider>
 
-And there you go! The Jauntyslider is up and running in your html list.
-You also can set some options to customize the slider:
+<p>And there you go! The Jauntyslider is up and running in your html list.<br>
+You also can set some options to customize the slider:</p>
 
-<ul data-jauntyslider="loop:false; speed:fast;">
+<code><ul data-jauntyslider="loop:false; speed:fast;"></code>
 
 Jauntyslider supports multiple sliders on the same page:
 
+<code>
 <ul id="slider-1" data-jauntyslider="loop:false; speed:fast;">
 <ul id="slider-2" data-jauntyslider="slideshow:true; duration:4s;">
-
+</code>
 
 PARAMETERS
 
