@@ -1,4 +1,84 @@
 # jauntyslider
 The quick way to slide a HTML list
-
 http://jauntyslider.luizgustavoweb.com
+
+
+Jauntyslide is a powerful slider with a simple configuration. 
+All you need to do is attach the html5 attibute data <em>jauntyslider</em> on a html list and if you like set some options within it to customize.
+In order to be able to use Jauntyslider, include the javascript file in the Head section of your page:
+
+<script src="js/jauntyslider.js"></script>
+
+Now you can start to use it like the example below:
+
+<ul data-jauntyslider>
+
+And there you go! The Jauntyslider is up and running in your html list.
+You also can set some options to customize the slider:
+
+<ul data-jauntyslider="loop:false; speed:fast;">
+
+Jauntyslider supports multiple sliders on the same page:
+
+<ul id="slider-1" data-jauntyslider="loop:false; speed:fast;">
+<ul id="slider-2" data-jauntyslider="slideshow:true; duration:4s;">
+
+
+PARAMETERS
+
+- Speed
+[slow|normal|fast|easein|easeout]
+[default: normal]
+Define the speed of the transitions.
+
+- Loop
+[boleean]
+[default: true]
+When reaching the end of the slider, it'll come back to the beginning.
+
+- Start
+[integer]
+[Default: 1]
+
+
+- Width
+[pixels] 
+[Default: inheritance]
+
+
+- Height
+[pixels] 
+[Default: inheritance]
+
+
+- Slideshow
+[boleean]
+[default: true]
+The transition of the slides will occur automatically.
+The navigation is allowed even so.
+
+- Interval
+[s] (seconds)
+[default: 5s]
+Define the interval between the transitions of the slideshow.
+
+- Navigation
+[boolean]
+[Default: true]
+
+
+- Step
+[integer]
+[Default: 1]
+It allows change the number of the slides by every transition.
+
+
+REQUIREMENTS
+- jQuery
+- HTML5
+
+If you're using Bower, jQuery is already included in the json file as a component of the project.
+
+
+Thanks for using!
+I'm working on it, and future versions with more settings are to come.
