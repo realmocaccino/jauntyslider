@@ -2,8 +2,8 @@
 The quick way to slide a HTML list http://jauntyslider.luizgustavoweb.com
 
 ## Requirements
-### jQuery
-### HTML5
+- jQuery
+- HTML5
 
 If you're using Bower, jQuery is already included in the json file as a component of the project.
 
