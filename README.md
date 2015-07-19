@@ -48,20 +48,21 @@ Jauntyslider supports multiple sliders on the same page:
 </ul>
 ```
 
-## Options
+## Parameters
 
 #### Speed 
 
-###### [slow | normal | fast | easein | easeout]
+###### [options: slow | normal | fast | easein | easeout]
 
 ###### [default: normal]
 
 Define the speed of the transitions.
 
 #### Loop
-[boleean]
 
-[default: true]
+###### [true | false]
+
+###### [default: true]
 
 When reaching the end of the slider, it'll come back to the beginning.
 
