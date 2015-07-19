@@ -50,8 +50,7 @@ Jauntyslider supports multiple sliders on the same page:
 
 ## Options
 
-#### Speed
-[slow|normal|fast|easein|easeout]
+#### Speed [slow | normal | fast | easein | easeout]
 
 [default: normal]
 
@@ -117,7 +116,7 @@ If <em>false</em> hides the navigation UI.
 
 [Default: 1]
 
-It allows change the number of the slides by every transition.
+It allows to change the number of the slides that jauntyslider will travel by every transition.
 
 ## Contribution
 Future versions with more options are to come.
