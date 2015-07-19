@@ -2,10 +2,8 @@
  * Jaunty Slider v1.0 - http://jauntyslider.luizgustavoweb.com
  * The quick way to slide a HTML list
  *
- * TERMS OF USE - Jaunty Slider
- * Open source under the BSD License
+ * Open source under the MIT License
  * Copyright © 2015 Luiz Gustavo Martins
- * All rights reserved.
  *
  *
  * Includes jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/
