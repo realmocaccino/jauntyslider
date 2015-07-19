@@ -16,7 +16,7 @@ In order to be able to use Jauntyslider, include the css and javascript files in
 ```
 
 ## Usage
-Jauntyslide is a powerful slider with a simple configuration. All you need to do is attach the attibute <em>data-jauntyslider</em> on a html list and if you want, set some options within it to customize.
+Jauntyslide is a powerful slider with a simple configuration. All you need to do is attach the attibute *data-jauntyslider* on a html list and if you want, set some options within it to customize.
 
 Now you can start to use it like the example below:
 
@@ -31,7 +31,7 @@ You also can set some options to customize the slider:
 ```javascript
 <ul data-jauntyslider="loop:false; speed:fast;">
 	<li><img src="new-horizon.jpg"></li>
-	[...]
+	[options: ...]
 </ul>
 ```
 
@@ -40,11 +40,11 @@ Jauntyslider supports multiple sliders on the same page:
 ```javascript
 <ul id="slider-1" data-jauntyslider="loop:false; speed:fast;">
 	<li><img src="new-horizon.jpg"></li>
-	[...]
+	[options: ...]
 </ul>
 <ul id="slider-2" data-jauntyslider="slideshow:true; duration:4s;">
 	<li><img src="my-pet.jpg"></li>
-	[...]
+	[options: ...]
 </ul>
 ```
 
@@ -52,72 +52,69 @@ Jauntyslider supports multiple sliders on the same page:
 
 ### Speed
 
-**[options: slow | normal | fast | easein | easeout]**
+**[options: options: slow | normal | fast | easein | easeout]**
 
 **[default: normal]**
 
 Define the speed of the transitions.
 
-#### Loop
+### Loop
 
-*[true | false]*
+**[options: true | false]**
 
-*[default: true]*
+**[default: true]**
 
 When reaching the end of the slider, it'll come back to the beginning.
 
-#### Start
-[integer]
+### Start
 
-[Default: 1]
+**[default: 1]**
 
 Define in which slide the jauntyslider will start. 
 
-#### Width
-[pixels] 
+### Width
 
-[Default: inheritance]
+**[default: inheritance]**
 
 Set the width of the slider. 
 
 Remember if not set, it dinamically will inherit its width parent div.
 
-#### Height
-[pixels]
+### Height
 
-[Default: inheritance]
+**[default: inheritance]**
 
 Set the height of the slider. 
 
 Remember if not set, it dinamically will inherit its heght parent div.
 
-#### Slideshow
-[boleean]
+### Slideshow
 
-[default: false]
+**[options: true | false]**
+
+**[default: false]**
 
 Activate the transition of the slides automatically. 
 
 The navigation is allowed even so.
 
-#### Interval
-[seconds]
+### Interval
 
-[default: 5s]
+**[default: 5s]**
 
 Define the interval between the transitions of the slideshow.
 
-#### Navigation
-[boolean]
+### Navigation
 
-[Default: true]
+**[options: true | false]**
+
+**[default: true]**
 
 If <em>false</em> hides the navigation UI.
 
-#### Step
-[integer]
+### Step
 
-[Default: 1]
+**[default: 1]**
 
 It allows to change the number of the slides that jauntyslider will travel by every transition.
 
