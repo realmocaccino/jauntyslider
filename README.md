@@ -87,6 +87,12 @@ Define the interval between the transitions of the slideshow.
 [Default: 1]
 It allows change the number of the slides by every transition.
 
-## Final Words
+## Contribution
 Thanks for using!
-I'm working on it, and future versions with more settings are to come.
+
+I'm working on it, and future versions with more options or bug fixes are to come.
+
+If you want to contribute with the project, email me.
+
+## License
+Jauntyslider is open-sourced software licensed under the MIT license.
