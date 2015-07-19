@@ -60,9 +60,9 @@ Define the speed of the transitions.
 
 #### Loop
 
-**[true | false]**
+*[true | false]*
 
-**[default: true]**
+*[default: true]*
 
 When reaching the end of the slider, it'll come back to the beginning.
 
