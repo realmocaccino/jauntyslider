@@ -7,15 +7,16 @@ The quick way to slide a HTML list http://jauntyslider.luizgustavoweb.com
 
 If you're using Bower, jQuery is already included in the json file as a component of the project.
 
-## Configuration
-Jauntyslide is a powerful slider with a simple configuration. All you need to do is attach the attibute <em>data-jauntyslider</em> on a html list and if you want, set some options within it to customize.
-
+## Install
 In order to be able to use Jauntyslider, include the javascript file in the Head section of your page:
 
 ```javascript
 <script src="css/jauntyslider.min.css"></script>
 <script src="js/jauntyslider.min.js"></script>
 ```
+
+## Usage
+Jauntyslide is a powerful slider with a simple configuration. All you need to do is attach the attibute <em>data-jauntyslider</em> on a html list and if you want, set some options within it to customize.
 
 Now you can start to use it like the example below:
 
@@ -38,7 +39,7 @@ Jauntyslider supports multiple sliders on the same page:
 <ul id="slider-2" data-jauntyslider="slideshow:true; duration:4s;">
 ```
 
-## Parameters
+## Options
 
 - Speed
 [slow|normal|fast|easein|easeout]
