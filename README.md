@@ -50,7 +50,7 @@ Jauntyslider supports multiple sliders on the same page:
 
 ## Parameters
 
-#### Speed
+### Speed
 
 **[options: slow | normal | fast | easein | easeout]**
 
