@@ -1,6 +1,13 @@
 # Jauntyslider
 The quick way to slide a HTML list http://jauntyslider.luizgustavoweb.com
 
+## Requirements
+- jQuery
+- HTML5
+
+If you're using Bower, jQuery is already included in the json file as a component of the project.
+
+## Configuration
 Jauntyslide is a powerful slider with a simple configuration. All you need to do is attach the html5 attibute data <em>jauntyslider</em> on a html list and if you like set some options within it to customize.
 
 In order to be able to use Jauntyslider, include the javascript file in the Head section of your page:
@@ -30,7 +37,7 @@ Jauntyslider supports multiple sliders on the same page:
 <ul id="slider-2" data-jauntyslider="slideshow:true; duration:4s;">
 ```
 
-PARAMETERS
+## Parameters
 
 - Speed
 [slow|normal|fast|easein|easeout]
@@ -78,13 +85,6 @@ Define the interval between the transitions of the slideshow.
 [Default: 1]
 It allows change the number of the slides by every transition.
 
-
-REQUIREMENTS
-- jQuery
-- HTML5
-
-If you're using Bower, jQuery is already included in the json file as a component of the project.
-
-
+## Final Words
 Thanks for using!
 I'm working on it, and future versions with more settings are to come.
