@@ -8,12 +8,13 @@ The quick way to slide a HTML list http://jauntyslider.luizgustavoweb.com
 If you're using Bower, jQuery is already included in the json file as a component of the project.
 
 ## Configuration
-Jauntyslide is a powerful slider with a simple configuration. All you need to do is attach the html5 attibute data <em>jauntyslider</em> on a html list and if you like set some options within it to customize.
+Jauntyslide is a powerful slider with a simple configuration. All you need to do is attach the attibute <em>data-jauntyslider</em> on a html list and if you want, set some options within it to customize.
 
 In order to be able to use Jauntyslider, include the javascript file in the Head section of your page:
 
 ```javascript
-<script src="js/jauntyslider.js"></script>
+<script src="css/jauntyslider.min.css"></script>
+<script src="js/jauntyslider.min.js"></script>
 ```
 
 Now you can start to use it like the example below:
