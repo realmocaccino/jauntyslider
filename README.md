@@ -97,7 +97,7 @@ It allows change the number of the slides by every transition.
 ## Contribution
 Future versions with more options and bug fixes are to come.
 
-If you want to contribute with the project, email me [lgustavoms@gmail.com](mailto:lgustavoms@gmail.com).
+If you want to contribute with the project, email me ([lgustavoms@gmail.com](mailto:lgustavoms@gmail.com)).
 
 Thanks for using!
 
