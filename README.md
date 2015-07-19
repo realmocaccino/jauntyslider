@@ -50,46 +50,46 @@ Jauntyslider supports multiple sliders on the same page:
 
 ## Options
 
-### Speed
+#### Speed
 [slow|normal|fast|easein|easeout]
 [default: normal]
 Define the speed of the transitions.
 
-### Loop
+#### Loop
 [boleean]
 [default: true]
 When reaching the end of the slider, it'll come back to the beginning.
 
-### Start
+#### Start
 [integer]
 [Default: 1]
 
-### Width
+#### Width
 [pixels] 
 [Default: inheritance]
  Lembre-se de que ele herdará dinamicamente o tamanho do contêiner pai.
 
-### Height
+#### Height
 [pixels] 
 [Default: inheritance]
  Lembre-se de que ele herdará dinamicamente o tamanho do contêiner pai.
 
-### Slideshow
+#### Slideshow
 [boleean]
 [default: true]
 The transition of the slides will occur automatically.
 The navigation is allowed even so.
 
-### Interval
+#### Interval
 [s] (seconds)
 [default: 5s]
 Define the interval between the transitions of the slideshow.
 
-### Navigation
+#### Navigation
 [boolean]
 [Default: true]
 
-### Step
+#### Step
 [integer]
 [Default: 1]
 It allows change the number of the slides by every transition.
@@ -97,7 +97,7 @@ It allows change the number of the slides by every transition.
 ## Contribution
 Future versions with more options and bug fixes are to come.
 
-If you want to contribute with the project, email me.
+If you want to contribute with the project, email me [lgustavoms@gmail.com](mailto:lgustavoms@gmail.com).
 
 Thanks for using!
 
