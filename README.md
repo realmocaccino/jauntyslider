@@ -16,6 +16,7 @@ Now you can start to use it like the example below:
 ```
 
 And there you go! The Jauntyslider is up and running in your html list.
+
 You also can set some options to customize the slider:
 
 ```javascript
