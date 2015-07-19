@@ -2,8 +2,8 @@
 The quick way to slide a HTML list
 http://jauntyslider.luizgustavoweb.com
 
-Jauntyslide is a powerful slider with a simple configuration.
-All you need to do is attach the html5 attibute data <em>jauntyslider</em> on a html list and if you like set some options within it to customize.<br>
+Jauntyslide is a powerful slider with a simple configuration. All you need to do is attach the html5 attibute data <em>jauntyslider</em> on a html list and if you like set some options within it to customize.
+
 In order to be able to use Jauntyslider, include the javascript file in the Head section of your page:
 
 ```javascript
@@ -16,7 +16,7 @@ Now you can start to use it like the example below:
 <ul data-jauntyslider>
 ```
 
-And there you go! The Jauntyslider is up and running in your html list.<br>
+And there you go! The Jauntyslider is up and running in your html list.
 You also can set some options to customize the slider:
 
 ```javascript
