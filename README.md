@@ -69,35 +69,48 @@ When reaching the end of the slider, it'll come back to the beginning.
 
 [Default: 1]
 
+Define in which slide the jauntyslider will start. 
+
 #### Width
 [pixels] 
 
 [Default: inheritance]
 
- Lembre-se de que ele herdará dinamicamente o tamanho do contêiner pai.
+Set the width of the slider. 
+
+Remember if not set, it dinamically will inherit its width parent div.
 
 #### Height
-[pixels] 
+[pixels]
+
 [Default: inheritance]
- Lembre-se de que ele herdará dinamicamente o tamanho do contêiner pai.
+
+Set the height of the slider. 
+
+Remember if not set, it dinamically will inherit its heght parent div.
 
 #### Slideshow
 [boleean]
 
-[default: true]
+[default: false]
 
-The transition of the slides will occur automatically. The navigation is allowed even so.
+Activate the transition of the slides automatically. 
+
+The navigation is allowed even so.
 
 #### Interval
-[s] (seconds)
+[seconds]
 
 [default: 5s]
+
 Define the interval between the transitions of the slideshow.
 
 #### Navigation
 [boolean]
 
 [Default: true]
+
+If <em>false</em> hides the navigation UI.
 
 #### Step
 [integer]
