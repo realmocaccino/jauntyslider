@@ -16,9 +16,7 @@ In order to be able to use Jauntyslider, include the css and javascript files in
 ```
 
 ## Usage
-Jauntyslide is a powerful slider with a simple configuration. All you need to do is attach the attibute *data-jauntyslider* on a html list and if you want, set some options within it to customize.
-
-Now you can start to use it like the example below:
+Jauntyslide is a powerful slider with a simple configuration. All you need to do is attach the attibute *data-jauntyslider* on a html list like the example below:
 
 ```javascript
 <ul data-jauntyslider>
@@ -26,7 +24,7 @@ Now you can start to use it like the example below:
 
 And there you go! The Jauntyslider is up and running in your html list.
 
-You also can set some options to customize the slider:
+You can also set some options to customize the slider if you want:
 
 ```javascript
 <ul data-jauntyslider="loop:false; speed:fast;">
@@ -56,7 +54,7 @@ Jauntyslider supports multiple sliders on the same page:
 
 **[default: normal]**
 
-Define the speed of the transitions.
+Defines the speed of the transitions.
 
 ### Loop
 
@@ -70,23 +68,23 @@ When reaching the end of the slider, it'll come back to the beginning.
 
 **[default: 1]**
 
-Define in which slide the jauntyslider will start. 
+Defines in which slide the slider will start. 
 
 ### Width
 
 **[default: inheritance]**
 
-Set the width of the slider. 
+Sets the width of the slider. 
 
-Remember if not set, it dinamically will inherit its width parent div.
+If not set, it dinamically inherits its width parent.
 
 ### Height
 
 **[default: inheritance]**
 
-Set the height of the slider. 
+Sets the height of the slider. 
 
-Remember if not set, it dinamically will inherit its heght parent div.
+If not set, it dinamically inherits its height parent.
 
 ### Slideshow
 
@@ -94,7 +92,7 @@ Remember if not set, it dinamically will inherit its heght parent div.
 
 **[default: false]**
 
-Activate the transition of the slides automatically. 
+Activates the transition of the slides automatically. 
 
 The navigation is allowed even so.
 
@@ -102,7 +100,7 @@ The navigation is allowed even so.
 
 **[default: 5s]**
 
-Define the interval between the transitions of the slideshow.
+Defines the interval between the transitions of the slideshow.
 
 ### Navigation
 
@@ -116,7 +114,7 @@ If <em>false</em> hides the navigation UI.
 
 **[default: 1]**
 
-It allows to change the number of the slides that jauntyslider will travel by every transition.
+Allows to change the number of the slides that slider will travel by every transition.
 
 ## Contribution
 Future versions with more options are to come.
