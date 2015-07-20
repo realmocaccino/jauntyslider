@@ -1,5 +1,6 @@
 # Jauntyslider v1.0
 The quick way to slide a HTML list
+
 http://jauntyslider.luizgustavoweb.com
 
 ## Introduction
@@ -133,4 +134,5 @@ Thanks for using!
 
 ## License
 Jauntyslider is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+
 © [Luiz Gustavo](http://www.luizgustavoweb.com)
