@@ -1,4 +1,4 @@
-# Jauntyslider v1.0
+# Jauntyslider
 The quick way to slide a HTML list<br>
 http://jauntyslider.luizgustavoweb.com
 
@@ -30,8 +30,7 @@ As stated in the introduction, we start using the attribute *data-jauntyslider*.
 <ul data-jauntyslider>
 ```
 
-And there you go! The Jauntyslider is up and running in your list.
-
+And there you go! The Jauntyslider is up and running in your list.<br>
 You can also set some options to customize the slider if you want:
 
 ```html
@@ -82,16 +81,14 @@ Defines in which slide the slider will start.
 
 **[default: inheritance]**
 
-Sets the width of the slider. 
-
+Sets the width of the slider.<br>
 If not set, it dinamically inherits its width parent.
 
 ### Height
 
 **[default: inheritance]**
 
-Sets the height of the slider. 
-
+Sets the height of the slider.<br>
 If not set, it dinamically inherits its height parent.
 
 ### Slideshow
@@ -100,8 +97,7 @@ If not set, it dinamically inherits its height parent.
 
 **[default: false]**
 
-Activates the transition of the slides automatically. 
-
+Activates the transition of the slides automatically.<br>
 The navigation is allowed even so.
 
 ### Interval
@@ -125,13 +121,13 @@ If <em>false</em> hides the navigation UI.
 Allows to change the number of the slides that slider will travel by every transition.
 
 ## Contribution
-Future versions with more options are to come.
-
-If you want to contribute with the project, email me ([contato@luizgustavoweb.com](mailto:contato@luizgustavoweb.com)).
-
+Future versions with more options are to come.<br>
+If you want to contribute with the project, email me ([contato@luizgustavoweb.com](mailto:contato@luizgustavoweb.com)).<br>
 Thanks for using!
 
 ## License
 Jauntyslider is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
 
-© [Luiz Gustavo](http://www.luizgustavoweb.com)
+## Author
+[Luiz Gustavo Web](http://www.luizgustavoweb.com)<br>
+[contato@luizgustavoweb.com](mailto:contato@luizgustavoweb.com)
