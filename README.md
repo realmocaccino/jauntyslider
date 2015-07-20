@@ -129,5 +129,4 @@ Thanks for using!
 Jauntyslider is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
 
 ## Author
-[Luiz Gustavo Web](http://www.luizgustavoweb.com)<br>
-[contato@luizgustavoweb.com](mailto:contato@luizgustavoweb.com)
+[http://www.luizgustavoweb.com](http://www.luizgustavoweb.com)
