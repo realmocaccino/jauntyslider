@@ -8,7 +8,7 @@ The quick way to slide a HTML list http://jauntyslider.luizgustavoweb.com
 If you're using Bower, jQuery is already included in the json file as a component of the project.
 
 ## Install
-In order to be able to use Jauntyslider, include the css and javascript files in the Head section of your page:
+In order to be able to use Jauntyslider, include the css and javascript files in the *head* section of your page:
 
 ```javascript
 <link href="css/jauntyslider.min.css" rel="stylesheet" type="text/css">
@@ -22,7 +22,7 @@ Jauntyslide is a powerful slider with a simple configuration. All you need to do
 <ul data-jauntyslider>
 ```
 
-And there you go! The Jauntyslider is up and running in your html list.
+And there you go! The Jauntyslider is up and running in your list.
 
 You can also set some options to customize the slider if you want:
 
