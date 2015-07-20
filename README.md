@@ -23,7 +23,7 @@ In order to be able to use Jauntyslider, include the css and javascript files in
 ```
 
 ## Usage
-As stated in the introduction, we start using the HTML5 attribute *data* along with *-jauntyslider*.
+As stated in the introduction, we start using the attribute *data-jauntyslider*.
 
 ```html
 <ul data-jauntyslider>
