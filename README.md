@@ -29,7 +29,7 @@ You can also set some options to customize the slider if you want:
 ```javascript
 <ul data-jauntyslider="loop:false; speed:fast;">
 	<li><img src="new-horizon.jpg"></li>
-	[options: ...]
+	[...]
 </ul>
 ```
 
@@ -38,11 +38,11 @@ Jauntyslider supports multiple sliders on the same page:
 ```javascript
 <ul id="slider-1" data-jauntyslider="loop:false; speed:fast;">
 	<li><img src="new-horizon.jpg"></li>
-	[options: ...]
+	[...]
 </ul>
 <ul id="slider-2" data-jauntyslider="slideshow:true; duration:4s;">
 	<li><img src="my-pet.jpg"></li>
-	[options: ...]
+	[...]
 </ul>
 ```
 
