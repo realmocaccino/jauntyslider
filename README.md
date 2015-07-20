@@ -1,6 +1,5 @@
 # Jauntyslider v1.0
-The quick way to slide a HTML list
-
+The quick way to slide a HTML list<br>
 http://jauntyslider.luizgustavoweb.com
 
 ## Introduction
