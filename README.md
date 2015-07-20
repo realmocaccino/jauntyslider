@@ -1,5 +1,6 @@
 # Jauntyslider v1.0
-The quick way to slide a HTML list http://jauntyslider.luizgustavoweb.com
+The quick way to slide a HTML list
+http://jauntyslider.luizgustavoweb.com
 
 ## Introduction
 A powerful slider with a simple configuration. All you need to do is attach the attibute *data-jauntyslider* on a html list like the example below:
