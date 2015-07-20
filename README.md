@@ -1,5 +1,12 @@
-# Jauntyslider
+# Jauntyslider v1.0
 The quick way to slide a HTML list http://jauntyslider.luizgustavoweb.com
+
+## Introduction
+A powerful slider with a simple configuration. All you need to do is attach the attibute *data-jauntyslider* on a html list like the example below:
+
+```html
+<ul data-jauntyslider>
+```
 
 ## Requirements
 - jQuery
@@ -16,7 +23,7 @@ In order to be able to use Jauntyslider, include the css and javascript files in
 ```
 
 ## Usage
-Jauntyslide is a powerful slider with a simple configuration. All you need to do is attach the attibute *data-jauntyslider* on a html list like the example below:
+As stated in the introduction, we start using the HTML5 attribute *data* along with *-jauntyslider*.
 
 ```html
 <ul data-jauntyslider>
@@ -119,9 +126,10 @@ Allows to change the number of the slides that slider will travel by every trans
 ## Contribution
 Future versions with more options are to come.
 
-If you want to contribute with the project, email me ([lgustavoms@gmail.com](mailto:lgustavoms@gmail.com)).
+If you want to contribute with the project, email me ([contato@luizgustavoweb.com](mailto:contato@luizgustavoweb.com)).
 
 Thanks for using!
 
 ## License
 Jauntyslider is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+© [Luiz Gustavo](http://www.luizgustavoweb.com)
