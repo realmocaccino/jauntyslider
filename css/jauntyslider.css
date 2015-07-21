@@ -2,10 +2,8 @@
  * Jaunty Slider v1.0 - http://jauntyslider.luizgustavoweb.com
  * The quick way to slide a HTML list
  *
- * TERMS OF USE - Jaunty Slider
- * Open source under the BSD License
+ * Open source under the MIT License
  * Copyright © 2015 Luiz Gustavo Martins
- * All rights reserved.
  *
  */
 
@@ -38,7 +36,7 @@
 
 .slider .slider-previous, .slider .slider-next {
     position:absolute;
-    width:26px;
+    width:35px;
     height:65px;
     z-index:1;
     left:20px;
