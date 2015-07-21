@@ -56,18 +56,25 @@ function jauntyslider(list) {
 	this.treatParameters = function() {
 		this.loop = (this.loop === 'true');
 		this.width = (this.width === undefined) ? this.list.parent().width() : this.width;
-		if(this.height === undefined) {
-			if(this.list.parent().height() > window.innerHeight) {
-				this.height = window.innerHeight - $('body').offset().top;
-			} else {
-				this.height = this.list.parent().height();
-			}
-		}
+		if(this.height === undefined) { this.treatHeight(); }
 		this.slideshow = (this.slideshow === undefined) ? true : (this.slideshow === 'true');
 		this.interval = (this.interval === undefined) ? 5000 : parseInt(this.interval.replace('s', '')) * 1000;
 		this.step = (this.step === undefined) ? 1 : parseInt(this.step);
 		this.showNavigation = (this.navigation === undefined) ? true : (this.navigation === 'true');
 		this.currentSlide = (this.start === undefined) ? 0 : this.start - 1;
+	}
+	
+	this.treatHeight = function() {
+		var heightChildren = 0;
+		this.list.parent().children().each(function(){
+			if($(this).attr('data-jauntyslider') == undefined) {
+				heightChildren += $(this).height();
+			}
+		});
+		this.height = this.list.parent().height() - heightChildren;
+		if(this.height > window.innerHeight) {
+			this.height = window.innerHeight - $('body').offset().top;
+		}
 	}
 	
 	this.setSpeed = function() {

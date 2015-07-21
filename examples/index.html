@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta description="The quick way to slide a HTML list">
+		<title>Jaunty Slider</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="../js/jauntyslider.js"></script>
+		<link href="../css/jauntyslider.css" rel="stylesheet">
+		<style type="text/css">
+			.container {
+				width:640px;
+				height:550px;
+				margin:0 auto 60px;
+			}
+			.container .description pre {
+				margin-bottom:20px;
+				padding:10px;
+				background-color:#FFC388;
+				overflow:hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="description">
+				<h1>Sample</h1>
+				<pre>&lt;ul data-jauntyslider&gt;</pre>
+			</div>
+			<ul data-jauntyslider>
+				<li><img src="img/01.jpg"></li>
+				<li><img src="img/02.jpg"></li>
+				<li><img src="img/03.jpg"></li>
+				<li><img src="img/04.jpg"></li>
+				<li><img src="img/05.jpg"></li>
+				<li><img src="img/06.jpg"></li>
+			</ul>
+		</div>
+		<div class="container">
+			<div class="description">
+				<h1>Speed</h1>
+				<pre>&lt;ul data-jauntyslider="speed:easein;"&gt;</pre>
+			</div>
+			<ul data-jauntyslider="speed:easein;">
+				<li><img src="img/01.jpg"></li>
+				<li><img src="img/02.jpg"></li>
+				<li><img src="img/03.jpg"></li>
+				<li><img src="img/04.jpg"></li>
+				<li><img src="img/05.jpg"></li>
+				<li><img src="img/06.jpg"></li>
+			</ul>
+		</div>
+		<div class="container">
+			<div class="description">
+				<h1>Loop</h1>
+				<pre>&lt;ul data-jauntyslider="loop:true;"&gt;</pre>
+			</div>
+			<ul data-jauntyslider="loop:true;">
+				<li><img src="img/01.jpg"></li>
+				<li><img src="img/02.jpg"></li>
+				<li><img src="img/03.jpg"></li>
+				<li><img src="img/04.jpg"></li>
+				<li><img src="img/05.jpg"></li>
+				<li><img src="img/06.jpg"></li>
+			</ul>
+		</div>
+		<div class="container">
+			<div class="description">
+				<h1>Start</h1>
+				<pre>&lt;ul data-jauntyslider="start:3;"&gt;</pre>
+			</div>
+			<ul data-jauntyslider="start:3;">
+				<li><img src="img/01.jpg"></li>
+				<li><img src="img/02.jpg"></li>
+				<li><img src="img/03.jpg"></li>
+				<li><img src="img/04.jpg"></li>
+				<li><img src="img/05.jpg"></li>
+				<li><img src="img/06.jpg"></li>
+			</ul>
+		</div>
+	</body>
+</html>
