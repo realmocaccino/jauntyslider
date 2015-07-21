@@ -132,7 +132,7 @@ If <em>false</em> hides the navigation on the bottom.
 
 **[default: 1]**
 
-Allows to change the number of the slides that slider will travel by every transition.
+Allows to change the number of the slides travelled by every transition.
 
 ## Contribution
 Future versions with more options are to come.<br>
