@@ -80,9 +80,9 @@ Defines the speed of the transitions.
 
 **[options: true | false]**
 
-**[default: true]**
+**[default: false]**
 
-When reaching the end of the slider, it'll come back to the beginning.
+If *true*, when reaching the end of the slider, it'll come back to the beginning.
 
 ### Start
 
@@ -112,7 +112,7 @@ If not set, it dinamically inherits its height parent.
 
 The automatic transition of the slides is default.<br>
 The navigation is allowed even so.<br>
-Set <em>false</em> to disable the slideshow.
+Set *false* to disable the slideshow.
 
 ### Interval
 
@@ -126,7 +126,7 @@ Defines the interval between the transitions of the slideshow.
 
 **[default: true]**
 
-If <em>false</em> hides the navigation on the bottom.
+If *false* hides the navigation on the bottom.
 
 ### Step
 
