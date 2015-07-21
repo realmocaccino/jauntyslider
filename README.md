@@ -60,7 +60,7 @@ Jauntyslider supports multiple sliders on the same page:
 	[...]
 </ul>
 
-<ul id="slider-2" data-jauntyslider="slideshow:true; interval:4s;">
+<ul id="slider-2" data-jauntyslider="interval:3s;">
 	<li><img src="my-pet.jpg"></li>
 	[...]
 </ul>
@@ -108,9 +108,9 @@ If not set, it dinamically inherits its height parent.
 
 **[options: true | false]**
 
-**[default: false]**
+**[default: true]**
 
-Activates the transition of the slides automatically.<br>
+The transition of the slides is automatic.<br>
 The navigation is allowed even so.
 
 ### Interval
