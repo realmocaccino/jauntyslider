@@ -135,7 +135,7 @@ Allows to change the number of the slides that slider will travel by every trans
 
 ## Contribution
 Future versions with more options are to come.<br>
-If you want to contribute with the project, don't hesitate to fork on [GitHub](https://github.com/lgustavoms/jauntyslider) and send a pull request.<br>
+If you want to contribute with the project, don't hesitate to fork it and send a pull request.<br>
 Thanks for using!
 
 ## License
