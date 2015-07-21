@@ -56,12 +56,12 @@ You can set more than one option at a time:
 Jauntyslider supports multiple sliders on the same page:
 
 ```html
-<ul data-jauntyslider="speed:fast; loop:true;">
+<ul id="slider-1" data-jauntyslider="speed:fast; loop:true;">
 	<li><img src="new-horizon.jpg"></li>
 	[...]
 </ul>
 
-<ul data-jauntyslider="slideshow:true; interval:4s;">
+<ul id="slider-2" data-jauntyslider="slideshow:true; interval:4s;">
 	<li><img src="my-pet.jpg"></li>
 	[...]
 </ul>
