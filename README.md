@@ -110,8 +110,9 @@ If not set, it dinamically inherits its height parent.
 
 **[default: true]**
 
-The transition of the slides is automatic.<br>
-The navigation is allowed even so.
+The automatic transition of the slides is default.<br>
+The navigation is allowed even so.<br>
+Set <em>false</em> to disable the slideshow.
 
 ### Interval
 
@@ -125,7 +126,7 @@ Defines the interval between the transitions of the slideshow.
 
 **[default: true]**
 
-If <em>false</em> hides the navigation UI.
+If <em>false</em> hides the navigation on the bottom.
 
 ### Step
 
