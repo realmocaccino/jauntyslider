@@ -53,10 +53,8 @@
 
 .slider ul.navigation {
 	position:absolute;
-	left:0;
-	right:0;
-	bottom:5%;
-	margin:0 auto;
+	left:50%;
+	bottom:3%;
 	display:table;
 	list-style-type:none;
 }

@@ -151,6 +151,7 @@ function jauntyslider(list) {
 			widthList += $(this).width();
 		});		
 		this.list.width(widthList);
+		this.navigation.css('margin-left', '-'+this.navigation.width()+'px');
 		this.navigationSlides.eq(this.currentSlide).addClass(this.labelActive);
 		if(!this.loop && this.totalSlides > 1) {
 			this.previousArrow.css('visibility','hidden');
