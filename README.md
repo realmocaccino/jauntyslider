@@ -28,6 +28,9 @@ As stated in the introduction, we start using the attribute *data-jauntyslider*.
 
 ```html
 <ul data-jauntyslider>
+	<li><img src="new-horizon.jpg"></li>
+	[...]
+</ul>
 ```
 
 And there you go! The Jauntyslider is up and running in your list.<br>
