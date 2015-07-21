@@ -57,7 +57,7 @@ function jauntyslider(list) {
 		this.loop = (this.loop === 'true');
 		this.width = (this.width === undefined) ? this.list.parent().width() : this.width;
 		if(this.height === undefined) { this.treatHeight(); }
-		this.slideshow = (this.slideshow === undefined) ? true : (this.slideshow === 'true');
+		this.slideshow = (this.slideshow === 'true');
 		this.interval = (this.interval === undefined) ? 5000 : parseInt(this.interval.replace('s', '')) * 1000;
 		this.step = (this.step === undefined) ? 1 : parseInt(this.step);
 		this.showNavigation = (this.navigation === undefined) ? true : (this.navigation === 'true');

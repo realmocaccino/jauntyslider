@@ -108,11 +108,10 @@ If not set, it dinamically inherits its height parent.
 
 **[options: true | false]**
 
-**[default: true]**
+**[default: false]**
 
-The automatic transition of the slides is default.<br>
-The navigation is allowed even so.<br>
-Set *false* to disable the slideshow.
+If *true*, enables an automatic transition of the slides.<br>
+The navigation is allowed even so.
 
 ### Interval
 
