@@ -3,7 +3,7 @@ The quick way to slide a HTML list<br>
 http://jauntyslider.luizgustavoweb.com
 
 ## Introduction
-A powerful slider with a simple configuration. All you need to do is attach the attibute *data-jauntyslider* on a html list like the example below:
+Jauntyslider lets you create a slider from your HTML list with just one step. All you need to do is attach the attibute *data-jauntyslider* on the  list like the example below:
 
 ```html
 <ul data-jauntyslider>
@@ -31,10 +31,20 @@ As stated in the introduction, we start using the attribute *data-jauntyslider*.
 ```
 
 And there you go! The Jauntyslider is up and running in your list.<br>
-You can also set some options to customize the slider if you want:
+You can also set options to customize the slider.<br>
+If you want the slider to move faster, for instance, you can do like the example below:
 
 ```html
-<ul data-jauntyslider="loop:false; speed:fast;">
+<ul data-jauntyslider="speed:fast;">
+	<li><img src="new-horizon.jpg"></li>
+	[...]
+</ul>
+```
+
+You can set more than one option at a time:
+
+```html
+<ul data-jauntyslider="speed:fast; loop:true;">
 	<li><img src="new-horizon.jpg"></li>
 	[...]
 </ul>
@@ -43,17 +53,18 @@ You can also set some options to customize the slider if you want:
 Jauntyslider supports multiple sliders on the same page:
 
 ```html
-<ul id="slider-1" data-jauntyslider="loop:false; speed:fast;">
+<ul data-jauntyslider="speed:fast; loop:true;">
 	<li><img src="new-horizon.jpg"></li>
 	[...]
 </ul>
-<ul id="slider-2" data-jauntyslider="slideshow:true; duration:4s;">
+
+<ul data-jauntyslider="slideshow:true; interval:4s;">
 	<li><img src="my-pet.jpg"></li>
 	[...]
 </ul>
 ```
 
-## Parameters
+## Options
 
 ### Speed
 
@@ -122,7 +133,7 @@ Allows to change the number of the slides that slider will travel by every trans
 
 ## Contribution
 Future versions with more options are to come.<br>
-If you want to contribute with the project, email me ([contato@luizgustavoweb.com](mailto:contato@luizgustavoweb.com)).<br>
+If you want to contribute with the project, don't hesitate to fork on [GitHub](https://github.com/lgustavoms/jauntyslider) and send a pull request.<br>
 Thanks for using!
 
 ## License
