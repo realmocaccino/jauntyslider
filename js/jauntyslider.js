@@ -51,7 +51,7 @@ function jauntyslider(list) {
 	
 	this.treatParameters = function() {
 		this.loop = (this.loop === 'true');
-		this.width = (this.width === undefined) ? this.list.parent().width() : this.width;
+		this.width = (this.width === undefined) ? this.list.width() : this.width;
 		if(this.height === undefined) { this.treatHeight(); }
 		this.slideshow = (this.slideshow === 'true');
 		this.interval = (this.interval === undefined) ? 5000 : parseInt(this.interval.replace('s', '')) * 1000;
@@ -61,16 +61,20 @@ function jauntyslider(list) {
 	}
 	
 	this.treatHeight = function() {
-		var heightChildren = 0;
-		this.list.parent().children().each(function(){
-			if($(this).attr('data-jauntyslider') == undefined) {
-				heightChildren += $(this).height();
+		if(this.list.height() < window.innerHeight) {
+			this.height = this.list.height();
+		} else {
+			var heightChildren = 0;
+			this.list.parent().children().each(function(){
+				if($(this).attr('data-jauntyslider') == undefined) {
+					heightChildren += $(this).height();
+				}
+			});
+			this.height = this.list.parent().height() - heightChildren;
+			if(this.height > window.innerHeight) {
+				this.height = window.innerHeight - $('body').offset().top;
 			}
-		});
-		this.height = this.list.parent().height() - heightChildren;
-		if(this.height > window.innerHeight) {
-			this.height = window.innerHeight - $('body').offset().top;
-		}
+		}	
 	}
 	
 	this.setSpeed = function() {
@@ -154,6 +158,11 @@ function jauntyslider(list) {
 			widthList += $(this).width();
 		});		
 		this.list.width(widthList);
+		if(this.currentSlide > (this.totalSlides-1)) {
+			this.currentSlide = this.totalSlides - 1;
+		} else if(this.currentSlide < 0) {
+			this.currentSlide = 0;
+		}
 		this.move(this.positionSlides[this.currentSlide], 1);
 		this.navigation.css('margin-left', '-'+this.navigation.width()+'px');
 		this.navigationSlides.eq(this.currentSlide).addClass(this.labelActive);
