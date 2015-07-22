@@ -40,13 +40,13 @@ function jauntyslider(list) {
 	this.labelActive = 'active';
 	
 	this.init = function() {
+		this.preloadImages();
 		this.loadingImages = setInterval(function(){
 			if(self.allImagesLoaded) {
 				clearInterval(self.loadingImages);
 				self.getParameters();
 				self.treatParameters();
 				self.setSpeed();
-				self.preloadImages();
 				self.build();
 				self.actions();
 				self.finishing();
@@ -56,6 +56,18 @@ function jauntyslider(list) {
 			}
 		}, 50);
 	};
+	
+	this.preloadImages = function() {
+		var images = this.list.find('img'),
+			loadedImages = 0,
+			totalImages = images.length;
+		this.allImagesLoaded = false;
+		images.load(function() {
+			if(++loadedImages === totalImages) {
+				self.allImagesLoaded = true;
+			}
+		});
+	}
 	
 	this.getParameters = function() {
 		var data = this.list.data('jauntyslider').replace(/\s+/g, '').split(';');
@@ -126,18 +138,6 @@ function jauntyslider(list) {
 				this.duration = 575;
 			break;
 		}
-	}
-	
-	this.preloadImages = function() {
-		var images = this.list.find('img'),
-			loadedImages = 0,
-			totalImages = images.length;
-		this.allImagesLoaded = false;
-		images.load(function() {
-			if(++loadedImages === totalImages) {
-				self.allImagesLoaded = true;
-			}
-		});
 	}
 
 	this.build = function() {
