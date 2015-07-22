@@ -88,12 +88,16 @@ If *true*, when reaching the end of the slider, it'll come back to the beginning
 
 ### Width
 
+**[options: %, px, pt, em, in...]**
+
 **[default: inheritance]**
 
 Sets the width of the slider.<br>
 If not set, it dinamically inherits its width parent.
 
 ### Height
+
+**[options: %, px, pt, em, in...]**
 
 **[default: inheritance]**
 
@@ -111,6 +115,8 @@ The navigation is allowed even so.
 
 ### Interval
 
+**[options: seconds]**
+
 **[default: 5s]**
 
 Defines the interval between the transitions of the slideshow.
@@ -125,11 +131,15 @@ If *false* hides the navigation on the bottom.
 
 ### Start
 
+**[options: integer]**
+
 **[default: 1]**
 
 Defines in which slide the slider will start. 
 
 ### Step
+
+**[options: integer]**
 
 **[default: 1]**
 
