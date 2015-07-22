@@ -84,12 +84,6 @@ Defines the speed of the transitions.
 
 If *true*, when reaching the end of the slider, it'll come back to the beginning.
 
-### Start
-
-**[default: 1]**
-
-Defines in which slide the slider will start. 
-
 ### Width
 
 **[default: inheritance]**
@@ -126,6 +120,12 @@ Defines the interval between the transitions of the slideshow.
 **[default: true]**
 
 If *false* hides the navigation on the bottom.
+
+### Start
+
+**[default: 1]**
+
+Defines in which slide the slider will start. 
 
 ### Step
 
