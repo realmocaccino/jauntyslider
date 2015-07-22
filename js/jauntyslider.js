@@ -81,14 +81,13 @@ function jauntyslider(list) {
 		if(this.list.height() < window.innerHeight) {
 			this.height = this.list.height();
 		} else {
-			/*var heightChildren = 0;
+			var heightChildren = 0;
 			this.list.parent().children().each(function(){
 				if($(this).attr('data-jauntyslider') == undefined) {
 					heightChildren += $(this).height();
 				}
 			});
-			this.height = this.list.parent().height() - heightChildren;*/
-			this.height = this.list.parent().height()
+			this.height = this.list.parent().height() - heightChildren;
 			if(this.height > window.innerHeight) {
 				this.height = window.innerHeight - $('body').offset().top;
 			}
