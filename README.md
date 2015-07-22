@@ -135,9 +135,9 @@ If *false* hides the navigation on the bottom.
 
 **[default: 1]**
 
-Defines in which slide the slider will start.
-The first slide is 1 and the last slide is *n*.
-If the given start is greater than the number of slides, *start* is *n*.
+Defines in which slide the slider will start.<br>
+The first slide is 1 and the last slide is *n*.<br>
+If the given start is greater than the number of slides, *start* is *n*.<br>
 On the other hand, if the given start is 0 or lesser, *start* is 1.
 
 ### Step
