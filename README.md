@@ -93,7 +93,7 @@ If *true*, when reaching the end of the slider, it'll come back to the beginning
 **[default: inheritance]**
 
 Sets the width of the slider.<br>
-If not set, it dinamically inherits its width parent.
+If not set, it dinamically inherits the width of the original list.
 
 ### Height
 
@@ -102,7 +102,7 @@ If not set, it dinamically inherits its width parent.
 **[default: inheritance]**
 
 Sets the height of the slider.<br>
-If not set, it dinamically inherits its height parent.
+If not set, it dinamically inherits the height of the original list.
 
 ### Slideshow
 
@@ -135,7 +135,10 @@ If *false* hides the navigation on the bottom.
 
 **[default: 1]**
 
-Defines in which slide the slider will start. 
+Defines in which slide the slider will start.
+The first slide is 1 and the last slide is *n*.
+If the given start is greater than the number of slides, *start* is *n*.
+On the other hand, if the given start is 0 or lesser, *start* is 1.
 
 ### Step
 
