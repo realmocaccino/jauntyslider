@@ -18,7 +18,7 @@ If you're using Bower, jQuery is already included in the json file as a componen
 In order to be able to use Jauntyslider, include the css and javascript files in your document:
 
 ```html
-<link href="css/jauntyslider.min.css" rel="stylesheet">
+<link href="css/jauntyslider.css" rel="stylesheet">
 <script src="js/jauntyslider.min.js"></script>
 ```
 
