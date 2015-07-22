@@ -12,11 +12,7 @@
  * TERMS OF USE - jQuery Easing
  * Open source under the BSD License
  * Copyright © 2008 George McGinley Smith
- * All rights reserved.
- *
- *
- * Includes jQuery Smart Resize - http://www.paulirish.com/2009/throttled-smartresize-jquery-event-handler/
- * By Paul Irish
+ * All rights reserved
  *
  */
  
@@ -158,6 +154,7 @@ function jauntyslider(list) {
 			widthList += $(this).width();
 		});		
 		this.list.width(widthList);
+		this.move(this.positionSlides[this.currentSlide], 1);
 		this.navigation.css('margin-left', '-'+this.navigation.width()+'px');
 		this.navigationSlides.eq(this.currentSlide).addClass(this.labelActive);
 		if(!this.loop && this.totalSlides > 1) {
