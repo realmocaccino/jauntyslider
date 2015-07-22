@@ -35,7 +35,7 @@ As stated in the introduction, we start using the attribute *data-jauntyslider*.
 ```
 
 And there you go! The Jauntyslider is up and running in your list.<br>
-You can also set options to customize the slider.<br>
+You can also set parameters to customize the slider.<br>
 If you want the slider to move faster, for instance, you can do like the example below:
 
 ```html
@@ -45,7 +45,7 @@ If you want the slider to move faster, for instance, you can do like the example
 </ul>
 ```
 
-You can set more than one option at a time:
+You can set more than one parameter at a time:
 
 ```html
 <ul data-jauntyslider="speed:fast; loop:true;">
@@ -68,7 +68,7 @@ Jauntyslider supports multiple sliders on the same page:
 </ul>
 ```
 
-## Options
+## Parameters
 
 ### Speed
 
