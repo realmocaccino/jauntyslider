@@ -9,12 +9,23 @@
  * Includes jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/
  * Uses the built in easing capabilities added In jQuery 1.1 to offer multiple easing options
  *
- * TERMS OF USE - jQuery Easing
  * Open source under the BSD License
  * Copyright © 2008 George McGinley Smith
- * All rights reserved
  *
  */
+ 
+jQuery.extend(jQuery.easing, {
+	easeInQuart: function (x, t, b, c, d) {
+		return c*(t/=d)*t*t*t + b;
+	},
+	easeOutQuart: function (x, t, b, c, d) {
+		return -c * ((t=t/d-1)*t*t*t - 1) + b;
+	},
+	easeInOutQuart: function (x, t, b, c, d) {
+		if ((t/=d/2) < 1) return c/2*t*t*t*t + b;
+		return -c/2 * ((t-=2)*t*t*t - 2) + b;
+	}
+});
  
 $(document).ready(function(){
 	$('ul[data-jauntyslider]').each(function(index){
@@ -32,12 +43,18 @@ function jauntyslider(list) {
 		this.getParameters();
 		this.treatParameters();
 		this.setSpeed();
-		this.build();
-		this.actions();
-		this.finishing();
-		if(this.slideshow) {
-			this.startSlideshow();
-		}
+		this.preloadImages();
+		this.loadingImages = setInterval(function(){
+			if(self.allImagesLoaded) {
+				clearInterval(self.loadingImages);
+				self.build();
+				self.actions();
+				self.finishing();
+				if(self.slideshow) {
+					self.startSlideshow();
+				}
+			}
+		}, 50);
 	};
 	
 	this.getParameters = function() {
@@ -110,6 +127,18 @@ function jauntyslider(list) {
 			break;
 		}
 	}
+	
+	this.preloadImages = function() {
+		var images = this.list.find('img'),
+			loadedImages = 0,
+			totalImages = images.length;
+		this.allImagesLoaded = false;
+		images.load(function() {
+			if(++loadedImages === totalImages) {
+				self.allImagesLoaded = true;
+			}
+		});
+	}
 
 	this.build = function() {
 		this.list.wrap('<div class="slider"><div class="slider-scroll"></div></div>');
@@ -156,7 +185,7 @@ function jauntyslider(list) {
 		this.slides.each(function(index){
 			self.positionSlides[index] = widthList;
 			widthList += $(this).width();
-		});		
+		});
 		this.list.width(widthList);
 		if(this.currentSlide > (this.totalSlides-1)) {
 			this.currentSlide = this.totalSlides - 1;
@@ -258,36 +287,3 @@ function jauntyslider(list) {
 	}
 
 }
-
-jQuery.extend(jQuery.easing, {
-	easeInQuart: function (x, t, b, c, d) {
-		return c*(t/=d)*t*t*t + b;
-	},
-	easeOutQuart: function (x, t, b, c, d) {
-		return -c * ((t=t/d-1)*t*t*t - 1) + b;
-	},
-	easeInOutQuart: function (x, t, b, c, d) {
-		if ((t/=d/2) < 1) return c/2*t*t*t*t + b;
-		return -c/2 * ((t-=2)*t*t*t - 2) + b;
-	}
-});
-
-(function($,sr){
-	var debounce = function (func, threshold, execAsap) {
-		var timeout;
-		return function debounced () {
-			var obj = this, args = arguments;
-			function delayed () {
-				if (!execAsap)
-					func.apply(obj, args);
-				timeout = null;
-			};
-			if (timeout)
-				clearTimeout(timeout);
-			else if (execAsap)
-				func.apply(obj, args);
-			timeout = setTimeout(delayed, threshold || 100); 
-		};
-	}
-	jQuery.fn[sr] = function(fn){  return fn ? this.bind('resize', debounce(fn)) : this.trigger(sr); };
-})(jQuery, 'smartResize');
