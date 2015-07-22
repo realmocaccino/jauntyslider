@@ -15,12 +15,14 @@ Jauntyslider lets you create a slider from your HTML list with just one step. Al
 If you're using Bower, jQuery is already included in the json file as a component of the project.
 
 ## Install
-In order to be able to use Jauntyslider, include the css and javascript files in your document:
+In order to be able to use Jauntyslider, [download the zip file](https://github.com/lgustavoms/jauntyslider/archive/master.zip) then include the css and javascript files in your document:
 
 ```html
 <link href="css/jauntyslider.css" rel="stylesheet">
 <script src="js/jauntyslider.min.js"></script>
 ```
+
+Put the arrow images in your *img* folder as well.
 
 ## Usage
 As stated in the introduction, we start using the attribute *data-jauntyslider*.
