@@ -40,13 +40,13 @@ function jauntyslider(list) {
 	this.labelActive = 'active';
 	
 	this.init = function() {
-		this.getParameters();
-		this.treatParameters();
-		this.setSpeed();
-		this.preloadImages();
 		this.loadingImages = setInterval(function(){
 			if(self.allImagesLoaded) {
 				clearInterval(self.loadingImages);
+				self.getParameters();
+				self.treatParameters();
+				self.setSpeed();
+				self.preloadImages();
 				self.build();
 				self.actions();
 				self.finishing();
@@ -92,7 +92,6 @@ function jauntyslider(list) {
 				this.height = window.innerHeight - $('body').offset().top;
 			}
 		}
-		console.log(this.height);
 	}
 	
 	this.setSpeed = function() {
