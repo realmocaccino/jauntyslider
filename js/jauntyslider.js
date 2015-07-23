@@ -29,7 +29,7 @@ jQuery.extend(jQuery.easing, {
  
 $(document).ready(function(){
 	$('ul[data-jauntyslider]').each(function(index){
-		new jauntyslider(this).init();
+		new jauntyslider(this).preloadImages();
 	});
 });
 
@@ -39,35 +39,28 @@ function jauntyslider(list) {
 	this.list = $(list);
 	this.labelActive = 'active';
 	
-	this.init = function() {
-		this.preloadImages();
-		this.loadingImages = setInterval(function(){
-			if(self.allImagesLoaded) {
-				clearInterval(self.loadingImages);
-				self.getParameters();
-				self.treatParameters();
-				self.setSpeed();
-				self.build();
-				self.actions();
-				self.finishing();
-				if(self.slideshow) {
-					self.startSlideshow();
-				}
-			}
-		}, 50);
-	};
-	
 	this.preloadImages = function() {
 		var images = this.list.find('img'),
 			loadedImages = 0,
 			totalImages = images.length;
-		this.allImagesLoaded = false;
 		images.load(function() {
 			if(++loadedImages === totalImages) {
-				self.allImagesLoaded = true;
+				self.init();
 			}
 		});
 	}
+	
+	this.init = function() {
+		this.getParameters();
+		this.treatParameters();
+		this.setSpeed();
+		this.build();
+		this.actions();
+		this.finishing();
+		if(this.slideshow) {
+			this.startSlideshow();
+		}
+	};
 	
 	this.getParameters = function() {
 		var data = this.list.data('jauntyslider').replace(/\s+/g, '').split(';');
