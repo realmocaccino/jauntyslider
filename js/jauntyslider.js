@@ -3,7 +3,7 @@
  * The quick way to slide a HTML list
  *
  * Open source under the MIT License
- * Copyright © 2015 Luiz Gustavo Martins
+ * © 2015 Luiz Gustavo Martins
  *
  *
  * Includes jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/
