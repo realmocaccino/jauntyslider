@@ -28,14 +28,13 @@ jQuery.extend(jQuery.easing, {
 });
  
 $(document).ready(function(){
-	$('ul[data-jauntyslider]').each(function(index){
-		new jauntyslider(this).preloadImages();
+	$('ul[data-jauntyslider]').each(function(index, element){
+		new jauntyslider(element).preloadImages();
 	});
 });
 
 function jauntyslider(list) {
-
-	var self = this;
+	
 	this.list = $(list);
 	this.labelActive = 'active';
 	
@@ -45,9 +44,9 @@ function jauntyslider(list) {
 			totalImages = images.length;
 		images.load(function() {
 			if(++loadedImages === totalImages) {
-				self.init();
+				this.init();
 			}
-		});
+		}.bind(this));
 	}
 	
 	this.init = function() {
@@ -61,6 +60,21 @@ function jauntyslider(list) {
 			this.startSlideshow();
 		}
 	};
+	
+	this.startSlideshow = function() {
+		this.progressSlideshow = setInterval(function(){
+			this.nextSlide();
+		}.bind(this), this.interval);
+	}
+	
+	this.stopSlideshow = function() {
+		clearInterval(this.progressSlideshow);
+	}
+	
+	this.restartSlideshow = function() {
+		this.stopSlideshow();
+		this.startSlideshow();
+	}
 	
 	this.getParameters = function() {
 		var data = this.list.data('jauntyslider').replace(/\s+/g, '').split(';');
@@ -87,9 +101,9 @@ function jauntyslider(list) {
 			this.height = this.list.height();
 		} else {
 			var heightChildren = 0;
-			this.list.parent().children().each(function(){
-				if($(this).attr('data-jauntyslider') == undefined) {
-					heightChildren += $(this).height();
+			this.list.parent().children().each(function(index, element){
+				if($(element).attr('data-jauntyslider') == undefined) {
+					heightChildren += $(element).height();
 				}
 			});
 			this.height = this.list.parent().height() - heightChildren;
@@ -146,39 +160,39 @@ function jauntyslider(list) {
 		this.totalSlides = this.slides.length;
 		this.slider.append('<ul class="navigation"></ul>');
 		this.navigation = this.slider.children('ul.navigation');
-		this.slides.each(function(index){
-			self.navigation.append('<li></li>');
-		});
+		this.slides.each(function(index, element){
+			this.navigation.append('<li></li>');
+		}.bind(this));
 		this.navigationSlides = this.navigation.children();
 	}
 
 	this.actions = function() {
 		this.previousArrow.on('click', function(event) {
-			self.previousSlide();
+			this.previousSlide();
 			event.preventDefault();
-		});
+		}.bind(this));
 		this.nextArrow.on('click', function(event) {
-			self.nextSlide();
+			this.nextSlide();
 			event.preventDefault();
-		});
+		}.bind(this));
 		this.navigationSlides.on('click', function(event) {
-			self.navigate(this);
+			this.navigate(this);
 			event.preventDefault();
-		});
+		}.bind(this));
 		if(this.slideshow) {
 			this.previousArrow.add(this.nextArrow).add(this.navigationSlides).on('click', function(event) {
-				self.restartSlideshow();
-			});
+				this.restartSlideshow();
+			}.bind(this));
 		}
 	}
 
 	this.finishing = function() {
 		var widthList = 0;
 		this.positionSlides = new Array();
-		this.slides.each(function(index){
-			self.positionSlides[index] = widthList;
-			widthList += $(this).width();
-		});
+		this.slides.each(function(index, element){
+			this.positionSlides[index] = widthList;
+			widthList += $(element).width();
+		}.bind(this));
 		this.list.width(widthList);
 		if(this.currentSlide > (this.totalSlides-1)) {
 			this.currentSlide = this.totalSlides - 1;
@@ -242,9 +256,9 @@ function jauntyslider(list) {
 	this.move = function(position, duration) {
 		this.scroll.stop().animate({
 			scrollLeft: position
-		}, duration ? duration : self.duration, self.speed, function(){
-			self.updateArrows();
-		});
+		}, duration ? duration : this.duration, this.speed, function(){
+			this.updateArrows();
+		}.bind(this));
 	}
 
 	this.updateArrows = function() {
@@ -262,21 +276,6 @@ function jauntyslider(list) {
 		if(this.currentSlide != (this.totalSlides-1)) {
 			this.nextArrow.css('visibility','visible');
 		}
-	}
-	
-	this.startSlideshow = function() {
-		this.progressSlideshow = setInterval(function(){
-			self.nextSlide();
-		}, self.interval);
-	}
-	
-	this.stopSlideshow = function() {
-		clearInterval(this.progressSlideshow);
-	}
-	
-	this.restartSlideshow = function() {
-		this.stopSlideshow();
-		this.startSlideshow();
 	}
 
 }
