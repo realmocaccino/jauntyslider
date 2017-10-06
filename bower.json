@@ -1,19 +1,20 @@
 {
-  "name": "jauntyslider",
-  "version": "1.0",
-  "homepage": "http://jauntyslider.luizgustavoweb.com",
+  "name": "Jauntyslider",
   "description": "The quick way to slide a HTML list",
-  "main": "js/jauntyslider.js",
-  "keywords": [
-    "Jaunty",
-    "Slider"
-  ],
+  "version": "1.0.0",
+  "license": "MIT",
+  "homepage": "http://jauntyslider.luizgustavoweb.com",
   "authors": [
-    "Luiz Gustavo Martins <contato@luizgustavoweb.com>"
+    "Luiz Gustavo Martins <lgustavoms@gmail.com>"
   ],
-  "license": "BSD",
+  "keywords": [
+    "slider",
+    "javascript",
+    "data-attribute"
+  ],
+  "main": "src/js/jauntyslider.js",
   "dependencies": {
-    "jquery": ">=1.11.3",
+    "jQuery": ">=1.11.3",
   },
   "ignore": [
     "**/.*",
