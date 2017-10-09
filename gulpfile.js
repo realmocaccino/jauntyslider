@@ -5,9 +5,7 @@ var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
 
 gulp.task('styles', function(){
-	return gulp.src([
-		'src/sass/*.sass'
-	])
+	return gulp.src('src/sass/**/*.sass')
 	.pipe(concat('jauntyslider.min.css'))
 	.pipe(sass())
 	.pipe(minifyCss())
@@ -15,9 +13,7 @@ gulp.task('styles', function(){
 });
 
 gulp.task('scripts', function(){
-	return gulp.src([
-		'src/js/*.js'
-	])
+	return gulp.src('src/js/**/*.js')
 	.pipe(concat('jauntyslider.min.js'))
 	.pipe(uglify())
 	.pipe(gulp.dest('dist/js'));
