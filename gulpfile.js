@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
+var image = require('gulp-image');
 var minifyCss = require('gulp-minify-css');
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
@@ -19,8 +20,14 @@ gulp.task('scripts', function(){
 	.pipe(gulp.dest('dist/js'));
 });
 
-gulp.task('default', ['styles', 'scripts']);
+gulp.task('images', function(){
+	return gulp.src('src/img/**/*.*')
+	.pipe(image())
+	.pipe(gulp.dest('dist/img'));
+});
+
+gulp.task('default', ['styles', 'scripts', 'images']);
 
 gulp.task('watch', function(){
-	gulp.watch(['src/sass/**/*.sass', 'src/js/**/*.js'], ['default']);
+	gulp.watch(['src/sass/**/*.sass', 'src/js/**/*.js', 'src/img/**/*.*'], ['default']);
 });
