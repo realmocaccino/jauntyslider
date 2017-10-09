@@ -6,8 +6,12 @@ var minifyCss = require('gulp-minify-css');
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
 
+var srcStyles = 'src/sass/**/*.sass';
+var srcScripts = 'src/js/**/*.js';
+var srcImages = 'src/img/**/*.*';
+
 gulp.task('styles', function(){
-	return gulp.src('src/sass/**/*.sass')
+	return gulp.src(srcStyles)
 	.pipe(concat('jauntyslider.min.css'))
 	.pipe(sass())
 	.pipe(minifyCss())
@@ -15,14 +19,14 @@ gulp.task('styles', function(){
 });
 
 gulp.task('scripts', function(){
-	return gulp.src('src/js/**/*.js')
+	return gulp.src(srcScripts)
 	.pipe(concat('jauntyslider.min.js'))
 	.pipe(uglify())
 	.pipe(gulp.dest('dist/js'));
 });
 
 gulp.task('images', function(){
-	return gulp.src('src/img/**/*.*')
+	return gulp.src(srcImages)
 	.pipe(changed('dist/img/'))
 	.pipe(image())
 	.pipe(gulp.dest('dist/img'));
@@ -31,5 +35,5 @@ gulp.task('images', function(){
 gulp.task('default', ['styles', 'scripts', 'images']);
 
 gulp.task('watch', function(){
-	gulp.watch(['src/sass/**/*.sass', 'src/js/**/*.js', 'src/img/**/*.*'], ['default']);
+	gulp.watch([srcStyles, srcScripts, srcImages], ['default']);
 });
