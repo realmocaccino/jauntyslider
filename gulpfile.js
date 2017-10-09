@@ -1,13 +1,15 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
 var minifyCss = require('gulp-minify-css');
+var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
 
 gulp.task('styles', function(){
 	return gulp.src([
-		'src/css/*.css'
+		'src/sass/*.sass'
 	])
 	.pipe(concat('jauntyslider.min.css'))
+	.pipe(sass())
 	.pipe(minifyCss())
 	.pipe(gulp.dest('dist/css'));
 });
