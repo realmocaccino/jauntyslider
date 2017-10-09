@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var changed = require('gulp-changed');
 var concat = require('gulp-concat');
 var image = require('gulp-image');
 var minifyCss = require('gulp-minify-css');
@@ -22,6 +23,7 @@ gulp.task('scripts', function(){
 
 gulp.task('images', function(){
 	return gulp.src('src/img/**/*.*')
+	.pipe(changed('dist/img/'))
 	.pipe(image())
 	.pipe(gulp.dest('dist/img'));
 });
