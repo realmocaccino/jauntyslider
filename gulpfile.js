@@ -6,7 +6,7 @@ var minifyCss = require('gulp-minify-css');
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
 
-var srcStyles = 'src/sass/**/*.sass';
+var srcStyles = 'src/sass/**/*.scss';
 var srcScripts = 'src/js/**/*.js';
 var srcImages = 'src/img/**/*.*';
 

@@ -12,7 +12,7 @@
 	overflow:hidden;
 }
 
-.slider .slider-scroll {
+.slider-scroll {
     height:100%;
     width:100%;
     overflow:hidden;
@@ -21,20 +21,20 @@
     top:0;
 }
 
-.slider .slider-scroll ul {
+.slider-scroll ul {
     height:100%;
     padding:0;
     margin:0;
     list-style-type:none;
 }
 
-.slider .slider-scroll ul li {
+.slider-scroll ul li {
     transition:width 0.3s ease;
     position:relative;
     float:left;
 }
 
-.slider .slider-previous, .slider .slider-next {
+.slider-previous, .slider-next {
     position:absolute;
     width:35px;
     height:65px;
@@ -45,13 +45,13 @@
     background:url(../img/left-arrow.png) no-repeat 0 0 transparent;
 }
 
-.slider .slider-next {
+.slider-next {
     left:auto;
     right:20px;
     background:url(../img/right-arrow.png) no-repeat 0 0 transparent;
 }
 
-.slider ul.navigation {
+ul.navigation {
 	position:absolute;
 	left:50%;
 	bottom:3%;
@@ -59,7 +59,7 @@
 	list-style-type:none;
 }
 
-.slider ul.navigation li {
+ul.navigation li {
     background:rgba(119, 119, 119, 0.7);
     margin-left:5px;
     width:10px;
@@ -68,6 +68,6 @@
     cursor:pointer;
 }
 
-.slider ul.navigation li.active {
+ul.navigation li.active {
     background:rgba(255, 255, 255, 0.9);
 }
