@@ -14,6 +14,8 @@
  *
  */
  
+(function(){
+ 
 jQuery.extend(jQuery.easing, {
 	easeInQuart: function (x, t, b, c, d) {
 		return c*(t/=d)*t*t*t + b;
@@ -26,7 +28,7 @@ jQuery.extend(jQuery.easing, {
 		return -c/2 * ((t-=2)*t*t*t - 2) + b;
 	}
 });
- 
+
 $(document).ready(function(){
 	$('ul[data-jauntyslider]').each(function(index, element){
 		new jauntyslider(element).preloadImages();
@@ -34,10 +36,10 @@ $(document).ready(function(){
 });
 
 function jauntyslider(list) {
-	
+
 	this.list = $(list);
 	this.labelActive = 'active';
-	
+
 	this.preloadImages = function() {
 		var images = this.list.find('img'),
 			loadedImages = 0,
@@ -48,7 +50,7 @@ function jauntyslider(list) {
 			}
 		}.bind(this));
 	}
-	
+
 	this.init = function() {
 		this.getParameters();
 		this.treatParameters();
@@ -60,22 +62,22 @@ function jauntyslider(list) {
 			this.startSlideshow();
 		}
 	};
-	
+
 	this.startSlideshow = function() {
 		this.progressSlideshow = setInterval(function(){
 			this.nextSlide();
 		}.bind(this), this.interval);
 	}
-	
+
 	this.stopSlideshow = function() {
 		clearInterval(this.progressSlideshow);
 	}
-	
+
 	this.restartSlideshow = function() {
 		this.stopSlideshow();
 		this.startSlideshow();
 	}
-	
+
 	this.getParameters = function() {
 		var data = this.list.data('jauntyslider').replace(/\s+/g, '').split(';');
 		for(i in data) {
@@ -84,7 +86,7 @@ function jauntyslider(list) {
 			}
 		}
 	}
-	
+
 	this.treatParameters = function() {
 		this.loop = (this.loop === 'true');
 		this.width = (this.width === undefined) ? this.list.width() : this.width;
@@ -95,7 +97,7 @@ function jauntyslider(list) {
 		this.showNavigation = (this.navigation === undefined) ? true : (this.navigation === 'true');
 		this.currentSlide = (this.start === undefined) ? 0 : this.start - 1;
 	}
-	
+
 	this.treatHeight = function() {
 		if(this.list.height() < window.innerHeight) {
 			this.height = this.list.height();
@@ -112,7 +114,7 @@ function jauntyslider(list) {
 			}
 		}
 	}
-	
+
 	this.setSpeed = function() {
 		this.speed = (this.speed === undefined) ? 'normal' : this.speed;
 		switch(this.speed) {
@@ -279,3 +281,5 @@ function jauntyslider(list) {
 	}
 
 }
+	
+}());
