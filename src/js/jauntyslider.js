@@ -15,7 +15,7 @@
  */
  
 (function(){
- 
+
 jQuery.extend(jQuery.easing, {
 	easeInQuart: function (x, t, b, c, d) {
 		return c*(t/=d)*t*t*t + b;
@@ -29,19 +29,20 @@ jQuery.extend(jQuery.easing, {
 	}
 });
 
-$(document).ready(function(){
-	$('ul[data-jauntyslider]').each(function(index, element){
-		new jauntyslider(element).preloadImages();
+document.addEventListener('DOMContentLoaded', () => {
+	document.querySelectorAll('ul[data-jauntyslider]').forEach(function(list, index){
+		new jauntyslider(list).preloadImages();
 	});
 });
 
 function jauntyslider(list) {
-
-	this.list = $(list);
+	
+	this.list = list;
 	this.labelActive = 'active';
 
+/*
 	this.preloadImages = function() {
-		var images = this.list.find('img'),
+		var images = this.list.querySelectorAll('img'),
 			loadedImages = 0,
 			totalImages = images.length;
 		images.load(function() {
@@ -50,6 +51,7 @@ function jauntyslider(list) {
 			}
 		}.bind(this));
 	}
+*/
 
 	this.init = function() {
 		this.getParameters();
@@ -79,8 +81,8 @@ function jauntyslider(list) {
 	}
 
 	this.getParameters = function() {
-		var data = this.list.data('jauntyslider').replace(/\s+/g, '').split(';');
-		for(i in data) {
+		var data = this.list.getAttribute('data-jauntyslider').replace(/\s+/g, '').split(';');
+		for(let i of data) {
 			if(data[i]) {
 				this[data[i].split(':')[0].toLowerCase()] = data[i].split(':')[1].toLowerCase();
 			}
@@ -150,7 +152,20 @@ function jauntyslider(list) {
 	}
 
 	this.build = function() {
-		this.list.wrap('<div class="slider"><div class="slider-scroll"></div></div>');
+		
+		let sliderWrapper = document.createElement('div').classList.add('slider');
+		let sliderScrollWrapper = document.createElement('div').classList.add('slider-scroll');
+		
+		sliderWrapper.classList.add('slider');
+		sliderScrollWrapper.classList.add('slider-scroll');
+		
+		this.list.parentNode.insertBefore(sliderScrollWrapper, this.list);
+		sliderScrollWrapper.appendChild(this.list);
+		
+		sliderScrollWrapper.parentNode.insertBefore(sliderWrapper, sliderScrollWrapper);
+		sliderWrapper.appendChild(sliderScrollWrapper);
+	
+		//this.list.wrap('<div class="slider"><div class="slider-scroll"></div></div>');
 		this.slider = this.list.parents('.slider');
 		this.slider.width(this.width).height(this.height);
 		this.scroll = this.slider.children('.slider-scroll');
@@ -279,6 +294,8 @@ function jauntyslider(list) {
 			this.nextArrow.css('visibility','visible');
 		}
 	}
+	
+	this.init();
 
 }
 	

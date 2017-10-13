@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var babel = require('gulp-babel');
 var changed = require('gulp-changed');
 var concat = require('gulp-concat');
 var image = require('gulp-image');
@@ -21,6 +22,7 @@ gulp.task('styles', function(){
 gulp.task('scripts', function(){
 	return gulp.src(srcScripts)
 	.pipe(concat('jauntyslider.min.js'))
+	.pipe(babel())
 	.pipe(uglify())
 	.pipe(gulp.dest('dist/js'));
 });
