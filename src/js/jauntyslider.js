@@ -15,7 +15,9 @@
  */
  
 (function(){
- 
+
+const helpers = require('./helpers.js');
+
 jQuery.extend(jQuery.easing, {
 	easeInQuart: function (x, t, b, c, d) {
 		return c*(t/=d)*t*t*t + b;
@@ -31,13 +33,14 @@ jQuery.extend(jQuery.easing, {
 
 $(document).ready(function(){
 	$('ul[data-jauntyslider]').each(function(index, element){
-		new jauntyslider(element).preloadImages();
+		new jauntyslider(element, helpers.get_options(element)).preloadImages();
 	});
 });
 
-function jauntyslider(list) {
+function jauntyslider(list, options) {
 
 	this.list = $(list);
+	this.options = options;
 	this.labelActive = 'active';
 
 	this.preloadImages = function() {
@@ -52,7 +55,6 @@ function jauntyslider(list) {
 	}
 
 	this.init = function() {
-		this.getParameters();
 		this.treatParameters();
 		this.setSpeed();
 		this.build();
@@ -76,15 +78,6 @@ function jauntyslider(list) {
 	this.restartSlideshow = function() {
 		this.stopSlideshow();
 		this.startSlideshow();
-	}
-
-	this.getParameters = function() {
-		var data = this.list.data('jauntyslider').replace(/\s+/g, '').split(';');
-		for(i in data) {
-			if(data[i]) {
-				this[data[i].split(':')[0].toLowerCase()] = data[i].split(':')[1].toLowerCase();
-			}
-		}
 	}
 
 	this.treatParameters = function() {

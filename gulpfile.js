@@ -5,6 +5,7 @@ var image = require('gulp-image');
 var minifyCss = require('gulp-minify-css');
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
+var webpack = require('webpack-stream');
 
 var srcStyles = 'src/sass/**/*.scss';
 var srcScripts = 'src/js/**/*.js';
@@ -20,6 +21,7 @@ gulp.task('styles', function(){
 
 gulp.task('scripts', function(){
 	return gulp.src(srcScripts)
+	.pipe(webpack())
 	.pipe(concat('jauntyslider.min.js'))
 	.pipe(uglify())
 	.pipe(gulp.dest('dist/js'));
