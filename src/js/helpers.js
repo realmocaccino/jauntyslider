@@ -1,6 +1,6 @@
 exports.get_options = function(element) {
 	var options = {};
-	var data = $(element).data('jauntyslider').replace(/\s+/g, '').split(';');
+	var data = element.dataset.jauntyslider.replace(/\s+/g, '').split(';');
 	
 	for(i in data) {
 		if(data[i]) {
