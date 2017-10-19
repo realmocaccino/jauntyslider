@@ -12,12 +12,16 @@ var srcStyles = 'src/sass/**/*.scss';
 var srcScripts = 'src/js/**/*.js';
 var srcImages = 'src/img/**/*.*';
 
+var distStyles = 'dist/css';
+var distScripts = 'dist/js';
+var distImages = 'dist/img';
+
 gulp.task('styles', function(){
 	return gulp.src(srcStyles)
 	.pipe(concat('jauntyslider.min.css'))
 	.pipe(sass())
 	.pipe(minifyCss())
-	.pipe(gulp.dest('dist/css'));
+	.pipe(gulp.dest(distStyles));
 });
 
 gulp.task('scripts', function(){
@@ -26,14 +30,14 @@ gulp.task('scripts', function(){
 	.pipe(concat('jauntyslider.min.js'))
 	.pipe(babel())
 	.pipe(uglify())
-	.pipe(gulp.dest('dist/js'));
+	.pipe(gulp.dest(distScripts));
 });
 
 gulp.task('images', function(){
 	return gulp.src(srcImages)
-	.pipe(changed('dist/img/'))
+	.pipe(changed(distImages))
 	.pipe(image())
-	.pipe(gulp.dest('dist/img'));
+	.pipe(gulp.dest(distImages));
 });
 
 gulp.task('default', ['styles', 'scripts', 'images']);
