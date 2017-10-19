@@ -13,31 +13,11 @@
  * Copyright © 2008 George McGinley Smith
  *
  */
- 
-(function(){
 
-jQuery.extend(jQuery.easing, {
-	easeInQuart: function (x, t, b, c, d) {
-		return c*(t/=d)*t*t*t + b;
-	},
-	easeOutQuart: function (x, t, b, c, d) {
-		return -c * ((t=t/d-1)*t*t*t - 1) + b;
-	},
-	easeInOutQuart: function (x, t, b, c, d) {
-		if ((t/=d/2) < 1) return c/2*t*t*t*t + b;
-		return -c/2 * ((t-=2)*t*t*t - 2) + b;
-	}
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-	document.querySelectorAll('ul[data-jauntyslider]').forEach(function(list, index){
-		new jauntyslider(list).preloadImages();
-	});
-});
-
-function jauntyslider(list) {
+exports.jauntyslider = function(list, options) {
 	
 	this.list = list;
+	this.options = options;
 	this.labelActive = 'active';
 
 /*
@@ -54,7 +34,6 @@ function jauntyslider(list) {
 */
 
 	this.init = function() {
-		this.getParameters();
 		this.treatParameters();
 		this.setSpeed();
 		this.build();
@@ -79,16 +58,7 @@ function jauntyslider(list) {
 		this.stopSlideshow();
 		this.startSlideshow();
 	}
-
-	this.getParameters = function() {
-		var data = this.list.getAttribute('data-jauntyslider').replace(/\s+/g, '').split(';');
-		for(let i of data) {
-			if(data[i]) {
-				this[data[i].split(':')[0].toLowerCase()] = data[i].split(':')[1].toLowerCase();
-			}
-		}
-	}
-
+	
 	this.treatParameters = function() {
 		this.loop = (this.loop === 'true');
 		this.width = (this.width === undefined) ? this.list.width() : this.width;
@@ -298,5 +268,3 @@ function jauntyslider(list) {
 	this.init();
 
 }
-	
-}());
