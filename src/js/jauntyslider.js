@@ -14,7 +14,7 @@
  *
  */
 
-exports.jauntyslider = function(list, options) {
+module.exports = function(list, options) {
 	
 	this.list = list;
 	this.options = options;

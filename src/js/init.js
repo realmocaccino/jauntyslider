@@ -1,4 +1,4 @@
-const jauntyslider = require('./jauntyslider.js');
+window.jauntyslider = require('./jauntyslider.js');
 const helpers = require('./helpers.js');
 
 document.addEventListener('DOMContentLoaded', () => {
