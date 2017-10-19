@@ -21,7 +21,7 @@ gulp.task('styles', function(){
 });
 
 gulp.task('scripts', function(){
-	return gulp.src('src/js/jauntyslider.js')
+	return gulp.src(srcScripts)
 	.pipe(webpack())
 	.pipe(concat('jauntyslider.min.js'))
 	.pipe(babel())
