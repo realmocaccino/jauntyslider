@@ -14,9 +14,8 @@
  *
  */
 
-module.exports = function(list, options) {
+module.exports = function(options) {
 	
-	this.list = list;
 	this.options = options;
 	this.labelActive = 'active';
 
