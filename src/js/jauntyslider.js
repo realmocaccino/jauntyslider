@@ -4,14 +4,6 @@
  *
  * Open source under the MIT License
  * © 2015 Luiz Gustavo Martins
- *
- *
- * Includes jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/
- * Uses the built in easing capabilities added In jQuery 1.1 to offer multiple easing options
- *
- * Open source under the BSD License
- * Copyright © 2008 George McGinley Smith
- *
  */
 
 module.exports = function(options) {
