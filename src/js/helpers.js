@@ -1,4 +1,4 @@
-exports.get_options = (element) =>
+exports.getOptions = (element) =>
 {
 	let options = {};
 	const data_options = element.dataset.jauntyslider.replace(/\s+/g, '').split(';');

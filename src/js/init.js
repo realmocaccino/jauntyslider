@@ -3,6 +3,6 @@ const helpers = require('./helpers.js');
 
 document.addEventListener('DOMContentLoaded', () => {
 	document.querySelectorAll('ul[data-jauntyslider]').forEach(function(list, index){
-		list.jauntyslider(helpers.get_options(list));
+		list.jauntyslider(helpers.getOptions(list));
 	});
 });
