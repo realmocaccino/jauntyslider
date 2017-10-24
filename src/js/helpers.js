@@ -1,12 +1,13 @@
 exports.get_options = function(element) {
 	var options = {};
-	var data = element.dataset.jauntyslider.replace(/\s+/g, '').split(';');
+	var data_options = element.dataset.jauntyslider.replace(/\s+/g, '').split(';');
 	
-	for(let i of data) {
-		if(data[i]) {
-			options[data[i].split(':')[0].toLowerCase()] = data[i].split(':')[1].toLowerCase();
+	data_options.forEach(option => {
+		if(option) {
+			const [property, value] = option.split(':');
+			options[property.toLowerCase()] = value.toLowerCase();
 		}
-	}
+	});
 	
 	return options;
 }
