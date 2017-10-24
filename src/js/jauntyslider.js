@@ -34,9 +34,7 @@ module.exports = function(options)
 		if(this.slideshow) {
 			this.startSlideshow();
 		}
-	};
-
-	
+	}
 
 	this.startSlideshow = function() {
 		this.progressSlideshow = setInterval(function(){
@@ -232,7 +230,7 @@ module.exports = function(options)
 		this.move(this.positionSlides[this.currentSlide]);
 		this.navigationSlides.removeClass(this.labelActive);
 		$(seletor).addClass(this.labelActive);
-	};
+	}
 
 	this.move = function(position, duration) {
 		this.scroll.stop().animate({
