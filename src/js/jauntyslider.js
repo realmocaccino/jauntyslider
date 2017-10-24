@@ -8,6 +8,7 @@
 
 module.exports = function(options)
 {
+	this.list = this;
 	this.options = options;
 	this.labelActive = 'active';
 
