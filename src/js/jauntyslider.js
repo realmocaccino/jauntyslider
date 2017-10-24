@@ -6,7 +6,7 @@
  * © 2015 Luiz Gustavo Martins
  */
 
-module.exports = (options) =>
+module.exports = function(options)
 {
 	this.options = options;
 	this.labelActive = 'active';
@@ -34,6 +34,8 @@ module.exports = (options) =>
 			this.startSlideshow();
 		}
 	};
+
+	
 
 	this.startSlideshow = function() {
 		this.progressSlideshow = setInterval(function(){
