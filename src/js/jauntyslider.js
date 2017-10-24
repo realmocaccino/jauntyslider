@@ -6,8 +6,8 @@
  * © 2015 Luiz Gustavo Martins
  */
 
-module.exports = function(options) {
-	
+module.exports = (options) =>
+{
 	this.options = options;
 	this.labelActive = 'active';
 
@@ -257,5 +257,4 @@ module.exports = function(options) {
 	}
 	
 	this.init();
-
 }
