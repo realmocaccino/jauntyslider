@@ -21,19 +21,6 @@ module.exports = function(options)
 		step: 1
 	}
 
-/*
-	this.preloadImages = function() {
-		var images = this.list.querySelectorAll('img'),
-			loadedImages = 0,
-			totalImages = images.length;
-		images.load(function() {
-			if(++loadedImages === totalImages) {
-				this.init();
-			}
-		}.bind(this));
-	}
-*/
-
 	this.init = function() {
 		this.setOptions();
 		this.setWidth();
