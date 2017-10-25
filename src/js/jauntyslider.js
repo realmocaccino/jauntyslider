@@ -36,6 +36,8 @@ module.exports = function(options)
 
 	this.init = function() {
 		this.setOptions();
+		this.setWidth();
+		this.setHeight();
 		this.setSpeed();
 		this.build();
 		this.actions();
@@ -52,6 +54,14 @@ module.exports = function(options)
 			}
 		}
 	}
+	
+	this.setWidth = function() {
+		if(!this.options.width) this.options.width = this.offsetWidth;
+	}
+	
+	this.setHeight = function() {
+		if(!this.options.height) this.options.height = this.offsetHeight;
+	}
 
 	this.startSlideshow = function() {
 		this.progressSlideshow = setInterval(function(){
@@ -66,23 +76,6 @@ module.exports = function(options)
 	this.restartSlideshow = function() {
 		this.stopSlideshow();
 		this.startSlideshow();
-	}
-
-	this.treatHeight = function() {
-		if(this.list.height() < window.innerHeight) {
-			this.height = this.list.height();
-		} else {
-			var heightChildren = 0;
-			this.list.parent().children().each(function(index, element){
-				if($(element).attr('data-jauntyslider') == undefined) {
-					heightChildren += $(element).height();
-				}
-			});
-			this.height = this.list.parent().height() - heightChildren;
-			if(this.height > window.innerHeight) {
-				this.height = window.innerHeight - $('body').offset().top;
-			}
-		}
 	}
 
 	this.setSpeed = function() {
