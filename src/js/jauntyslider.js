@@ -9,8 +9,17 @@
 module.exports = function(options)
 {
 	this.list = this;
-	this.options = options;
 	this.labelActive = 'active';
+	this.options = options;
+	this.defaults = {
+		interval: 5000,
+		loop: false,
+		navigation: true,
+		slideshow: false,
+		speed: 'normal',
+		start: 0,
+		step: 1
+	}
 
 /*
 	this.preloadImages = function() {
@@ -26,13 +35,21 @@ module.exports = function(options)
 */
 
 	this.init = function() {
-		this.treatParameters();
+		this.setOptions();
 		this.setSpeed();
 		this.build();
 		this.actions();
 		this.finishing();
 		if(this.slideshow) {
 			this.startSlideshow();
+		}
+	}
+	
+	this.setOptions = function() {
+		for(let defaultOption in this.defaults) {
+			if(!this.options.hasOwnProperty(defaultOption)) {
+				this.options[defaultOption] = this.defaults[defaultOption];
+			}
 		}
 	}
 
@@ -49,17 +66,6 @@ module.exports = function(options)
 	this.restartSlideshow = function() {
 		this.stopSlideshow();
 		this.startSlideshow();
-	}
-	
-	this.treatParameters = function() {
-		this.loop = (this.loop === 'true');
-		this.width = (this.width === undefined) ? this.list.width() : this.width;
-		if(this.height === undefined) { this.treatHeight(); }
-		this.slideshow = (this.slideshow === 'true');
-		this.interval = (this.interval === undefined) ? 5000 : parseInt(this.interval.replace('s', '')) * 1000;
-		this.step = (this.step === undefined) ? 1 : parseInt(this.step);
-		this.showNavigation = (this.navigation === undefined) ? true : (this.navigation === 'true');
-		this.currentSlide = (this.start === undefined) ? 0 : this.start - 1;
 	}
 
 	this.treatHeight = function() {
