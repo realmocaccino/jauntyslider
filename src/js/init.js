@@ -1,4 +1,7 @@
-window.Object.prototype.jauntyslider = require('./jauntyslider.js');
+Object.defineProperty(Object.prototype, 'jauntyslider', {
+	enumerable: false,
+	value: require('./jauntyslider.js')
+});
 const helpers = require('./helpers.js');
 
 document.addEventListener('DOMContentLoaded', () => {
