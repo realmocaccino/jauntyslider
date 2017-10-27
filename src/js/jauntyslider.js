@@ -20,11 +20,11 @@ module.exports = function(options)
 		speed: 'normal',
 		start: 0,
 		step: 1
-	}
+	};
 	
 	this.elements = {
 		list: this
-	}
+	};
 
 	this.labelActive = 'active';
 
@@ -39,7 +39,7 @@ module.exports = function(options)
 		if(this.slideshow) {
 			this.startSlideshow();
 		}
-	}
+	};
 	
 	this.setOptions = function() {
 		for(let defaultOption in this.defaults) {
@@ -47,30 +47,30 @@ module.exports = function(options)
 				this.options[defaultOption] = this.defaults[defaultOption];
 			}
 		}
-	}
+	};
 	
 	this.setWidth = function() {
 		if(!this.options.width) this.options.width = this.offsetWidth;
-	}
+	};
 	
 	this.setHeight = function() {
 		if(!this.options.height) this.options.height = this.offsetHeight;
-	}
+	};
 
 	this.startSlideshow = function() {
 		this.progressSlideshow = setInterval(function(){
 			this.nextSlide();
 		}.bind(this), this.interval);
-	}
+	};
 
 	this.stopSlideshow = function() {
 		clearInterval(this.progressSlideshow);
-	}
+	};
 
 	this.restartSlideshow = function() {
 		this.stopSlideshow();
 		this.startSlideshow();
-	}
+	};
 
 	this.setSpeed = function() {
 		this.speed = (this.speed === undefined) ? 'normal' : this.speed;
@@ -104,7 +104,7 @@ module.exports = function(options)
 				this.duration = 575;
 			break;
 		}
-	}
+	};
 
 	this.build = function() {
 		
@@ -138,7 +138,7 @@ module.exports = function(options)
 			this.navigation.append('<li></li>');
 		}.bind(this));
 		this.navigationSlides = this.navigation.children();
-	}
+	};
 
 	this.actions = function() {
 		this.previousArrow.on('click', function(event) {
@@ -158,7 +158,7 @@ module.exports = function(options)
 				this.restartSlideshow();
 			}.bind(this));
 		}
-	}
+	};
 
 	this.finishing = function() {
 		var widthList = 0;
@@ -188,7 +188,7 @@ module.exports = function(options)
 		if(!this.showNavigation) {
 			this.navigation.css('visibility', 'hidden');
 		}
-	}
+	};
 
 	this.previousSlide = function() {
 		if((this.currentSlide-this.step) >= 0 || this.loop) {
@@ -202,7 +202,7 @@ module.exports = function(options)
 			this.navigation.find('.'+this.labelActive).removeClass(this.labelActive);
 			this.navigationSlides.eq(this.currentSlide).addClass(this.labelActive);
 		}
-	}
+	};
 
 	this.nextSlide = function() {
 		if((this.currentSlide+this.step) <= (this.totalSlides-1) || this.loop) {
@@ -218,14 +218,14 @@ module.exports = function(options)
 		} else if(this.slideshow) {
 			this.stopSlideshow();
 		}
-	}
+	};
 
 	this.navigate = function(seletor) {
 		this.currentSlide = $(seletor).index();
 		this.move(this.positionSlides[this.currentSlide]);
 		this.navigationSlides.removeClass(this.labelActive);
 		$(seletor).addClass(this.labelActive);
-	}
+	};
 
 	this.move = function(position, duration) {
 		this.scroll.stop().animate({
@@ -233,7 +233,7 @@ module.exports = function(options)
 		}, duration ? duration : this.duration, this.speed, function(){
 			this.updateArrows();
 		}.bind(this));
-	}
+	};
 
 	this.updateArrows = function() {
 		this.previousArrow.removeClass().addClass('slider-previous');
@@ -250,7 +250,7 @@ module.exports = function(options)
 		if(this.currentSlide != (this.totalSlides-1)) {
 			this.nextArrow.css('visibility','visible');
 		}
-	}
+	};
 	
 	this.init();
 }
