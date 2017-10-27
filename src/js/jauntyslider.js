@@ -5,12 +5,19 @@
  * Open source under the MIT License
  * © 2015 Luiz Gustavo Martins
  */
+ 
+const helpers = require('./helpers.js');
 
 module.exports = function(options)
 {
-	this.list = this;
 	this.labelActive = 'active';
+	
+	this.elements = {
+		list: this
+	}
+	
 	this.options = options;
+	
 	this.defaults = {
 		interval: 5000,
 		loop: false,
@@ -101,27 +108,29 @@ module.exports = function(options)
 
 	this.build = function() {
 		
-		let sliderWrapper = document.createElement('div').classList.add('slider');
-		let sliderScrollWrapper = document.createElement('div').classList.add('slider-scroll');
+		this.elements.wrapper = document.createElement('div');
+		this.elements.wrapper.classList.add('slider');
+		this.elements.wrapper.style.width = this.options.width;
+		this.elements.wrapper.style.height = this.options.height;
 		
-		sliderWrapper.classList.add('slider');
-		sliderScrollWrapper.classList.add('slider-scroll');
+		this.elements.scrollWrapper = document.createElement('div');
+		this.elements.scrollWrapper.classList.add('slider-scroll');
 		
-		this.list.parentNode.insertBefore(sliderScrollWrapper, this.list);
-		sliderScrollWrapper.appendChild(this.list);
+		this.elements.previousArrow = document.createElement('a');
+		this.elements.previousArrow.classList.add('slider-previous');
+		this.elements.previousArrow.setAttribute('title', 'Previous');
 		
-		sliderScrollWrapper.parentNode.insertBefore(sliderWrapper, sliderScrollWrapper);
-		sliderWrapper.appendChild(sliderScrollWrapper);
-	
-		//this.list.wrap('<div class="slider"><div class="slider-scroll"></div></div>');
-		this.slider = this.list.parents('.slider');
-		this.slider.width(this.width).height(this.height);
-		this.scroll = this.slider.children('.slider-scroll');
-		this.scroll.before('<a class="slider-previous" title="Previous"></a>');
-		this.previousArrow = this.slider.children('.slider-previous');
-		this.scroll.after('<a class="slider-next" title="Next"></a>');
-		this.nextArrow = this.slider.children('.slider-next');
-		this.slides = this.list.children();
+		this.elements.nextArrow = document.createElement('a');
+		this.elements.nextArrow.classList.add('slider-previous');
+		this.elements.nextArrow.setAttribute('title', 'Next');
+		
+		helpers.wrap(this.elements.scrollWrapper, this.elements.list);
+		helpers.wrap(this.elements.wrapper, this.elements.scrollWrapper);
+		
+		this.elements.wrapper.insertBefore(this.elements.nextArrow, this.elements.scrollWrapper);
+		this.elements.wrapper.insertBefore(this.elements.nextArrow, this.elements.scrollWrapper.nextSibling);
+		
+		this.slides = this.elements.list.children();
 		this.totalSlides = this.slides.length;
 		this.slider.append('<ul class="navigation"></ul>');
 		this.navigation = this.slider.children('ul.navigation');
@@ -158,7 +167,7 @@ module.exports = function(options)
 			this.positionSlides[index] = widthList;
 			widthList += $(element).width();
 		}.bind(this));
-		this.list.width(widthList);
+		this.elements.list.width(widthList);
 		if(this.currentSlide > (this.totalSlides-1)) {
 			this.currentSlide = this.totalSlides - 1;
 		} else if(this.currentSlide < 0) {
