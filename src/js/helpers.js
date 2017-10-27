@@ -12,3 +12,9 @@ exports.getOptions = function(element)
 	
 	return options;
 }
+
+exports.wrap = function(wrapperElement, wrappedElement)
+{
+	wrappedElement.parentNode.insertBefore(wrapperElement, wrappedElement);
+	wrapperElement.appendChild(wrappedElement);
+}
