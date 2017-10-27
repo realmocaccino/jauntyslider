@@ -7,12 +7,12 @@
  *
  */
 
-.slider
+.jauntyslider-wrapper
 {
 position:relative;
 overflow:hidden;
 
-	.slider-scroll
+	.jauntyslider-wrapper-scroll
 	{
 	height:100%;
 	width:100%;
@@ -39,8 +39,8 @@ overflow:hidden;
 		
 	}
 
-	.slider-previous,
-	.slider-next
+	.jauntyslider-previous,
+	.jauntyslider-next
 	{
 	position:absolute;
 	width:35px;
@@ -52,14 +52,14 @@ overflow:hidden;
 	background:url(../img/left-arrow.png) no-repeat 0 0 transparent;
 	}
 
-	.slider-next
+	.jauntyslider-next
 	{
 	left:auto;
 	right:20px;
 	background:url(../img/right-arrow.png) no-repeat 0 0 transparent;
 	}
 
-	ul.navigation
+	ul.jauntyslider-navigation
 	{
 	position:absolute;
 	left:50%;
