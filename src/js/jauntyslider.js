@@ -10,14 +10,8 @@ const helpers = require('./helpers.js');
 
 module.exports = function(options)
 {
-	this.labelActive = 'active';
-	
-	this.elements = {
-		list: this
-	}
-	
 	this.options = options;
-	
+
 	this.defaults = {
 		interval: 5000,
 		loop: false,
@@ -27,6 +21,12 @@ module.exports = function(options)
 		start: 0,
 		step: 1
 	}
+	
+	this.elements = {
+		list: this
+	}
+
+	this.labelActive = 'active';
 
 	this.init = function() {
 		this.setOptions();
