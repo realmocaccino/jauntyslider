@@ -8,18 +8,20 @@
  
 const helpers = require('./helpers.js');
 
-module.exports = function(options)
+module.exports = function(userOptions)
 {
-	this.options = options;
-
-	this.defaults = {
+	this.userOptions = userOptions;
+	
+	this.options = {
+		height: null,
 		interval: 5000,
 		loop: false,
 		navigation: true,
 		slideshow: false,
 		speed: 'normal',
 		start: 0,
-		step: 1
+		step: 1,
+		width: null
 	};
 	
 	this.elements = {
@@ -29,7 +31,7 @@ module.exports = function(options)
 	this.labelActive = 'active';
 
 	this.init = function() {
-		this.setOptions();
+		this.overrideOptions();
 		this.setWidth();
 		this.setHeight();
 		this.setSpeed();
@@ -41,20 +43,20 @@ module.exports = function(options)
 		}
 	};
 	
-	this.setOptions = function() {
-		for(let defaultOption in this.defaults) {
-			if(!this.options.hasOwnProperty(defaultOption)) {
-				this.options[defaultOption] = this.defaults[defaultOption];
+	this.overrideOptions = function() {
+		for(let option in this.userOptions) {
+			if(this.options.hasOwnProperty(option)) {
+				this.options[option] = this.userOptions[option];
 			}
 		}
 	};
 	
 	this.setWidth = function() {
-		if(!this.options.width) this.options.width = this.offsetWidth;
+		if(!this.userOptions.width) this.options.width = this.offsetWidth;
 	};
 	
 	this.setHeight = function() {
-		if(!this.options.height) this.options.height = this.offsetHeight;
+		if(!this.userOptions.height) this.options.height = this.offsetHeight;
 	};
 
 	this.startSlideshow = function() {
