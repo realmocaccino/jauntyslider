@@ -29,6 +29,17 @@ module.exports = function(userOptions)
 	};
 
 	this.labelActive = 'active';
+	
+	this.preloadImages = function() {
+		const images = this.elements.list.querySelectorAll('img');
+		const totalImages = images.length;
+		let loadedImages = 0;
+			
+		images.forEach((image, index) => {
+			(new Image()).src = image.getAttribute('src');
+			if(++loadedImages == totalImages) this.init();
+		});
+	};
 
 	this.init = function() {
 		this.overrideOptions();
@@ -254,5 +265,5 @@ module.exports = function(userOptions)
 		}
 	};
 	
-	this.init();
+	return this;
 }
