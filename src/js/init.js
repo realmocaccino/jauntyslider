@@ -5,7 +5,7 @@ Object.defineProperty(Object.prototype, 'jauntyslider', {
 const helpers = require('./helpers.js');
 
 document.addEventListener('DOMContentLoaded', () => {
-	document.querySelectorAll('ul[data-jauntyslider]').forEach((list, index) => {
+	document.querySelectorAll('ul[data-jauntyslider]').forEach(list => {
 		list.jauntyslider(helpers.getOptions(list)).preloadImages();
 	});
 });

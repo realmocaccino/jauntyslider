@@ -35,7 +35,7 @@ module.exports = function(userOptions)
 		const totalImages = images.length;
 		let loadedImages = 0;
 			
-		images.forEach((image, index) => {
+		images.forEach(image => {
 			(new Image()).src = image.getAttribute('src');
 			if(++loadedImages == totalImages) this.init();
 		});
