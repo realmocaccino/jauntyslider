@@ -266,4 +266,4 @@ module.exports = function(userOptions)
 	};
 	
 	return this;
-}
+};
