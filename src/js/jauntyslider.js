@@ -140,7 +140,7 @@ module.exports = function(userOptions)
 		helpers.wrap(this.elements.scrollWrapper, this.elements.list);
 		helpers.wrap(this.elements.wrapper, this.elements.scrollWrapper);
 		
-		this.elements.wrapper.insertBefore(this.elements.nextArrow, this.elements.scrollWrapper);
+		this.elements.wrapper.insertBefore(this.elements.previousArrow, this.elements.scrollWrapper);
 		this.elements.wrapper.insertBefore(this.elements.nextArrow, this.elements.scrollWrapper.nextSibling);
 		
 		this.slides = this.elements.list.children();
