@@ -121,6 +121,9 @@ module.exports = function(userOptions)
 
 	this.build = function() {
 		
+		this.elements.slides = this.elements.list.querySelectorAll('li');
+		this.totalSlides = this.elements.slides.length;
+		
 		this.elements.wrapper = document.createElement('div');
 		this.elements.wrapper.classList.add('jauntyslider-wrapper');
 		this.elements.wrapper.style.width = this.options.width;
@@ -137,20 +140,19 @@ module.exports = function(userOptions)
 		this.elements.nextArrow.classList.add('jauntyslider-next');
 		this.elements.nextArrow.setAttribute('title', 'Next');
 		
+		this.elements.navigation = document.createElement('ul');
+		this.elements.navigation.classList.add('jauntyslider-navigation');
+		
+		this.elements.slides.forEach(() => this.elements.navigation.appendChild(document.createElement('li')));
+		this.elements.navigationSlides = this.elements.navigation.querySelectorAll('li');
+		
 		helpers.wrap(this.elements.scrollWrapper, this.elements.list);
 		helpers.wrap(this.elements.wrapper, this.elements.scrollWrapper);
 		
 		this.elements.wrapper.insertBefore(this.elements.previousArrow, this.elements.scrollWrapper);
-		this.elements.wrapper.insertBefore(this.elements.nextArrow, this.elements.scrollWrapper.nextSibling);
+		this.elements.wrapper.appendChild(this.elements.nextArrow);
+		this.elements.wrapper.appendChild(this.elements.navigation);
 		
-		this.slides = this.elements.list.children();
-		this.totalSlides = this.slides.length;
-		this.slider.append('<ul class="jauntyslider-navigation"></ul>');
-		this.navigation = this.slider.children('ul.jauntyslider-navigation');
-		this.slides.each(function(index, element){
-			this.navigation.append('<li></li>');
-		}.bind(this));
-		this.navigationSlides = this.navigation.children();
 	};
 
 	this.actions = function() {
