@@ -129,7 +129,7 @@ Defines the interval between the transitions of the slideshow.
 
 If *false* hides the navigation on the bottom.
 
-### Start
+### Initial
 
 **[options: integer]**
 

@@ -14,12 +14,12 @@ module.exports = function(userOptions)
 	
 	this.options = {
 		height: null,
+		initial: 1,
 		interval: 5000,
 		loop: false,
 		navigation: true,
 		slideshow: false,
 		speed: 'normal',
-		start: 0,
 		step: 1,
 		width: null
 	};
@@ -47,6 +47,7 @@ module.exports = function(userOptions)
 		this.overrideOptions();
 		this.setWidth();
 		this.setHeight();
+		this.setInitialSlide();
 		this.setSpeed();
 		this.build();
 		this.finishing();
@@ -70,6 +71,10 @@ module.exports = function(userOptions)
 	
 	this.setHeight = function() {
 		if(!this.userOptions.height) this.options.height = this.elements.list.offsetHeight;
+	};
+	
+	this.setInitialSlide = function() {
+		this.auxiliaries.currentSlide = this.options.initial - 1;
 	};
 
 	this.setSpeed = function() {
