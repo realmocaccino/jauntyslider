@@ -72,6 +72,7 @@ module.exports = function(userOptions)
 
 	this.setSpeed = function() {
 		this.speed = (this.speed === undefined) ? 'normal' : this.speed;
+		
 		switch(this.speed) {
 			case 'slow':
 				this.speed = 'linear';
@@ -105,7 +106,6 @@ module.exports = function(userOptions)
 	};
 
 	this.build = function() {
-		
 		this.elements.slides = this.elements.list.querySelectorAll('li');
 		this.totalSlides = this.elements.slides.length;
 		
@@ -137,7 +137,6 @@ module.exports = function(userOptions)
 		this.elements.wrapper.insertBefore(this.elements.previousArrow, this.elements.scrollWrapper);
 		this.elements.wrapper.appendChild(this.elements.nextArrow);
 		this.elements.wrapper.appendChild(this.elements.navigation);
-		
 	};
 
 	this.finishing = function() {
@@ -175,14 +174,17 @@ module.exports = function(userOptions)
 			this.previousSlide();
 			event.preventDefault();
 		}.bind(this));
+		
 		this.nextArrow.on('click', function(event) {
 			this.nextSlide();
 			event.preventDefault();
 		}.bind(this));
+		
 		this.navigationSlides.on('click', function(event) {
 			this.navigate(this);
 			event.preventDefault();
 		}.bind(this));
+		
 		if(this.slideshow) {
 			this.previousArrow.add(this.nextArrow).add(this.navigationSlides).on('click', function(event) {
 				this.restartSlideshow();
