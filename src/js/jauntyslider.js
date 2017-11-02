@@ -65,11 +65,11 @@ module.exports = function(userOptions)
 	};
 	
 	this.setWidth = function() {
-		if(!this.userOptions.width) this.options.width = this.offsetWidth;
+		if(!this.userOptions.width) this.options.width = this.elements.list.offsetWidth;
 	};
 	
 	this.setHeight = function() {
-		if(!this.userOptions.height) this.options.height = this.offsetHeight;
+		if(!this.userOptions.height) this.options.height = this.elements.list.offsetHeight;
 	};
 
 	this.setSpeed = function() {
