@@ -117,9 +117,9 @@ The navigation is allowed even so.
 
 **[options: seconds]**
 
-**[default: 5s]**
+**[default: 5]**
 
-Defines the interval between the transitions of the slideshow.
+Defines the interval in seconds between the transitions of the slideshow.
 
 ### Navigation
 

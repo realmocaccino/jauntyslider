@@ -15,7 +15,7 @@ module.exports = function(userOptions)
 	this.options = {
 		height: null,
 		initial: 1,
-		interval: 5000,
+		interval: 5,
 		loop: false,
 		navigation: true,
 		slideshow: false,
@@ -48,6 +48,7 @@ module.exports = function(userOptions)
 		this.setWidth();
 		this.setHeight();
 		this.setInitialSlide();
+		this.treatInterval();
 		this.setSpeed();
 		this.build();
 		this.finishing();
@@ -75,6 +76,10 @@ module.exports = function(userOptions)
 	
 	this.setInitialSlide = function() {
 		this.auxiliaries.currentSlide = this.options.initial - 1;
+	};
+	
+	this.treatInterval = function() {
+		this.options.interval = this.options.interval * 1000;
 	};
 
 	this.setSpeed = function() {
