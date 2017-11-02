@@ -47,8 +47,8 @@ module.exports = function(userOptions)
 		this.setHeight();
 		this.setSpeed();
 		this.build();
-		this.actions();
 		this.finishing();
+		this.actions();
 		if(this.slideshow) {
 			this.startSlideshow();
 		}
@@ -68,21 +68,6 @@ module.exports = function(userOptions)
 	
 	this.setHeight = function() {
 		if(!this.userOptions.height) this.options.height = this.offsetHeight;
-	};
-
-	this.startSlideshow = function() {
-		this.progressSlideshow = setInterval(function(){
-			this.nextSlide();
-		}.bind(this), this.interval);
-	};
-
-	this.stopSlideshow = function() {
-		clearInterval(this.progressSlideshow);
-	};
-
-	this.restartSlideshow = function() {
-		this.stopSlideshow();
-		this.startSlideshow();
 	};
 
 	this.setSpeed = function() {
@@ -155,26 +140,6 @@ module.exports = function(userOptions)
 		
 	};
 
-	this.actions = function() {
-		this.previousArrow.on('click', function(event) {
-			this.previousSlide();
-			event.preventDefault();
-		}.bind(this));
-		this.nextArrow.on('click', function(event) {
-			this.nextSlide();
-			event.preventDefault();
-		}.bind(this));
-		this.navigationSlides.on('click', function(event) {
-			this.navigate(this);
-			event.preventDefault();
-		}.bind(this));
-		if(this.slideshow) {
-			this.previousArrow.add(this.nextArrow).add(this.navigationSlides).on('click', function(event) {
-				this.restartSlideshow();
-			}.bind(this));
-		}
-	};
-
 	this.finishing = function() {
 		var widthList = 0;
 		this.positionSlides = new Array();
@@ -202,6 +167,26 @@ module.exports = function(userOptions)
 		}
 		if(!this.showNavigation) {
 			this.navigation.css('visibility', 'hidden');
+		}
+	};
+	
+	this.actions = function() {
+		this.previousArrow.on('click', function(event) {
+			this.previousSlide();
+			event.preventDefault();
+		}.bind(this));
+		this.nextArrow.on('click', function(event) {
+			this.nextSlide();
+			event.preventDefault();
+		}.bind(this));
+		this.navigationSlides.on('click', function(event) {
+			this.navigate(this);
+			event.preventDefault();
+		}.bind(this));
+		if(this.slideshow) {
+			this.previousArrow.add(this.nextArrow).add(this.navigationSlides).on('click', function(event) {
+				this.restartSlideshow();
+			}.bind(this));
 		}
 	};
 
@@ -265,6 +250,21 @@ module.exports = function(userOptions)
 		if(this.currentSlide != (this.totalSlides-1)) {
 			this.nextArrow.css('visibility','visible');
 		}
+	};
+	
+	this.startSlideshow = function() {
+		this.progressSlideshow = setInterval(function(){
+			this.nextSlide();
+		}.bind(this), this.interval);
+	};
+
+	this.stopSlideshow = function() {
+		clearInterval(this.progressSlideshow);
+	};
+
+	this.restartSlideshow = function() {
+		this.stopSlideshow();
+		this.startSlideshow();
 	};
 	
 	return this;
