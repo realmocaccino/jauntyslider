@@ -44,18 +44,49 @@ module.exports = function(userOptions)
 	};
 
 	this.init = function() {
+		this.build();
 		this.overrideOptions();
 		this.setWidth();
 		this.setHeight();
 		this.setInitialSlide();
 		this.treatInterval();
 		this.setSpeed();
-		this.build();
+		this.setSlidesPositions();
 		this.finishing();
 		this.actions();
-		if(this.slideshow) {
-			this.startSlideshow();
-		}
+		if(this.slideshow) this.startSlideshow();
+	};
+	
+	this.build = function() {
+		this.elements.slides = this.elements.list.querySelectorAll('li');
+		this.auxiliaries.totalSlides = this.elements.slides.length;
+		
+		this.elements.wrapper = document.createElement('div');
+		this.elements.wrapper.classList.add('jauntyslider-wrapper');
+		
+		this.elements.scrollWrapper = document.createElement('div');
+		this.elements.scrollWrapper.classList.add('jauntyslider-wrapper-scroll');
+		
+		this.elements.previousArrow = document.createElement('a');
+		this.elements.previousArrow.classList.add('jauntyslider-previous');
+		this.elements.previousArrow.setAttribute('title', 'Previous');
+		
+		this.elements.nextArrow = document.createElement('a');
+		this.elements.nextArrow.classList.add('jauntyslider-next');
+		this.elements.nextArrow.setAttribute('title', 'Next');
+		
+		this.elements.navigation = document.createElement('ul');
+		this.elements.navigation.classList.add('jauntyslider-navigation');
+		
+		this.elements.slides.forEach(() => this.elements.navigation.appendChild(document.createElement('li')));
+		this.elements.navigationSlides = this.elements.navigation.querySelectorAll('li');
+		
+		helpers.wrap(this.elements.scrollWrapper, this.elements.list);
+		helpers.wrap(this.elements.wrapper, this.elements.scrollWrapper);
+		
+		this.elements.wrapper.insertBefore(this.elements.previousArrow, this.elements.scrollWrapper);
+		this.elements.wrapper.appendChild(this.elements.nextArrow);
+		this.elements.wrapper.appendChild(this.elements.navigation);
 	};
 	
 	this.overrideOptions = function() {
@@ -116,57 +147,26 @@ module.exports = function(userOptions)
 			break;
 		}
 	};
-
-	this.build = function() {
-		this.elements.slides = this.elements.list.querySelectorAll('li');
-		this.auxiliaries.totalSlides = this.elements.slides.length;
+	
+	this.setSlidesPositions = function() {
+		this.auxiliaries.listWidth = 0;
+		this.auxiliaries.slidesPositions = [];
 		
-		this.elements.wrapper = document.createElement('div');
-		this.elements.wrapper.classList.add('jauntyslider-wrapper');
-		this.elements.wrapper.style.width = this.options.width;
-		this.elements.wrapper.style.height = this.options.height;
-		
-		this.elements.scrollWrapper = document.createElement('div');
-		this.elements.scrollWrapper.classList.add('jauntyslider-wrapper-scroll');
-		
-		this.elements.previousArrow = document.createElement('a');
-		this.elements.previousArrow.classList.add('jauntyslider-previous');
-		this.elements.previousArrow.setAttribute('title', 'Previous');
-		
-		this.elements.nextArrow = document.createElement('a');
-		this.elements.nextArrow.classList.add('jauntyslider-next');
-		this.elements.nextArrow.setAttribute('title', 'Next');
-		
-		this.elements.navigation = document.createElement('ul');
-		this.elements.navigation.classList.add('jauntyslider-navigation');
-		
-		this.elements.slides.forEach(() => this.elements.navigation.appendChild(document.createElement('li')));
-		this.elements.navigationSlides = this.elements.navigation.querySelectorAll('li');
-		
-		helpers.wrap(this.elements.scrollWrapper, this.elements.list);
-		helpers.wrap(this.elements.wrapper, this.elements.scrollWrapper);
-		
-		this.elements.wrapper.insertBefore(this.elements.previousArrow, this.elements.scrollWrapper);
-		this.elements.wrapper.appendChild(this.elements.nextArrow);
-		this.elements.wrapper.appendChild(this.elements.navigation);
+		this.elements.slides.forEach(slide => {
+			this.auxiliaries.slidesPositions.push(this.auxiliaries.listWidth);
+			this.auxiliaries.listWidth += slide.offsetWidth;
+		});
 	};
 
 	this.finishing = function() {
-		var widthList = 0;
-		this.auxiliaries.positionSlides = new Array();
-		this.slides.each(function(index, element){
-			this.auxiliaries.positionSlides[index] = widthList;
-			widthList += $(element).width();
-		}.bind(this));
-		this.elements.list.width(widthList);
-		if(this.auxiliaries.currentSlide > (this.auxiliaries.totalSlides-1)) {
-			this.auxiliaries.currentSlide = this.auxiliaries.totalSlides - 1;
-		} else if(this.auxiliaries.currentSlide < 0) {
-			this.auxiliaries.currentSlide = 0;
-		}
-		this.move(this.auxiliaries.positionSlides[this.auxiliaries.currentSlide], 1);
+		this.elements.wrapper.style.width = this.options.width;
+		this.elements.wrapper.style.height = this.options.height;
+		this.elements.list.style.width = this.auxiliaries.listWidth;
+	
+		this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide], 1);
 		this.navigation.css('margin-left', '-'+this.navigation.width()+'px');
 		this.navigationSlides.eq(this.auxiliaries.currentSlide).addClass(this.auxiliaries.labelActive);
+		
 		if(!this.loop && this.auxiliaries.totalSlides > 1) {
 			this.previousArrow.css('visibility','hidden');
 		}
@@ -208,10 +208,10 @@ module.exports = function(userOptions)
 		if((this.auxiliaries.currentSlide-this.step) >= 0 || this.loop) {
 			if(((this.auxiliaries.currentSlide == 0) || (this.auxiliaries.currentSlide-this.step) < 0) && this.loop) {
 				this.auxiliaries.currentSlide = this.auxiliaries.totalSlides-1;
-				this.move(this.auxiliaries.positionSlides[this.auxiliaries.currentSlide], 1);
+				this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide], 1);
 			} else {
 				this.auxiliaries.currentSlide -= this.step;
-				this.move(this.auxiliaries.positionSlides[this.auxiliaries.currentSlide]);
+				this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide]);
 			}
 			this.navigation.find('.'+this.auxiliaries.labelActive).removeClass(this.auxiliaries.labelActive);
 			this.navigationSlides.eq(this.auxiliaries.currentSlide).addClass(this.auxiliaries.labelActive);
@@ -222,10 +222,10 @@ module.exports = function(userOptions)
 		if((this.auxiliaries.currentSlide+this.step) <= (this.auxiliaries.totalSlides-1) || this.loop) {
 			if((this.auxiliaries.currentSlide == (this.auxiliaries.totalSlides-1) || (this.auxiliaries.currentSlide+this.step) > (this.auxiliaries.totalSlides-1)) && this.loop) {
 				this.auxiliaries.currentSlide = 0;
-				this.move(this.auxiliaries.positionSlides[this.auxiliaries.currentSlide], 1);
+				this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide], 1);
 			} else {
 				this.auxiliaries.currentSlide += this.step;
-				this.move(this.auxiliaries.positionSlides[this.auxiliaries.currentSlide]);
+				this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide]);
 			}
 			this.navigation.find('.'+this.auxiliaries.labelActive).removeClass(this.auxiliaries.labelActive);
 			this.navigationSlides.eq(this.auxiliaries.currentSlide).addClass(this.auxiliaries.labelActive);
@@ -236,7 +236,7 @@ module.exports = function(userOptions)
 
 	this.navigate = function(seletor) {
 		this.auxiliaries.currentSlide = $(seletor).index();
-		this.move(this.auxiliaries.positionSlides[this.auxiliaries.currentSlide]);
+		this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide]);
 		this.navigationSlides.removeClass(this.auxiliaries.labelActive);
 		$(seletor).addClass(this.auxiliaries.labelActive);
 	};
