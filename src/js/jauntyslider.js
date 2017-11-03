@@ -173,12 +173,14 @@ module.exports = function(userOptions)
 		if(!this.options.loop && this.auxiliaries.totalSlides > 1) {
 			this.elements.previousArrow.style.visibility = 'hidden';
 		}
+		
 		if(this.auxiliaries.totalSlides > 1) {
 			this.elements.nextArrow.style.visibility = 'visible';
 		} else {
 			this.elements.nextArrow.style.visibility = 'hidden';
 			this.elements.previousArrow.style.visibility = 'hidden';
 		}
+		
 		if(!this.options.navigation) {
 			this.elements.navigation.style.visibility = 'hidden';
 		}
