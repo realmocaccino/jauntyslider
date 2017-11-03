@@ -29,6 +29,7 @@ module.exports = function(userOptions)
 	};
 	
 	this.auxiliaries = {
+		defaultUnit: 'px',
 		labelActive: 'active'
 	};
 	
@@ -161,10 +162,10 @@ module.exports = function(userOptions)
 	this.finishing = function() {
 		this.elements.wrapper.style.width = this.options.width;
 		this.elements.wrapper.style.height = this.options.height;
-		this.elements.list.style.width = this.auxiliaries.listWidth;
+		this.elements.list.style.width = this.auxiliaries.listWidth + this.auxiliaries.defaultUnit;
 	
 		this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide], 1);
-		this.navigation.css('margin-left', '-'+this.navigation.width()+'px');
+		this.navigation.css('margin-left', '-'+this.navigation.width()+this.auxiliaries.defaultUnit);
 		this.navigationSlides.eq(this.auxiliaries.currentSlide).addClass(this.auxiliaries.labelActive);
 		
 		if(!this.loop && this.auxiliaries.totalSlides > 1) {
