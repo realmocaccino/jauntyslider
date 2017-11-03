@@ -53,7 +53,7 @@ module.exports = function(userOptions)
 		this.treatInterval();
 		this.setSpeed();
 		this.setSlidesPositions();
-		this.finishing();
+		this.setup();
 		this.actions();
 		if(this.slideshow) this.startSlideshow();
 	};
@@ -161,7 +161,7 @@ module.exports = function(userOptions)
 		});
 	};
 
-	this.finishing = function() {
+	this.setup = function() {
 		this.elements.wrapper.style.width = this.options.width;
 		this.elements.wrapper.style.height = this.options.height;
 		this.elements.list.style.width = this.auxiliaries.listWidth + this.auxiliaries.defaultUnit;
