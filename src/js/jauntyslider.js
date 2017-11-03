@@ -169,7 +169,7 @@ module.exports = function(userOptions)
 	
 		//this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide], 1);
 		
-		this.elements.navigation.style.marginLeft = '-' + (this.elements.navigation.clientWidth / 2) + this.auxiliaries.defaultUnit;
+		this.elements.navigation.style.marginLeft = '-' + (helpers.getContentWidth(this.elements.navigation) / 2) + this.auxiliaries.defaultUnit;
 		
 		this.elements.navigationSlides.item(this.auxiliaries.currentSlide).classList.add(this.auxiliaries.labelActive);
 		
