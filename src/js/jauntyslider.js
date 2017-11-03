@@ -160,6 +160,8 @@ module.exports = function(userOptions)
 	};
 
 	this.finishing = function() {
+		this.elements.list.removeAttribute('data-jauntyslider');
+	
 		this.elements.wrapper.style.width = this.options.width;
 		this.elements.wrapper.style.height = this.options.height;
 		this.elements.list.style.width = this.auxiliaries.listWidth + this.auxiliaries.defaultUnit;
