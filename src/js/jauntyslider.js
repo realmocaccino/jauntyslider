@@ -164,11 +164,14 @@ module.exports = function(userOptions)
 	this.setup = function() {
 		this.elements.wrapper.style.width = this.options.width;
 		this.elements.wrapper.style.height = this.options.height;
+		
 		this.elements.list.style.width = this.auxiliaries.listWidth + this.auxiliaries.defaultUnit;
 	
-		this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide], 1);
-		this.navigation.css('margin-left', '-'+this.navigation.width()+this.auxiliaries.defaultUnit);
-		this.navigationSlides.eq(this.auxiliaries.currentSlide).addClass(this.auxiliaries.labelActive);
+		//this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide], 1);
+		
+		this.elements.navigation.style.marginLeft = '-' + (this.elements.navigation.clientWidth / 2) + this.auxiliaries.defaultUnit;
+		
+		this.elements.navigationSlides.item(this.auxiliaries.currentSlide).classList.add(this.auxiliaries.labelActive);
 		
 		if(!this.options.loop && this.auxiliaries.totalSlides > 1) {
 			this.elements.previousArrow.style.visibility = 'hidden';
