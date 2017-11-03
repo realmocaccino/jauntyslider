@@ -170,17 +170,17 @@ module.exports = function(userOptions)
 		this.navigation.css('margin-left', '-'+this.navigation.width()+this.auxiliaries.defaultUnit);
 		this.navigationSlides.eq(this.auxiliaries.currentSlide).addClass(this.auxiliaries.labelActive);
 		
-		if(!this.loop && this.auxiliaries.totalSlides > 1) {
-			this.previousArrow.css('visibility','hidden');
+		if(!this.options.loop && this.auxiliaries.totalSlides > 1) {
+			this.elements.previousArrow.style.visibility = 'hidden';
 		}
 		if(this.auxiliaries.totalSlides > 1) {
-			this.nextArrow.css('visibility','visible');
+			this.elements.nextArrow.style.visibility = 'visible';
 		} else {
-			this.nextArrow.css('visibility','hidden');
-			this.navigation.css('visibility', 'hidden');
+			this.elements.nextArrow.style.visibility = 'hidden';
+			this.elements.previousArrow.style.visibility = 'hidden';
 		}
-		if(!this.showNavigation) {
-			this.navigation.css('visibility', 'hidden');
+		if(!this.options.navigation) {
+			this.elements.navigation.style.visibility = 'hidden';
 		}
 	};
 	
