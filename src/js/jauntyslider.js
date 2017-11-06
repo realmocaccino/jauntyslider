@@ -191,24 +191,24 @@ module.exports = function(userOptions)
 	
 	this.actions = function() {
 		this.previousArrow.addEventListener('click', function(event) {
+			event.preventDefault();
+			
 			this.previousSlide();
 			if(this.slideshow) this.restartSlideshow();
-			
-			event.preventDefault();
 		});
 		
 		this.nextArrow.addEventListener('click', function(event) {
+			event.preventDefault();
+		
 			this.nextSlide();
 			if(this.slideshow) this.restartSlideshow();
-			
-			event.preventDefault();
 		});
 		
 		this.navigationSlides.addEventListener('click', function(event) {
+			event.preventDefault();
+			
 			this.navigate(this);
 			if(this.slideshow) this.restartSlideshow();
-			
-			event.preventDefault();
 		});
 	};
 
