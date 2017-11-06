@@ -190,26 +190,26 @@ module.exports = function(userOptions)
 	};
 	
 	this.actions = function() {
-		this.previousArrow.on('click', function(event) {
+		this.previousArrow.addEventListener('click', function(event) {
 			this.previousSlide();
+			if(this.slideshow) this.restartSlideshow();
+			
 			event.preventDefault();
-		}.bind(this));
+		});
 		
-		this.nextArrow.on('click', function(event) {
+		this.nextArrow.addEventListener('click', function(event) {
 			this.nextSlide();
+			if(this.slideshow) this.restartSlideshow();
+			
 			event.preventDefault();
-		}.bind(this));
+		});
 		
-		this.navigationSlides.on('click', function(event) {
+		this.navigationSlides.addEventListener('click', function(event) {
 			this.navigate(this);
+			if(this.slideshow) this.restartSlideshow();
+			
 			event.preventDefault();
-		}.bind(this));
-		
-		if(this.slideshow) {
-			this.previousArrow.add(this.nextArrow).add(this.navigationSlides).on('click', function(event) {
-				this.restartSlideshow();
-			}.bind(this));
-		}
+		});
 	};
 
 	this.previousSlide = function() {
