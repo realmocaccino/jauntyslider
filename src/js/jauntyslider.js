@@ -199,7 +199,7 @@ module.exports = function(userOptions)
 		
 		this.elements.nextArrow.addEventListener('click', function(event) {
 			event.preventDefault();
-		
+			
 			this.nextSlide();
 			if(this.slideshow) this.restartSlideshow();
 		});
@@ -207,7 +207,7 @@ module.exports = function(userOptions)
 		this.elements.navigationItems.forEach(function(item) {
 			item.addEventListener('click', function(event) {
 				event.preventDefault();
-			
+				
 				this.navigate(this);
 				if(this.slideshow) this.restartSlideshow();
 			});
@@ -244,11 +244,11 @@ module.exports = function(userOptions)
 		}
 	};
 
-	this.navigate = function(seletor) {
-		this.auxiliaries.currentSlide = $(seletor).index();
+	this.navigate = function(item) {
+		this.auxiliaries.currentSlide = $(item).index();
 		this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide]);
 		this.navigationItems.removeClass(this.auxiliaries.labelActive);
-		$(seletor).addClass(this.auxiliaries.labelActive);
+		$(item).addClass(this.auxiliaries.labelActive);
 	};
 
 	this.move = function(position, duration) {
