@@ -218,10 +218,10 @@ module.exports = function(userOptions)
 		if((this.auxiliaries.currentSlide-this.step) >= 0 || this.loop) {
 			if(((this.auxiliaries.currentSlide == 0) || (this.auxiliaries.currentSlide-this.step) < 0) && this.loop) {
 				this.auxiliaries.currentSlide = this.auxiliaries.totalSlides-1;
-				this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide], 1);
+				//this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide], 1);
 			} else {
 				this.auxiliaries.currentSlide -= this.step;
-				this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide]);
+				//this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide]);
 			}
 			this.navigation.find('.'+this.auxiliaries.labelActive).removeClass(this.auxiliaries.labelActive);
 			this.navigationItems.eq(this.auxiliaries.currentSlide).addClass(this.auxiliaries.labelActive);
@@ -232,10 +232,10 @@ module.exports = function(userOptions)
 		if((this.auxiliaries.currentSlide + this.options.step) <= (this.auxiliaries.totalSlides - 1) || this.options.loop) {
 			if((this.auxiliaries.currentSlide == (this.auxiliaries.totalSlides - 1) || (this.auxiliaries.currentSlide + this.options.step) > (this.auxiliaries.totalSlides - 1)) && this.options.loop) {
 				this.auxiliaries.currentSlide = 0;
-				this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide], 1);
+				//this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide], 1);
 			} else {
 				this.auxiliaries.currentSlide += this.options.step;
-				this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide]);
+				//this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide]);
 			}
 			this.navigation.find('.'+this.auxiliaries.labelActive).removeClass(this.auxiliaries.labelActive);
 			this.navigationItems.eq(this.auxiliaries.currentSlide).addClass(this.auxiliaries.labelActive);
@@ -246,7 +246,7 @@ module.exports = function(userOptions)
 
 	this.navigate = function(item) {
 		this.auxiliaries.currentSlide = $(item).index();
-		this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide]);
+		//this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide]);
 		this.navigationItems.removeClass(this.auxiliaries.labelActive);
 		$(item).addClass(this.auxiliaries.labelActive);
 	};
