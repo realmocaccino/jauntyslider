@@ -82,7 +82,7 @@ module.exports = function(userOptions)
 		this.elements.navigation.classList.add('jauntyslider-navigation');
 		
 		this.elements.slides.forEach(() => this.elements.navigation.appendChild(document.createElement('li')));
-		this.elements.navigationSlides = this.elements.navigation.querySelectorAll('li');
+		this.elements.navigationItems = this.elements.navigation.querySelectorAll('li');
 		
 		helpers.wrap(this.elements.scrollWrapper, this.elements.list);
 		helpers.wrap(this.elements.wrapper, this.elements.scrollWrapper);
@@ -171,7 +171,7 @@ module.exports = function(userOptions)
 		
 		this.elements.navigation.style.marginLeft = '-' + (helpers.getContentWidth(this.elements.navigation) / 2) + this.auxiliaries.defaultUnit;
 		
-		this.elements.navigationSlides.item(this.auxiliaries.currentSlide).classList.add(this.auxiliaries.labelActive);
+		this.elements.navigationItems.item(this.auxiliaries.currentSlide).classList.add(this.auxiliaries.labelActive);
 		
 		if(!this.options.loop && this.auxiliaries.totalSlides > 1) {
 			this.elements.previousArrow.style.visibility = 'hidden';
@@ -204,8 +204,8 @@ module.exports = function(userOptions)
 			if(this.slideshow) this.restartSlideshow();
 		});
 		
-		this.elements.navigationSlides.forEach(function(slide) {
-			slide.addEventListener('click', function(event) {
+		this.elements.navigationItems.forEach(function(item) {
+			item.addEventListener('click', function(event) {
 				event.preventDefault();
 			
 				this.navigate(this);
@@ -224,7 +224,7 @@ module.exports = function(userOptions)
 				this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide]);
 			}
 			this.navigation.find('.'+this.auxiliaries.labelActive).removeClass(this.auxiliaries.labelActive);
-			this.navigationSlides.eq(this.auxiliaries.currentSlide).addClass(this.auxiliaries.labelActive);
+			this.navigationItems.eq(this.auxiliaries.currentSlide).addClass(this.auxiliaries.labelActive);
 		}
 	};
 
@@ -238,7 +238,7 @@ module.exports = function(userOptions)
 				this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide]);
 			}
 			this.navigation.find('.'+this.auxiliaries.labelActive).removeClass(this.auxiliaries.labelActive);
-			this.navigationSlides.eq(this.auxiliaries.currentSlide).addClass(this.auxiliaries.labelActive);
+			this.navigationItems.eq(this.auxiliaries.currentSlide).addClass(this.auxiliaries.labelActive);
 		} else if(this.slideshow) {
 			this.stopSlideshow();
 		}
@@ -247,7 +247,7 @@ module.exports = function(userOptions)
 	this.navigate = function(seletor) {
 		this.auxiliaries.currentSlide = $(seletor).index();
 		this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide]);
-		this.navigationSlides.removeClass(this.auxiliaries.labelActive);
+		this.navigationItems.removeClass(this.auxiliaries.labelActive);
 		$(seletor).addClass(this.auxiliaries.labelActive);
 	};
 
