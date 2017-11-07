@@ -190,25 +190,25 @@ module.exports = function(userOptions)
 	};
 	
 	this.actions = function() {
-		this.elements.previousArrow.addEventListener('click', function(event) {
+		this.elements.previousArrow.addEventListener('click', event => {
 			event.preventDefault();
 			
 			this.previousSlide();
 			if(this.slideshow) this.restartSlideshow();
 		});
 		
-		this.elements.nextArrow.addEventListener('click', function(event) {
+		this.elements.nextArrow.addEventListener('click', event => {
 			event.preventDefault();
 			
 			this.nextSlide();
 			if(this.slideshow) this.restartSlideshow();
 		});
 		
-		this.elements.navigationItems.forEach(function(item) {
-			item.addEventListener('click', function(event) {
+		this.elements.navigationItems.forEach(item => {
+			item.addEventListener('click', event => {
 				event.preventDefault();
 				
-				this.navigate(this);
+				this.navigate(event.target);
 				if(this.slideshow) this.restartSlideshow();
 			});
 		});
@@ -229,12 +229,12 @@ module.exports = function(userOptions)
 	};
 
 	this.nextSlide = function() {
-		if((this.auxiliaries.currentSlide+this.step) <= (this.auxiliaries.totalSlides-1) || this.loop) {
-			if((this.auxiliaries.currentSlide == (this.auxiliaries.totalSlides-1) || (this.auxiliaries.currentSlide+this.step) > (this.auxiliaries.totalSlides-1)) && this.loop) {
+		if((this.auxiliaries.currentSlide + this.options.step) <= (this.auxiliaries.totalSlides - 1) || this.options.loop) {
+			if((this.auxiliaries.currentSlide == (this.auxiliaries.totalSlides - 1) || (this.auxiliaries.currentSlide + this.options.step) > (this.auxiliaries.totalSlides - 1)) && this.options.loop) {
 				this.auxiliaries.currentSlide = 0;
 				this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide], 1);
 			} else {
-				this.auxiliaries.currentSlide += this.step;
+				this.auxiliaries.currentSlide += this.options.step;
 				this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide]);
 			}
 			this.navigation.find('.'+this.auxiliaries.labelActive).removeClass(this.auxiliaries.labelActive);
