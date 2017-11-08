@@ -217,7 +217,7 @@ module.exports = function(userOptions)
 	};
 
 	this.previousSlide = function() {
-		if((this.auxiliaries.currentSlide - this.options.step) >= 0 || this.options.loop) {
+		if(this.canGoBack()) {
 			if(((this.auxiliaries.currentSlide == 0) || (this.auxiliaries.currentSlide - this.options.step) < 0) && this.options.loop) {
 				this.updateCurrentSlide(this.auxiliaries.lastSlide);
 				//this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide], 1);
@@ -229,7 +229,7 @@ module.exports = function(userOptions)
 	};
 
 	this.nextSlide = function() {
-		if((this.auxiliaries.currentSlide + this.options.step) < this.auxiliaries.totalSlides || this.options.loop) {
+		if(this.canGoForward()) {
 			if((this.auxiliaries.currentSlide == this.auxiliaries.lastSlide || (this.auxiliaries.currentSlide + this.options.step) > this.auxiliaries.lastSlide) && this.options.loop) {
 				this.updateCurrentSlide(0);
 				//this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide], 1);
@@ -254,6 +254,14 @@ module.exports = function(userOptions)
 			this.updateArrows();
 			this.updateCurrentNavigationItem();
 		}.bind(this));
+	};
+	
+	this.canGoBack = function() {
+		return ((this.auxiliaries.currentSlide - this.options.step) >= 0 || this.options.loop);
+	};
+	
+	this.canGoForward = function() {
+		return ((this.auxiliaries.currentSlide + this.options.step) < this.auxiliaries.totalSlides || this.options.loop);
 	};
 	
 	this.incrementCurrentSlide = function(increment) {
