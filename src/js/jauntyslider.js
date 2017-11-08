@@ -217,10 +217,10 @@ module.exports = function(userOptions)
 	this.previousSlide = function() {
 		if((this.auxiliaries.currentSlide - this.options.step) >= 0 || this.options.loop) {
 			if(((this.auxiliaries.currentSlide == 0) || (this.auxiliaries.currentSlide - this.options.step) < 0) && this.options.loop) {
-				this.updateCurrentSlide(this.auxiliaries.totalSlides - 1);
+				this.incrementCurrentSlide(this.auxiliaries.totalSlides - 1);
 				//this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide], 1);
 			} else {
-				this.updateCurrentSlide(-this.options.step);
+				this.incrementCurrentSlide(-this.options.step);
 				//this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide]);
 			}
 		}
@@ -229,10 +229,10 @@ module.exports = function(userOptions)
 	this.nextSlide = function() {
 		if((this.auxiliaries.currentSlide + this.options.step) < this.auxiliaries.totalSlides || this.options.loop) {
 			if((this.auxiliaries.currentSlide == (this.auxiliaries.totalSlides - 1) || (this.auxiliaries.currentSlide + this.options.step) > (this.auxiliaries.totalSlides - 1)) && this.options.loop) {
-				this.updateCurrentSlide(0);
+				this.incrementCurrentSlide(0);
 				//this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide], 1);
 			} else {
-				this.updateCurrentSlide(this.options.step);
+				this.incrementCurrentSlide(this.options.step);
 				//this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide]);
 			}
 		} else if(this.options.slideshow) {
@@ -254,7 +254,7 @@ module.exports = function(userOptions)
 		}.bind(this));
 	};
 	
-	this.updateCurrentSlide = function(increment) {
+	this.incrementCurrentSlide = function(increment) {
 		this.auxiliaries.currentSlide += increment;
 	};
 
