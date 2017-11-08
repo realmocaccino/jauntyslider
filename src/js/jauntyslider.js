@@ -243,8 +243,6 @@ module.exports = function(userOptions)
 	this.navigate = function(item) {
 		this.auxiliaries.currentSlide = $(item).index();
 		//this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide]);
-		this.navigationItems.removeClass(this.auxiliaries.labelActive);
-		$(item).addClass(this.auxiliaries.labelActive);
 	};
 
 	this.move = function(position, duration) {
