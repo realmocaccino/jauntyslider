@@ -257,6 +257,10 @@ module.exports = function(userOptions)
 	this.incrementCurrentSlide = function(increment) {
 		this.auxiliaries.currentSlide += increment;
 	};
+	
+	this.updateCurrentSlide = function(index) {
+		this.auxiliaries.currentSlide = index;
+	};
 
 	this.updateArrows = function() {
 		this.previousArrow.removeClass().addClass('slider-previous');
