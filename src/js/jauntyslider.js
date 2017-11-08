@@ -247,12 +247,12 @@ module.exports = function(userOptions)
 	};
 
 	this.move = function(position, duration) {
-		this.scroll.stop().animate({
+		this.elements.scrollWrapper.stop().animate({
 			scrollLeft: position
-		}, duration ? duration : this.options.duration, this.options.speed, function(){
+		}, duration ? duration : this.options.duration, this.options.speed, () => {
 			this.updateArrows();
 			this.updateCurrentNavigationItem();
-		}.bind(this));
+		});
 	};
 	
 	this.canGoBack = function() {
