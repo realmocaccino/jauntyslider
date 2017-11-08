@@ -273,19 +273,16 @@ module.exports = function(userOptions)
 	};
 
 	this.updateArrows = function() {
-		this.previousArrow.removeClass().addClass('slider-previous');
-		this.nextArrow.removeClass().addClass('slider-next');
-		if(this.auxiliaries.currentSlide == 0 && !this.loop) {
-			this.previousArrow.css('visibility','hidden');
-		}
 		if(this.auxiliaries.currentSlide != 0) {
-			this.previousArrow.css('visibility','visible');
+			this.elements.previousArrow.style.visibility = 'visible';
+		} else if(this.auxiliaries.currentSlide == 0 && !this.options.loop) {
+			this.elements.previousArrow.style.visibility = 'hidden';
 		}
-		if(this.auxiliaries.currentSlide == (this.auxiliaries.totalSlides-1) && !this.loop) {
-			this.nextArrow.css('visibility','hidden');
-		}
-		if(this.auxiliaries.currentSlide != (this.auxiliaries.totalSlides-1)) {
-			this.nextArrow.css('visibility','visible');
+		
+		if(this.auxiliaries.currentSlide != this.auxiliaries.lastSlide) {
+			this.elements.nextArrow.style.visibility = 'visible';
+		} else if(this.auxiliaries.currentSlide == this.auxiliaries.lastSlide && !this.options.loop) {
+			this.elements.nextArrow.style.visibility = 'hidden';
 		}
 	};
 	
