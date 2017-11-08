@@ -120,36 +120,34 @@ module.exports = function(userOptions)
 	};
 
 	this.setSpeed = function() {
-		this.speed = (this.speed === undefined) ? 'normal' : this.speed;
-		
-		switch(this.speed) {
+		switch(this.options.speed) {
 			case 'slow':
-				this.speed = 'linear';
-				this.auxiliaries.duration = 975;
+				this.options.speed = 'linear';
+				this.options.duration = 975;
 			break;
 			case 'normal':
-				this.speed = 'linear';
-				this.auxiliaries.duration = 575;
+				this.options.speed = 'linear';
+				this.options.duration = 575;
 			break;
 			case 'fast':
-				this.speed = 'linear';
-				this.auxiliaries.duration = 275;
+				this.options.speed = 'linear';
+				this.options.duration = 275;
 			break;
 			case 'easein':
-				this.speed = 'easeInQuart';
-				this.auxiliaries.duration = 875;
+				this.options.speed = 'easeInQuart';
+				this.options.duration = 875;
 			break;
 			case 'easeout':
-				this.speed = 'easeOutQuart';
-				this.auxiliaries.duration = 1275;
+				this.options.speed = 'easeOutQuart';
+				this.options.duration = 1275;
 			break;
 			case 'easeinout':
-				this.speed = 'easeInOutQuart';
-				this.auxiliaries.duration = 1275;
+				this.options.speed = 'easeInOutQuart';
+				this.options.duration = 1275;
 			break;
 			default:
-				this.speed = 'linear';
-				this.auxiliaries.duration = 575;
+				this.options.speed = 'linear';
+				this.options.duration = 575;
 			break;
 		}
 	};
@@ -251,7 +249,7 @@ module.exports = function(userOptions)
 	this.move = function(position, duration) {
 		this.scroll.stop().animate({
 			scrollLeft: position
-		}, duration ? duration : this.auxiliaries.duration, this.speed, function(){
+		}, duration ? duration : this.options.duration, this.options.speed, function(){
 			this.updateArrows();
 			this.updateCurrentNavigationItem();
 		}.bind(this));
