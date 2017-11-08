@@ -223,7 +223,6 @@ module.exports = function(userOptions)
 				this.updateCurrentSlide(-this.options.step);
 				//this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide]);
 			}
-			this.updateCurrentNavigationItem();
 		}
 	};
 
@@ -236,7 +235,6 @@ module.exports = function(userOptions)
 				this.updateCurrentSlide(this.options.step);
 				//this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide]);
 			}
-			this.updateCurrentNavigationItem();
 		} else if(this.options.slideshow) {
 			this.stopSlideshow();
 		}
@@ -254,6 +252,7 @@ module.exports = function(userOptions)
 			scrollLeft: position
 		}, duration ? duration : this.auxiliaries.duration, this.speed, function(){
 			this.updateArrows();
+			this.updateCurrentNavigationItem();
 		}.bind(this));
 	};
 	
