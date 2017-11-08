@@ -62,7 +62,9 @@ module.exports = function(userOptions)
 		this.elements.list.removeAttribute('data-jauntyslider');
 	
 		this.elements.slides = this.elements.list.querySelectorAll('li');
+		
 		this.auxiliaries.totalSlides = this.elements.slides.length;
+		this.auxiliaries.lastSlide = this.elements.slides.length - 1;
 		
 		this.elements.wrapper = document.createElement('div');
 		this.elements.wrapper.classList.add('jauntyslider-wrapper');
@@ -217,7 +219,7 @@ module.exports = function(userOptions)
 	this.previousSlide = function() {
 		if((this.auxiliaries.currentSlide - this.options.step) >= 0 || this.options.loop) {
 			if(((this.auxiliaries.currentSlide == 0) || (this.auxiliaries.currentSlide - this.options.step) < 0) && this.options.loop) {
-				this.updateCurrentSlide(this.auxiliaries.totalSlides - 1);
+				this.updateCurrentSlide(this.auxiliaries.lastSlide);
 				//this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide], 1);
 			} else {
 				this.incrementCurrentSlide(-this.options.step);
@@ -228,7 +230,7 @@ module.exports = function(userOptions)
 
 	this.nextSlide = function() {
 		if((this.auxiliaries.currentSlide + this.options.step) < this.auxiliaries.totalSlides || this.options.loop) {
-			if((this.auxiliaries.currentSlide == (this.auxiliaries.totalSlides - 1) || (this.auxiliaries.currentSlide + this.options.step) > (this.auxiliaries.totalSlides - 1)) && this.options.loop) {
+			if((this.auxiliaries.currentSlide == this.auxiliaries.lastSlide || (this.auxiliaries.currentSlide + this.options.step) > this.auxiliaries.lastSlide) && this.options.loop) {
 				this.updateCurrentSlide(0);
 				//this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide], 1);
 			} else {
