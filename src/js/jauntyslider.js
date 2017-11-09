@@ -246,9 +246,9 @@ module.exports = function(userOptions)
 		this.move();
 	};
 
-	this.move = function(duration) {
-		const duration = (duration) ? duration : this.options.duration;
-	
+	this.move = function(duration = null) {
+		var duration = duration || this.options.duration;
+		
 		this.elements.scrollWrapper.scrollLeft = this.getPosition(this.auxiliaries.currentSlide);
 		
 		this.updateArrows();
