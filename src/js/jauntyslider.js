@@ -219,10 +219,10 @@ module.exports = function(userOptions)
 		if(this.canGoBack()) {
 			if(((this.auxiliaries.currentSlide == this.auxiliaries.firstSlide) || (this.auxiliaries.currentSlide - this.options.step) < this.auxiliaries.firstSlide) && this.options.loop) {
 				this.updateCurrentSlide(this.auxiliaries.lastSlide);
-				this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide], 1);
+				this.move(1);
 			} else {
 				this.incrementCurrentSlide(-this.options.step);
-				this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide]);
+				this.move();
 			}
 		}
 	};
@@ -231,10 +231,10 @@ module.exports = function(userOptions)
 		if(this.canGoForward()) {
 			if((this.auxiliaries.currentSlide == this.auxiliaries.lastSlide || (this.auxiliaries.currentSlide + this.options.step) > this.auxiliaries.lastSlide) && this.options.loop) {
 				this.updateCurrentSlide(this.auxiliaries.firstSlide);
-				this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide], 1);
+				this.move(1);
 			} else {
 				this.incrementCurrentSlide(this.options.step);
-				this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide]);
+				this.move();
 			}
 		} else if(this.options.slideshow) {
 			this.stopSlideshow();
@@ -243,17 +243,21 @@ module.exports = function(userOptions)
 
 	this.navigate = function(item, index) {
 		this.updateCurrentSlide(index);
-		this.move(this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide]);
+		this.move();
 	};
 
-	this.move = function(position, duration) {
-		this.elements.scrollWrapper.scrollLeft = position;
+	this.move = function(duration) {
+		const duration = (duration) ? duration : this.options.duration;
+	
+		this.elements.scrollWrapper.scrollLeft = this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide];
+		
 		this.updateArrows();
 		this.updateCurrentNavigationItem();
+		
 		/*
 		this.elements.scrollWrapper.stop().animate({
-			scrollLeft: position
-		}, duration ? duration : this.options.duration, this.options.speed, () => {
+			scrollLeft: this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide]
+		}, duration, this.options.speed, () => {
 			this.updateArrows();
 			this.updateCurrentNavigationItem();
 		});
