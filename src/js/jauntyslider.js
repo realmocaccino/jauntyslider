@@ -278,7 +278,7 @@ module.exports = function(userOptions)
 	
 	this.mustGoToTheBeggining = function() {
 		return (this.options.loop && (this.auxiliaries.currentSlide == this.auxiliaries.lastSlide || (this.auxiliaries.currentSlide + this.options.step) > this.auxiliaries.lastSlide));
-	}
+	};
 	
 	this.incrementCurrentSlide = function(increment) {
 		this.auxiliaries.currentSlide += increment;
