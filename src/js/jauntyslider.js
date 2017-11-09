@@ -249,7 +249,7 @@ module.exports = function(userOptions)
 	this.move = function(duration) {
 		const duration = (duration) ? duration : this.options.duration;
 	
-		this.elements.scrollWrapper.scrollLeft = this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide];
+		this.elements.scrollWrapper.scrollLeft = this.getPosition(this.auxiliaries.currentSlide);
 		
 		this.updateArrows();
 		this.updateCurrentNavigationItem();
@@ -305,6 +305,10 @@ module.exports = function(userOptions)
 	this.updateCurrentNavigationItem = function() {
 		this.elements.navigation.querySelector('.' + this.auxiliaries.labelActive).classList.remove(this.auxiliaries.labelActive);
 		this.elements.navigationItems.item(this.auxiliaries.currentSlide).classList.add(this.auxiliaries.labelActive);
+	};
+	
+	this.getPosition = function(index) {
+		return this.auxiliaries.slidesPositions[index];
 	};
 	
 	this.startSlideshow = function() {
