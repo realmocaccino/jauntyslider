@@ -194,14 +194,14 @@ module.exports = function(userOptions)
 		this.elements.previousArrow.addEventListener('click', event => {
 			event.preventDefault();
 			
-			this.previousSlide();
+			this.goBack();
 			if(this.slideshow) this.restartSlideshow();
 		});
 		
 		this.elements.nextArrow.addEventListener('click', event => {
 			event.preventDefault();
 			
-			this.nextSlide();
+			this.goForward();
 			if(this.slideshow) this.restartSlideshow();
 		});
 		
@@ -215,7 +215,7 @@ module.exports = function(userOptions)
 		});
 	};
 
-	this.previousSlide = function() {
+	this.goBack = function() {
 		if(this.canGoBack()) {
 			if(this.mustGoToTheEnd()) {
 				this.updateCurrentSlide(this.auxiliaries.lastSlide);
@@ -227,7 +227,7 @@ module.exports = function(userOptions)
 		}
 	};
 
-	this.nextSlide = function() {
+	this.goForward = function() {
 		if(this.canGoForward()) {
 			if(this.mustGoToTheBeggining()) {
 				this.updateCurrentSlide(this.auxiliaries.firstSlide);
@@ -313,7 +313,7 @@ module.exports = function(userOptions)
 	
 	this.startSlideshow = function() {
 		this.progressSlideshow = setInterval(function(){
-			this.nextSlide();
+			this.goForward();
 		}.bind(this), this.interval);
 	};
 
