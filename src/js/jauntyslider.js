@@ -217,7 +217,7 @@ module.exports = function(userOptions)
 
 	this.previousSlide = function() {
 		if(this.canGoBack()) {
-			if(((this.auxiliaries.currentSlide == this.auxiliaries.firstSlide) || (this.auxiliaries.currentSlide - this.options.step) < this.auxiliaries.firstSlide) && this.options.loop) {
+			if(this.mustGoToTheEnd()) {
 				this.updateCurrentSlide(this.auxiliaries.lastSlide);
 				this.move(1);
 			} else {
@@ -229,7 +229,7 @@ module.exports = function(userOptions)
 
 	this.nextSlide = function() {
 		if(this.canGoForward()) {
-			if((this.auxiliaries.currentSlide == this.auxiliaries.lastSlide || (this.auxiliaries.currentSlide + this.options.step) > this.auxiliaries.lastSlide) && this.options.loop) {
+			if(this.mustGoToTheBeggining()) {
 				this.updateCurrentSlide(this.auxiliaries.firstSlide);
 				this.move(1);
 			} else {
@@ -271,6 +271,14 @@ module.exports = function(userOptions)
 	this.canGoForward = function() {
 		return ((this.auxiliaries.currentSlide + this.options.step) < this.auxiliaries.totalSlides || this.options.loop);
 	};
+	
+	this.mustGoToTheEnd = function() {
+		return (((this.auxiliaries.currentSlide == this.auxiliaries.firstSlide) || (this.auxiliaries.currentSlide - this.options.step) < this.auxiliaries.firstSlide) && this.options.loop);
+	};
+	
+	this.mustGoToTheBeggining = function() {
+		return ((this.auxiliaries.currentSlide == this.auxiliaries.lastSlide || (this.auxiliaries.currentSlide + this.options.step) > this.auxiliaries.lastSlide) && this.options.loop);
+	}
 	
 	this.incrementCurrentSlide = function(increment) {
 		this.auxiliaries.currentSlide += increment;
