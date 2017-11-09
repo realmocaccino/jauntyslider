@@ -265,19 +265,19 @@ module.exports = function(userOptions)
 	};
 	
 	this.canGoBack = function() {
-		return ((this.auxiliaries.currentSlide - this.options.step) >= this.auxiliaries.firstSlide || this.options.loop);
+		return (this.options.loop || (this.auxiliaries.currentSlide - this.options.step) >= this.auxiliaries.firstSlide);
 	};
 	
 	this.canGoForward = function() {
-		return ((this.auxiliaries.currentSlide + this.options.step) < this.auxiliaries.totalSlides || this.options.loop);
+		return (this.options.loop || (this.auxiliaries.currentSlide + this.options.step) < this.auxiliaries.totalSlides);
 	};
 	
 	this.mustGoToTheEnd = function() {
-		return (((this.auxiliaries.currentSlide == this.auxiliaries.firstSlide) || (this.auxiliaries.currentSlide - this.options.step) < this.auxiliaries.firstSlide) && this.options.loop);
+		return (this.options.loop && ((this.auxiliaries.currentSlide == this.auxiliaries.firstSlide) || (this.auxiliaries.currentSlide - this.options.step) < this.auxiliaries.firstSlide));
 	};
 	
 	this.mustGoToTheBeggining = function() {
-		return ((this.auxiliaries.currentSlide == this.auxiliaries.lastSlide || (this.auxiliaries.currentSlide + this.options.step) > this.auxiliaries.lastSlide) && this.options.loop);
+		return (this.options.loop && (this.auxiliaries.currentSlide == this.auxiliaries.lastSlide || (this.auxiliaries.currentSlide + this.options.step) > this.auxiliaries.lastSlide));
 	}
 	
 	this.incrementCurrentSlide = function(increment) {
