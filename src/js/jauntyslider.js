@@ -276,11 +276,11 @@ module.exports = function(userOptions)
 	};
 	
 	this.mustGoToTheEnd = function() {
-		return (this.options.loop && ((this.auxiliaries.currentSlide == this.auxiliaries.firstSlide) || (this.auxiliaries.currentSlide - this.options.step) < this.auxiliaries.firstSlide));
+		return (this.options.loop && ((this.auxiliaries.currentSlide - this.options.step) < this.auxiliaries.firstSlide));
 	};
 	
 	this.mustGoToTheBeggining = function() {
-		return (this.options.loop && (this.auxiliaries.currentSlide == this.auxiliaries.lastSlide || (this.auxiliaries.currentSlide + this.options.step) > this.auxiliaries.lastSlide));
+		return (this.options.loop && ((this.auxiliaries.currentSlide + this.options.step) > this.auxiliaries.lastSlide));
 	};
 	
 	this.incrementCurrentSlide = function(increment) {
