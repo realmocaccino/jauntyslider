@@ -33,6 +33,16 @@ overflow:hidden;
 			transition:width 0.3s ease;
 			position:relative;
 			float:left;
+			
+				img
+				{
+				-khtml-user-select: none;
+				-o-user-select: none;
+				-moz-user-select: none;
+				-webkit-user-select: none;
+				user-select: none;
+				}
+
 			}
 			
 		}
