@@ -82,12 +82,15 @@ overflow:hidden;
 		li
 		{
 		background:rgba(119, 119, 119, 0.7);
-		margin-left:5px;
 		width:10px;
 		height:10px;
 		float:left;
 		cursor:pointer;
-
+		
+			&:not(:last-child)
+			{
+			margin-right:5px;
+			}
 		
 			&.active
 			{
