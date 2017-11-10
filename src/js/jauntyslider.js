@@ -240,6 +240,22 @@ module.exports = function(userOptions)
 			this.stopSlideshow();
 		}
 	};
+	
+	this.canGoBack = function() {
+		return (this.options.loop || (this.auxiliaries.currentSlide - this.options.step) >= this.auxiliaries.firstSlide);
+	};
+	
+	this.canGoForward = function() {
+		return (this.options.loop || (this.auxiliaries.currentSlide + this.options.step) < this.auxiliaries.totalSlides);
+	};
+	
+	this.mustGoToTheEnd = function() {
+		return (this.options.loop && ((this.auxiliaries.currentSlide == this.auxiliaries.firstSlide) || (this.auxiliaries.currentSlide - this.options.step) < this.auxiliaries.firstSlide));
+	};
+	
+	this.mustGoToTheBeggining = function() {
+		return (this.options.loop && (this.auxiliaries.currentSlide == this.auxiliaries.lastSlide || (this.auxiliaries.currentSlide + this.options.step) > this.auxiliaries.lastSlide));
+	};
 
 	this.navigate = function(item, index) {
 		this.updateCurrentSlide(index);
@@ -262,22 +278,6 @@ module.exports = function(userOptions)
 			this.updateCurrentNavigationItem();
 		});
 		*/
-	};
-	
-	this.canGoBack = function() {
-		return (this.options.loop || (this.auxiliaries.currentSlide - this.options.step) >= this.auxiliaries.firstSlide);
-	};
-	
-	this.canGoForward = function() {
-		return (this.options.loop || (this.auxiliaries.currentSlide + this.options.step) < this.auxiliaries.totalSlides);
-	};
-	
-	this.mustGoToTheEnd = function() {
-		return (this.options.loop && ((this.auxiliaries.currentSlide == this.auxiliaries.firstSlide) || (this.auxiliaries.currentSlide - this.options.step) < this.auxiliaries.firstSlide));
-	};
-	
-	this.mustGoToTheBeggining = function() {
-		return (this.options.loop && (this.auxiliaries.currentSlide == this.auxiliaries.lastSlide || (this.auxiliaries.currentSlide + this.options.step) > this.auxiliaries.lastSlide));
 	};
 	
 	this.incrementCurrentSlide = function(increment) {
