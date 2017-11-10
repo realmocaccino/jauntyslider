@@ -18,3 +18,14 @@ exports.wrap = function(wrapperElement, wrappedElement)
 	wrappedElement.parentNode.insertBefore(wrapperElement, wrappedElement);
 	wrapperElement.appendChild(wrappedElement);
 };
+
+exports.checkBoolean = function(value)
+{
+	const matches = ['true', 'false'];
+	
+	if(matches.indexOf(value) != '-1') {
+		return (value === 'true');
+	}
+
+	return value;
+};
