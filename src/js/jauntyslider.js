@@ -173,7 +173,7 @@ module.exports = function(userOptions)
 		
 		this.elements.list.style.width = this.auxiliaries.listWidth + this.auxiliaries.defaultUnit;
 		
-		this.elements.navigation.style.marginLeft = '-' + (helpers.getContentWidth(this.elements.navigation) / 2) + this.auxiliaries.defaultUnit;
+		this.elements.navigation.style.marginLeft = '-' + (this.elements.navigation.offsetWidth / 2) + this.auxiliaries.defaultUnit;
 		
 		this.elements.navigationItems.item(this.auxiliaries.currentSlide).classList.add(this.auxiliaries.labelActive);
 		
