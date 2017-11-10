@@ -77,7 +77,8 @@ overflow:hidden;
 	bottom:3%;
 	display:table;
 	list-style-type:none;
-
+	@include user-select(none);
+	
 		li
 		{
 		background:rgba(119, 119, 119, 0.7);
@@ -85,6 +86,7 @@ overflow:hidden;
 		height:10px;
 		float:left;
 		cursor:pointer;
+		@include user-select(none);
 		
 			&:not(:last-child)
 			{
