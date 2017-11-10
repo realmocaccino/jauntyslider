@@ -166,8 +166,6 @@ module.exports = function(userOptions)
 	};
 
 	this.setup = function() {
-		this.elements.scrollWrapper.scrollLeft = 0;
-	
 		this.elements.wrapper.style.width = this.options.width;
 		this.elements.wrapper.style.height = this.options.height;
 		
@@ -175,13 +173,11 @@ module.exports = function(userOptions)
 		
 		this.elements.navigation.style.marginLeft = '-' + (this.elements.navigation.offsetWidth / 2) + this.auxiliaries.defaultUnit;
 		
-		this.elements.navigationItems.item(this.auxiliaries.currentSlide).classList.add(this.auxiliaries.labelActive);
+		this.move();
 		
 		if(this.options.loop && this.auxiliaries.totalSlides > 1) {
 			this.elements.nextArrow.style.visibility = 'visible';
 			this.elements.previousArrow.style.visibility = 'visible';
-		} else {
-			this.updateArrows();
 		}
 		
 		if(!this.options.navigation) {
