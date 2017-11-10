@@ -40,7 +40,7 @@ module.exports = function(userOptions)
 		let loadedImages = 0;
 			
 		images.forEach(image => {
-			let newImage = new Image();
+			const newImage = new Image();
 			newImage.onload = () => {
 				if(++loadedImages == totalImages) this.init();
 			};
