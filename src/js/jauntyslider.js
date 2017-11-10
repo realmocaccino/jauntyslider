@@ -272,7 +272,7 @@ module.exports = function(userOptions)
 	};
 	
 	this.canGoForward = function() {
-		return (this.options.loop || (this.auxiliaries.currentSlide + this.options.step) < this.auxiliaries.totalSlides);
+		return (this.options.loop || (this.auxiliaries.currentSlide + this.options.step) <= this.auxiliaries.lastSlide);
 	};
 	
 	this.mustGoToTheEnd = function() {
