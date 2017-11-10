@@ -23,9 +23,9 @@ overflow:hidden;
 		
 		ul
 		{
-		height:100%;
 		padding:0;
 		margin:0;
+		height:100%;
 		list-style-type:none;
 			
 			li
@@ -71,6 +71,8 @@ overflow:hidden;
 
 	ul.jauntyslider-navigation
 	{
+	padding:0;
+	margin:0;
 	position:absolute;
 	left:50%;
 	bottom:3%;
