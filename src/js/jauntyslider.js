@@ -298,7 +298,8 @@ module.exports = function(userOptions)
 	};
 	
 	this.updateCurrentNavigationItem = function() {
-		this.elements.navigation.querySelector('.' + this.auxiliaries.labelActive).classList.remove(this.auxiliaries.labelActive);
+		const activeNavigationItem = this.elements.navigation.querySelector('.' + this.auxiliaries.labelActive);
+		if(activeNavigationItem) activeNavigationItem.classList.remove(this.auxiliaries.labelActive);
 		this.elements.navigationItems.item(this.auxiliaries.currentSlide).classList.add(this.auxiliaries.labelActive);
 	};
 	
