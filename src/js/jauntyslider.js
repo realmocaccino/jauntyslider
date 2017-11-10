@@ -294,13 +294,13 @@ module.exports = function(userOptions)
 	this.updateArrows = function() {
 		if(this.auxiliaries.currentSlide != this.auxiliaries.firstSlide) {
 			this.elements.previousArrow.style.visibility = 'visible';
-		} else if(this.auxiliaries.currentSlide == this.auxiliaries.firstSlide && !this.options.loop) {
+		} else if(!this.options.loop && this.auxiliaries.currentSlide == this.auxiliaries.firstSlide) {
 			this.elements.previousArrow.style.visibility = 'hidden';
 		}
 		
 		if(this.auxiliaries.currentSlide != this.auxiliaries.lastSlide) {
 			this.elements.nextArrow.style.visibility = 'visible';
-		} else if(this.auxiliaries.currentSlide == this.auxiliaries.lastSlide && !this.options.loop) {
+		} else if(!this.options.loop && this.auxiliaries.currentSlide == this.auxiliaries.lastSlide) {
 			this.elements.nextArrow.style.visibility = 'hidden';
 		}
 	};
