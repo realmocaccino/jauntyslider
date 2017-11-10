@@ -212,7 +212,7 @@ module.exports = function(userOptions)
 			item.addEventListener('click', event => {
 				event.preventDefault();
 				
-				this.navigate(item, index);
+				this.navigate(index);
 				if(this.slideshow) this.restartSlideshow();
 			});
 		});
@@ -260,7 +260,7 @@ module.exports = function(userOptions)
 		return (this.options.loop && (this.auxiliaries.currentSlide == this.auxiliaries.lastSlide || (this.auxiliaries.currentSlide + this.options.step) > this.auxiliaries.lastSlide));
 	};
 
-	this.navigate = function(item, index) {
+	this.navigate = function(index) {
 		this.updateCurrentSlide(index);
 		this.move();
 	};
