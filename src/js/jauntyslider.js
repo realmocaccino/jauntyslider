@@ -40,8 +40,11 @@ module.exports = function(userOptions)
 		let loadedImages = 0;
 			
 		images.forEach(image => {
-			(new Image()).src = image.getAttribute('src');
-			if(++loadedImages == totalImages) this.init();
+			let newImage = new Image();
+			newImage.onload = () => {
+				if(++loadedImages == totalImages) this.init();
+			};
+			newImage.src = image.getAttribute('src');
 		});
 	};
 
