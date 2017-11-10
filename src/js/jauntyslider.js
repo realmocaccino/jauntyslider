@@ -329,5 +329,7 @@ module.exports = function(userOptions)
 		this.startSlideshow();
 	};
 	
+	this.preloadImages();
+	
 	return this;
 };
