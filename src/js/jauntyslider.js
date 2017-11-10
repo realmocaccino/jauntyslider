@@ -177,15 +177,11 @@ module.exports = function(userOptions)
 		
 		this.elements.navigationItems.item(this.auxiliaries.currentSlide).classList.add(this.auxiliaries.labelActive);
 		
-		if(!this.options.loop && this.auxiliaries.totalSlides > 1) {
-			this.elements.previousArrow.style.visibility = 'hidden';
-		}
-		
-		if(this.auxiliaries.totalSlides > 1) {
+		if(this.options.loop && this.auxiliaries.totalSlides > 1) {
 			this.elements.nextArrow.style.visibility = 'visible';
+			this.elements.previousArrow.style.visibility = 'visible';
 		} else {
-			this.elements.nextArrow.style.visibility = 'hidden';
-			this.elements.previousArrow.style.visibility = 'hidden';
+			this.updateArrows();
 		}
 		
 		if(!this.options.navigation) {
