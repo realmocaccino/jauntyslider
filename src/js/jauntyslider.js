@@ -49,8 +49,8 @@ module.exports = function(userOptions)
 	};
 
 	this.init = function() {
-		this.build();
 		this.overrideOptions();
+		this.build();
 		this.setWidth();
 		this.setHeight();
 		this.setInitialSlide();
@@ -60,6 +60,14 @@ module.exports = function(userOptions)
 		this.setup();
 		this.actions();
 		if(this.slideshow) this.startSlideshow();
+	};
+	
+	this.overrideOptions = function() {
+		for(let option in this.userOptions) {
+			if(this.options.hasOwnProperty(option)) {
+				this.options[option] = this.userOptions[option];
+			}
+		}
 	};
 	
 	this.build = function() {
@@ -84,25 +92,22 @@ module.exports = function(userOptions)
 		this.elements.nextArrow.classList.add('jauntyslider-next');
 		this.elements.nextArrow.setAttribute('title', 'Next');
 		
-		this.elements.navigation = document.createElement('ul');
-		this.elements.navigation.classList.add('jauntyslider-navigation');
-		
-		this.elements.slides.forEach(() => this.elements.navigation.appendChild(document.createElement('li')));
-		this.elements.navigationItems = this.elements.navigation.querySelectorAll('li');
-		
 		helpers.wrap(this.elements.scrollWrapper, this.elements.list);
 		helpers.wrap(this.elements.wrapper, this.elements.scrollWrapper);
 		
 		this.elements.wrapper.insertBefore(this.elements.previousArrow, this.elements.scrollWrapper);
 		this.elements.wrapper.appendChild(this.elements.nextArrow);
-		this.elements.wrapper.appendChild(this.elements.navigation);
-	};
-	
-	this.overrideOptions = function() {
-		for(let option in this.userOptions) {
-			if(this.options.hasOwnProperty(option)) {
-				this.options[option] = this.userOptions[option];
-			}
+		
+		if(this.options.navigation) {
+		
+			this.elements.navigation = document.createElement('ul');
+			this.elements.navigation.classList.add('jauntyslider-navigation');
+		
+			this.elements.slides.forEach(() => this.elements.navigation.appendChild(document.createElement('li')));
+			this.elements.navigationItems = this.elements.navigation.querySelectorAll('li');
+			
+			this.elements.wrapper.appendChild(this.elements.navigation);
+			
 		}
 	};
 	
@@ -171,8 +176,6 @@ module.exports = function(userOptions)
 		
 		this.elements.list.style.width = this.auxiliaries.listWidth + this.auxiliaries.defaultUnit;
 		
-		this.elements.navigation.style.marginLeft = '-' + (this.elements.navigation.offsetWidth / 2) + this.auxiliaries.defaultUnit;
-		
 		this.move();
 		
 		if(this.options.loop && this.auxiliaries.totalSlides > 1) {
@@ -180,8 +183,8 @@ module.exports = function(userOptions)
 			this.elements.previousArrow.style.visibility = 'visible';
 		}
 		
-		if(!this.options.navigation) {
-			this.elements.navigation.style.visibility = 'hidden';
+		if(this.options.navigation) {
+			this.elements.navigation.style.marginLeft = '-' + (this.elements.navigation.offsetWidth / 2) + this.auxiliaries.defaultUnit;
 		}
 	};
 	
@@ -200,14 +203,18 @@ module.exports = function(userOptions)
 			if(this.slideshow) this.restartSlideshow();
 		});
 		
-		this.elements.navigationItems.forEach((item, index) => {
-			item.addEventListener('click', event => {
-				event.preventDefault();
+		if(this.options.navigation) {
+		
+			this.elements.navigationItems.forEach((item, index) => {
+				item.addEventListener('click', event => {
+					event.preventDefault();
 				
-				this.navigate(index);
-				if(this.slideshow) this.restartSlideshow();
+					this.navigate(index);
+					if(this.slideshow) this.restartSlideshow();
+				});
 			});
-		});
+			
+		}
 	};
 
 	this.goBack = function() {
@@ -247,7 +254,7 @@ module.exports = function(userOptions)
 		this.elements.scrollWrapper.scrollLeft = this.getPosition(this.auxiliaries.currentSlide);
 		
 		this.updateArrows();
-		this.updateCurrentNavigationItem();
+		if(this.options.navigation) this.updateCurrentNavigationItem();
 		
 		/*
 		this.elements.scrollWrapper.stop().animate({
