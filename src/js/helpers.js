@@ -19,13 +19,17 @@ exports.wrap = function(wrapperElement, wrappedElement)
 	wrapperElement.appendChild(wrappedElement);
 };
 
-exports.checkBoolean = function(value)
+exports.checkString = function(value)
 {
-	const matches = ['true', 'false'];
-	
-	if(matches.indexOf(value) != '-1') {
+	// String to Boolean
+	if(['true', 'false'].indexOf(value) != '-1') {
 		return (value === 'true');
+	
+	// String to Integer
+	} else if(!isNaN(value)) {
+		return parseInt(value);
 	}
 
+	// It's actually a String
 	return value;
 };

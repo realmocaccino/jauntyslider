@@ -65,7 +65,7 @@ module.exports = function(userOptions)
 	this.overrideOptions = function() {
 		for(let option in this.userOptions) {
 			if(this.options.hasOwnProperty(option)) {
-				this.options[option] = helpers.checkBoolean(this.userOptions[option]);
+				this.options[option] = helpers.checkString(this.userOptions[option]);
 			}
 		}
 	};
