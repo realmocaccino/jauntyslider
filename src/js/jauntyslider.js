@@ -277,7 +277,14 @@ module.exports = function(userOptions)
 		*/
 	};
 	
-	this.animation = function(position, destination) {
+	this.moveBack = function(position, destination) {
+		position -= 20;
+		this.updateScrollPosition(position);
+			
+		if(position > destination) requestAnimationFrame(() => this.animation(position, destination));
+	};
+	
+	this.moveForward = function(position, destination) {
 		position += 20;
 		this.updateScrollPosition(position);
 			
