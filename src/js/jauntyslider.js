@@ -259,10 +259,8 @@ module.exports = function(userOptions)
 		const destination = this.getPosition(this.auxiliaries.currentSlide);
 		
 		if(this.auxiliaries.currentSlide < this.auxiliaries.previousSlide) {
-			console.log('back');
 			requestAnimationFrame(() => this.moveBack(position, destination));
 		} else {
-			console.log('forward');
 			requestAnimationFrame(() => this.moveForward(position, destination));
 		}
 
