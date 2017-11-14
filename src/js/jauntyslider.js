@@ -180,8 +180,8 @@ module.exports = function(userOptions)
 		this.move();
 		
 		if(this.options.loop && this.auxiliaries.totalSlides > 1) {
-			this.elements.nextArrow.style.visibility = 'visible';
-			this.elements.previousArrow.style.visibility = 'visible';
+			this.elements.nextArrow.style.display = 'block';
+			this.elements.previousArrow.style.display = 'block';
 		}
 		
 		if(this.options.navigation) {
@@ -332,15 +332,15 @@ module.exports = function(userOptions)
 
 	this.updateArrows = function() {
 		if(this.auxiliaries.currentSlide != this.auxiliaries.firstSlide) {
-			this.elements.previousArrow.style.visibility = 'visible';
+			this.elements.previousArrow.style.display = 'block';
 		} else if(!this.options.loop && this.auxiliaries.currentSlide == this.auxiliaries.firstSlide) {
-			this.elements.previousArrow.style.visibility = 'hidden';
+			this.elements.previousArrow.style.display = 'none';
 		}
 		
 		if(this.auxiliaries.currentSlide != this.auxiliaries.lastSlide) {
-			this.elements.nextArrow.style.visibility = 'visible';
+			this.elements.nextArrow.style.display = 'block';
 		} else if(!this.options.loop && this.auxiliaries.currentSlide == this.auxiliaries.lastSlide) {
-			this.elements.nextArrow.style.visibility = 'hidden';
+			this.elements.nextArrow.style.display = 'none';
 		}
 	};
 	
