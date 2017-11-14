@@ -255,7 +255,7 @@ module.exports = function(userOptions)
 		this.updateArrows();
 		if(this.options.navigation) this.updateCurrentNavigationItem();
 		
-		let position = this.elements.scrollWrapper.scrollLeft;
+		const position = this.elements.scrollWrapper.scrollLeft;
 		const destination = this.getPosition(this.auxiliaries.currentSlide);
 		
 		if(this.auxiliaries.currentSlide < this.auxiliaries.previousSlide) {
@@ -263,34 +263,17 @@ module.exports = function(userOptions)
 		} else {
 			requestAnimationFrame(() => this.moveForward(position, destination));
 		}
-
-		/*
-		const animation = setInterval(() => {
-			if(position >= destination) clearInterval(animation);
-		
-			this.elements.scrollWrapper.scrollLeft = position++;
-		}, 1000/60);
-		*/
-
-		/*
-		this.elements.scrollWrapper.stop().animate({
-			scrollLeft: this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide]
-		}, duration, this.options.speed, () => {
-			this.updateArrows();
-			this.updateCurrentNavigationItem();
-		});
-		*/
 	};
 	
 	this.moveBack = function(position, destination) {
-		position -= 20;
+		position -= 26;
 		this.updateScrollPosition(position);
 			
 		if(position > destination) requestAnimationFrame(() => this.moveBack(position, destination));
 	};
 	
 	this.moveForward = function(position, destination) {
-		position += 20;
+		position += 26;
 		this.updateScrollPosition(position);
 			
 		if(position < destination) requestAnimationFrame(() => this.moveForward(position, destination));
