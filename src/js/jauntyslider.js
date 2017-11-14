@@ -251,11 +251,22 @@ module.exports = function(userOptions)
 	this.move = function(duration = null) {
 		var duration = duration || this.options.duration;
 		
-		this.elements.scrollWrapper.scrollLeft = this.getPosition(this.auxiliaries.currentSlide);
-		
 		this.updateArrows();
 		if(this.options.navigation) this.updateCurrentNavigationItem();
 		
+		let position = this.elements.scrollWrapper.scrollLeft;
+		const destination = this.getPosition(this.auxiliaries.currentSlide);
+		
+		requestAnimationFrame(() => this.animation(position, destination));
+
+		/*
+		const animation = setInterval(() => {
+			if(position >= destination) clearInterval(animation);
+		
+			this.elements.scrollWrapper.scrollLeft = position++;
+		}, 1000/60);
+		*/
+
 		/*
 		this.elements.scrollWrapper.stop().animate({
 			scrollLeft: this.auxiliaries.slidesPositions[this.auxiliaries.currentSlide]
@@ -264,6 +275,13 @@ module.exports = function(userOptions)
 			this.updateCurrentNavigationItem();
 		});
 		*/
+	};
+	
+	this.animation = function(position, destination) {
+		position += 20;
+		this.elements.scrollWrapper.scrollLeft = position;
+			
+		if(position < destination) requestAnimationFrame(() => this.animation(position, destination));
 	};
 	
 	this.canGoBack = function() {
