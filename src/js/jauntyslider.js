@@ -279,7 +279,7 @@ module.exports = function(userOptions)
 	
 	this.animation = function(position, destination) {
 		position += 20;
-		this.elements.scrollWrapper.scrollLeft = position;
+		this.updateScrollPosition(position);
 			
 		if(position < destination) requestAnimationFrame(() => this.animation(position, destination));
 	};
@@ -306,6 +306,10 @@ module.exports = function(userOptions)
 	
 	this.updateCurrentSlide = function(index) {
 		this.auxiliaries.currentSlide = index;
+	};
+	
+	this.updateScrollPosition = function(position) {
+		this.elements.scrollWrapper.scrollLeft = position;
 	};
 
 	this.updateArrows = function() {
