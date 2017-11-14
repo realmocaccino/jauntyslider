@@ -267,6 +267,9 @@ module.exports = function(userOptions)
 	
 	this.moveBack = function(position, destination) {
 		position -= 26;
+		
+		if(position < destination) position = destination;
+		
 		this.updateScrollPosition(position);
 			
 		if(position > destination) requestAnimationFrame(() => this.moveBack(position, destination));
@@ -274,6 +277,9 @@ module.exports = function(userOptions)
 	
 	this.moveForward = function(position, destination) {
 		position += 26;
+		
+		if(position > destination) position = destination;
+		
 		this.updateScrollPosition(position);
 			
 		if(position < destination) requestAnimationFrame(() => this.moveForward(position, destination));
