@@ -121,6 +121,7 @@ module.exports = function(userOptions)
 	
 	this.setInitialSlide = function() {
 		this.auxiliaries.currentSlide = this.options.initial - 1;
+		this.auxiliaries.previousSlide = null;
 	};
 	
 	this.treatInterval = function() {
@@ -312,6 +313,7 @@ module.exports = function(userOptions)
 	};
 	
 	this.updateCurrentSlide = function(index) {
+		this.auxiliaries.previousSlide = this.auxiliaries.currentSlide;
 		this.auxiliaries.currentSlide = index;
 	};
 	
