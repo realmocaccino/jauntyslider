@@ -258,7 +258,13 @@ module.exports = function(userOptions)
 		let position = this.elements.scrollWrapper.scrollLeft;
 		const destination = this.getPosition(this.auxiliaries.currentSlide);
 		
-		requestAnimationFrame(() => this.animation(position, destination));
+		if(this.auxiliaries.currentSlide < this.auxiliaries.previousSlide) {
+			console.log('back');
+			requestAnimationFrame(() => this.moveBack(position, destination));
+		} else {
+			console.log('forward');
+			requestAnimationFrame(() => this.moveForward(position, destination));
+		}
 
 		/*
 		const animation = setInterval(() => {
@@ -282,14 +288,14 @@ module.exports = function(userOptions)
 		position -= 20;
 		this.updateScrollPosition(position);
 			
-		if(position > destination) requestAnimationFrame(() => this.animation(position, destination));
+		if(position > destination) requestAnimationFrame(() => this.moveBack(position, destination));
 	};
 	
 	this.moveForward = function(position, destination) {
 		position += 20;
 		this.updateScrollPosition(position);
 			
-		if(position < destination) requestAnimationFrame(() => this.animation(position, destination));
+		if(position < destination) requestAnimationFrame(() => this.moveForward(position, destination));
 	};
 	
 	this.canGoBack = function() {
@@ -309,12 +315,17 @@ module.exports = function(userOptions)
 	};
 	
 	this.incrementCurrentSlide = function(increment) {
+		this.updatePreviousSlide();
 		this.auxiliaries.currentSlide += increment;
 	};
 	
 	this.updateCurrentSlide = function(index) {
-		this.auxiliaries.previousSlide = this.auxiliaries.currentSlide;
+		this.updatePreviousSlide();
 		this.auxiliaries.currentSlide = index;
+	};
+	
+	this.updatePreviousSlide = function() {
+		this.auxiliaries.previousSlide = this.auxiliaries.currentSlide;
 	};
 	
 	this.updateScrollPosition = function(position) {
