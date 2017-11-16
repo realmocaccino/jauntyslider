@@ -254,28 +254,6 @@ module.exports = function(userOptions)
 		
 		const position = this.elements.scrollWrapper.scrollLeft;
 		const destination = this.getPosition(this.auxiliaries.currentSlide);
-		
-		if(this.auxiliaries.currentSlide < this.auxiliaries.previousSlide) {
-			requestAnimationFrame(() => this.moveBack(position, destination));
-		} else {
-			requestAnimationFrame(() => this.moveForward(position, destination));
-		}
-	};
-	
-	this.moveBack = function(position, destination) {
-		position -= 26;
-		
-		this.updateScrollPosition((position < destination) ? destination : position);
-		
-		if(position > destination) requestAnimationFrame(() => this.moveBack(position, destination));
-	};
-	
-	this.moveForward = function(position, destination) {
-		position += 26;
-		
-		this.updateScrollPosition((position > destination) ? destination : position);
-			
-		if(position < destination) requestAnimationFrame(() => this.moveForward(position, destination));
 	};
 	
 	this.canGoBack = function() {
