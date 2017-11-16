@@ -137,16 +137,16 @@ module.exports = function(userOptions)
 	this.setDuration = function() {
 		switch(this.options.speed) {
 			case 'slow':
-				this.options.duration = 975;
+				this.options.duration = '1s';
 			break;
 			case 'normal':
-				this.options.duration = 575;
+				this.options.duration = '0.6s';
 			break;
 			case 'fast':
-				this.options.duration = 275;
+				this.options.duration = '0.2s';
 			break;
 			default:
-				this.options.duration = 575;
+				this.options.duration = '0.5s';
 			break;
 		}
 	};
