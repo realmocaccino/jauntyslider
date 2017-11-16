@@ -30,6 +30,7 @@ module.exports = function(userOptions)
 	};
 	
 	this.auxiliaries = {
+		animationName: 'jauntyslider-move',
 		defaultUnit: 'px',
 		firstSlide: 0,
 		labelActive: 'active'
@@ -57,6 +58,7 @@ module.exports = function(userOptions)
 		this.setInitialSlide();
 		this.treatInterval();
 		this.setDuration();
+		this.setAnimationProperties();
 		this.setSlidesPositions();
 		this.setup();
 		this.actions();
@@ -147,6 +149,13 @@ module.exports = function(userOptions)
 				this.options.duration = 575;
 			break;
 		}
+	};
+	
+	this.setAnimationProperties = function() {
+		this.elements.scrollWrapper.style.animationName = this.auxiliaries.animationName;
+		this.elements.scrollWrapper.style.animationDuration = this.options.duration;
+		this.elements.scrollWrapper.style.animationTimingFunction = this.options.easing;
+		this.elements.scrollWrapper.style.animationFillMode = 'forwards';
 	};
 	
 	this.setSlidesPositions = function() {
