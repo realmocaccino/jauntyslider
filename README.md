@@ -72,11 +72,19 @@ Jauntyslider supports multiple sliders on the same page:
 
 ### Speed
 
-**[options: slow | normal | fast | easein | easeout | easeinout]**
+**[options: slow | normal | fast]**
 
 **[default: normal]**
 
 Defines the speed of the transitions.
+
+### Easing
+
+**[options: linear | ease | ease-in | ease-out | ease-in-out]**
+
+**[default: ease]**
+
+Defines the easing function of the transitions.
 
 ### Loop
 

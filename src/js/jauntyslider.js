@@ -13,6 +13,7 @@ module.exports = function(userOptions)
 	this.userOptions = userOptions;
 	
 	this.options = {
+		easing: 'ease',
 		height: null,
 		initial: 1,
 		interval: 5,
@@ -55,7 +56,7 @@ module.exports = function(userOptions)
 		this.setHeight();
 		this.setInitialSlide();
 		this.treatInterval();
-		this.setSpeed();
+		this.setDuration();
 		this.setSlidesPositions();
 		this.setup();
 		this.actions();
@@ -128,34 +129,18 @@ module.exports = function(userOptions)
 		this.options.interval = this.options.interval * 1000;
 	};
 
-	this.setSpeed = function() {
+	this.setDuration = function() {
 		switch(this.options.speed) {
 			case 'slow':
-				this.options.speed = 'linear';
 				this.options.duration = 975;
 			break;
 			case 'normal':
-				this.options.speed = 'linear';
 				this.options.duration = 575;
 			break;
 			case 'fast':
-				this.options.speed = 'linear';
 				this.options.duration = 275;
 			break;
-			case 'easein':
-				this.options.speed = 'easeInQuart';
-				this.options.duration = 875;
-			break;
-			case 'easeout':
-				this.options.speed = 'easeOutQuart';
-				this.options.duration = 1275;
-			break;
-			case 'easeinout':
-				this.options.speed = 'easeInOutQuart';
-				this.options.duration = 1275;
-			break;
 			default:
-				this.options.speed = 'linear';
 				this.options.duration = 575;
 			break;
 		}
