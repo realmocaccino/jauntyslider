@@ -21,15 +21,11 @@ exports.wrap = function(wrapperElement, wrappedElement)
 
 exports.checkString = function(value)
 {
-	// String to Boolean
-	if(['true', 'false'].indexOf(value) != '-1') {
+	if(['true', 'false'].indexOf(value) != '-1')
 		return (value === 'true');
 	
-	// String to Integer
-	} else if(!isNaN(value)) {
+	else if(!isNaN(value))
 		return parseInt(value);
-	}
 
-	// It's actually a String
 	return value;
 };
