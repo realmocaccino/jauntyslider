@@ -30,6 +30,7 @@ module.exports = function(userOptions)
 	};
 	
 	this.auxiliaries = {
+		animationIteration: 1,
 		animationName: 'jauntyslider-move',
 		defaultUnit: 'px',
 		firstSlide: 0,
@@ -152,7 +153,6 @@ module.exports = function(userOptions)
 	};
 	
 	this.setAnimationProperties = function() {
-		this.elements.scrollWrapper.style.animationName = this.auxiliaries.animationName;
 		this.elements.scrollWrapper.style.animationDuration = this.options.duration;
 		this.elements.scrollWrapper.style.animationTimingFunction = this.options.easing;
 		this.elements.scrollWrapper.style.animationFillMode = 'forwards';
@@ -202,7 +202,6 @@ module.exports = function(userOptions)
 		});
 		
 		if(this.options.navigation) {
-		
 			this.elements.navigationItems.forEach((item, index) => {
 				item.addEventListener('click', event => {
 					event.preventDefault();
@@ -211,7 +210,6 @@ module.exports = function(userOptions)
 					if(this.slideshow) this.restartSlideshow();
 				});
 			});
-			
 		}
 	};
 
@@ -252,8 +250,12 @@ module.exports = function(userOptions)
 		this.updateArrows();
 		if(this.options.navigation) this.updateCurrentNavigationItem();
 		
+		const animationName = this.auxiliaries.animationName + this.auxiliaries.animationIteration++;
 		const position = this.elements.scrollWrapper.scrollLeft;
 		const destination = this.getPosition(this.auxiliaries.currentSlide);
+		
+		this.insertStyleSheetRule(helpers.createKeyframes(animationName, position, destination));
+		this.setAnimationNameProperty(animationName);
 	};
 	
 	this.canGoBack = function() {
@@ -312,6 +314,18 @@ module.exports = function(userOptions)
 	
 	this.getPosition = function(index) {
 		return this.auxiliaries.slidesPositions[index];
+	};
+	
+	this.insertStyleSheetRule = function(rule) {
+		this.elements.styleSheet.sheet.insertRule(rule, 0);
+	};
+	
+	this.removeStyleSheetRule = function(index) {
+		this.elements.styleSheet.sheet.deleteRule(index);
+	};
+	
+	this.setAnimationNameProperty = function(animationName) {
+		this.elements.scrollWrapper.style.animationName = animationName;
 	};
 	
 	this.startSlideshow = function() {
