@@ -174,7 +174,7 @@ module.exports = function(userOptions)
 		
 		this.elements.list.style.width = this.auxiliaries.listWidth + this.auxiliaries.defaultUnit;
 		
-		this.move();
+		this.move(true);
 		
 		if(this.options.loop && this.auxiliaries.totalSlides > 1) {
 			this.elements.nextArrow.style.display = 'block';
@@ -217,7 +217,7 @@ module.exports = function(userOptions)
 		if(this.canGoBack()) {
 			if(this.mustGoToTheEnd()) {
 				this.updateCurrentSlide(this.auxiliaries.lastSlide);
-				this.move(1);
+				this.move(true);
 			} else {
 				this.incrementCurrentSlide(-this.options.step);
 				this.move();
@@ -229,7 +229,7 @@ module.exports = function(userOptions)
 		if(this.canGoForward()) {
 			if(this.mustGoToTheBeggining()) {
 				this.updateCurrentSlide(this.auxiliaries.firstSlide);
-				this.move(1);
+				this.move(true);
 			} else {
 				this.incrementCurrentSlide(this.options.step);
 				this.move();
@@ -244,19 +244,22 @@ module.exports = function(userOptions)
 		this.move();
 	};
 
-	this.move = function(duration = null) {
-		var duration = duration || this.options.duration;
-		
+	this.move = function(noAnimation = false) {
 		this.updateArrows();
 		if(this.options.navigation) this.updateCurrentNavigationItem();
 		
-		const animationName = this.auxiliaries.animationName + this.auxiliaries.animationIteration++;
-		const origin = this.getScrollPosition();
-		const destination = this.getPosition(this.auxiliaries.currentSlide);
+		if(noAnimation) {
+			this.removeStyleSheetRule();
+			this.setScrollPosition(this.getPosition(this.auxiliaries.currentSlide));
+		} else {
+			const animationName = this.auxiliaries.animationName + this.auxiliaries.animationIteration++;
+			const origin = this.getScrollPosition();
+			const destination = this.getPosition(this.auxiliaries.currentSlide);
 		
-		this.removeStyleSheetRule();
-		this.insertStyleSheetRule(helpers.createKeyframes(animationName, origin, destination));
-		this.setAnimationNameProperty(animationName);
+			this.removeStyleSheetRule();
+			this.insertStyleSheetRule(helpers.createKeyframes(animationName, origin, destination));
+			this.setAnimationNameProperty(animationName);
+		}
 	};
 	
 	this.canGoBack = function() {
