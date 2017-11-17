@@ -153,9 +153,9 @@ module.exports = function(userOptions)
 	};
 	
 	this.setAnimationProperties = function() {
-		this.elements.scrollWrapper.style.animationDuration = this.options.duration;
-		this.elements.scrollWrapper.style.animationTimingFunction = this.options.easing;
-		this.elements.scrollWrapper.style.animationFillMode = 'forwards';
+		this.elements.list.style.animationDuration = this.options.duration;
+		this.elements.list.style.animationTimingFunction = this.options.easing;
+		this.elements.list.style.animationFillMode = 'forwards';
 	};
 	
 	this.setSlidesPositions = function() {
@@ -253,9 +253,9 @@ module.exports = function(userOptions)
 			this.setScrollPosition(this.getPosition(this.auxiliaries.currentSlide));
 		} else {
 			const animationName = this.auxiliaries.animationName + this.auxiliaries.animationIteration++;
-			const origin = this.getScrollPosition();
+			const origin = this.getPosition(this.auxiliaries.previousSlide);
 			const destination = this.getPosition(this.auxiliaries.currentSlide);
-		
+			
 			this.removeStyleSheetRule();
 			this.insertStyleSheetRule(helpers.createKeyframes(animationName, origin, destination));
 			this.setAnimationNameProperty(animationName);
@@ -333,7 +333,7 @@ module.exports = function(userOptions)
 	};
 	
 	this.setAnimationNameProperty = function(animationName) {
-		this.elements.scrollWrapper.style.animationName = animationName;
+		this.elements.list.style.animationName = animationName;
 	};
 	
 	this.startSlideshow = function() {

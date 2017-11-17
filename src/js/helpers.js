@@ -34,10 +34,10 @@ exports.createKeyframes = function(animationName, currentPosition, nextPosition)
 {
 	return '@keyframes ' + animationName + ' {\
 				0% {\
-					margin-left: ' + currentPosition + 'px;\
+					margin-left: -' + currentPosition + 'px;\
 				}\
 				100% {\
-					margin-left: ' + nextPosition + 'px;\
+					margin-left: -' + nextPosition + 'px;\
 				}\
 			}';
 };
