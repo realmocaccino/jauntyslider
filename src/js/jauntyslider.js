@@ -251,7 +251,7 @@ module.exports = function(userOptions)
 		if(this.options.navigation) this.updateCurrentNavigationItem();
 		
 		const animationName = this.auxiliaries.animationName + this.auxiliaries.animationIteration++;
-		const origin = this.elements.scrollWrapper.scrollLeft;
+		const origin = this.getScrollPosition();
 		const destination = this.getPosition(this.auxiliaries.currentSlide);
 		
 		this.removeStyleSheetRule();
@@ -288,10 +288,6 @@ module.exports = function(userOptions)
 	this.updatePreviousSlide = function() {
 		this.auxiliaries.previousSlide = this.auxiliaries.currentSlide;
 	};
-	
-	this.updateScrollPosition = function(position) {
-		this.elements.scrollWrapper.scrollLeft = position;
-	};
 
 	this.updateArrows = function() {
 		if(this.auxiliaries.currentSlide != this.auxiliaries.firstSlide) {
@@ -315,6 +311,14 @@ module.exports = function(userOptions)
 	
 	this.getPosition = function(index) {
 		return this.auxiliaries.slidesPositions[index];
+	};
+	
+	this.getScrollPosition = function() {
+		return this.elements.scrollWrapper.scrollLeft;
+	};
+	
+	this.setScrollPosition = function(position) {
+		this.elements.scrollWrapper.scrollLeft = position;
 	};
 	
 	this.insertStyleSheetRule = function(rule) {
