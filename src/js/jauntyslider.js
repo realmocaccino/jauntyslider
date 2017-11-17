@@ -251,11 +251,11 @@ module.exports = function(userOptions)
 		if(this.options.navigation) this.updateCurrentNavigationItem();
 		
 		const animationName = this.auxiliaries.animationName + this.auxiliaries.animationIteration++;
-		const position = this.elements.scrollWrapper.scrollLeft;
+		const origin = this.elements.scrollWrapper.scrollLeft;
 		const destination = this.getPosition(this.auxiliaries.currentSlide);
 		
 		this.removeStyleSheetRule();
-		this.insertStyleSheetRule(helpers.createKeyframes(animationName, position, destination));
+		this.insertStyleSheetRule(helpers.createKeyframes(animationName, origin, destination));
 		this.setAnimationNameProperty(animationName);
 	};
 	
