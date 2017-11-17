@@ -29,3 +29,17 @@ exports.checkString = function(value)
 
 	return value;
 };
+
+exports.createKeyframes = function(animationName, currentPosition, nextPosition)
+{
+	return
+		'@keyframes ' + animationName + ' {\
+			from {\
+				margin-left: ' + currentPosition + 'px;\
+			}\
+			to {\
+				margin-left: ' + nextPosition + 'px;\
+			}\
+		}'
+	;
+};
