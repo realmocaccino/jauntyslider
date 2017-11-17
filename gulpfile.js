@@ -42,6 +42,6 @@ gulp.task('images', function(){
 
 gulp.task('default', ['styles', 'scripts', 'images']);
 
-gulp.task('watch', function(){
+gulp.task('watch', ['default'], function(){
 	gulp.watch([srcStyles, srcScripts, srcImages], ['default']);
 });
