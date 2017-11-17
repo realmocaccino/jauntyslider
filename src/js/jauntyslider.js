@@ -254,6 +254,7 @@ module.exports = function(userOptions)
 		const position = this.elements.scrollWrapper.scrollLeft;
 		const destination = this.getPosition(this.auxiliaries.currentSlide);
 		
+		this.removeStyleSheetRule();
 		this.insertStyleSheetRule(helpers.createKeyframes(animationName, position, destination));
 		this.setAnimationNameProperty(animationName);
 	};
@@ -320,8 +321,8 @@ module.exports = function(userOptions)
 		this.elements.styleSheet.sheet.insertRule(rule, 0);
 	};
 	
-	this.removeStyleSheetRule = function(index) {
-		this.elements.styleSheet.sheet.deleteRule(index);
+	this.removeStyleSheetRule = function() {
+		if(this.elements.styleSheet.sheet.cssRules.length) this.elements.styleSheet.sheet.deleteRule(0);
 	};
 	
 	this.setAnimationNameProperty = function(animationName) {
