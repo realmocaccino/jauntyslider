@@ -32,14 +32,12 @@ exports.checkString = function(value)
 
 exports.createKeyframes = function(animationName, currentPosition, nextPosition)
 {
-	return
-		'@keyframes ' + animationName + ' {\
-			from {\
-				margin-left: ' + currentPosition + 'px;\
-			}\
-			to {\
-				margin-left: ' + nextPosition + 'px;\
-			}\
-		}'
-	;
+	return '@keyframes ' + animationName + ' {\
+				0% {\
+					margin-left: ' + currentPosition + 'px;\
+				}\
+				100% {\
+					margin-left: ' + nextPosition + 'px;\
+				}\
+			}';
 };
