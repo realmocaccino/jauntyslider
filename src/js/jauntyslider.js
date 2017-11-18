@@ -85,9 +85,6 @@ module.exports = function(userOptions)
 		this.elements.wrapper = document.createElement('div');
 		this.elements.wrapper.classList.add('jauntyslider-wrapper');
 		
-		this.elements.scrollWrapper = document.createElement('div');
-		this.elements.scrollWrapper.classList.add('jauntyslider-wrapper-scroll');
-		
 		this.elements.previousArrow = document.createElement('a');
 		this.elements.previousArrow.classList.add('jauntyslider-previous');
 		this.elements.previousArrow.setAttribute('title', 'Previous');
@@ -96,10 +93,9 @@ module.exports = function(userOptions)
 		this.elements.nextArrow.classList.add('jauntyslider-next');
 		this.elements.nextArrow.setAttribute('title', 'Next');
 		
-		helpers.wrap(this.elements.scrollWrapper, this.elements.list);
-		helpers.wrap(this.elements.wrapper, this.elements.scrollWrapper);
+		helpers.wrap(this.elements.wrapper, this.elements.list);
 		
-		this.elements.wrapper.insertBefore(this.elements.previousArrow, this.elements.scrollWrapper);
+		this.elements.wrapper.insertBefore(this.elements.previousArrow, this.elements.list);
 		this.elements.wrapper.appendChild(this.elements.nextArrow);
 		
 		if(this.options.navigation) {
@@ -250,7 +246,7 @@ module.exports = function(userOptions)
 		
 		if(noAnimation) {
 			this.removeStyleSheetRule();
-			this.setScrollPosition(this.getPosition(this.auxiliaries.currentSlide));
+			this.elements.list.style.marginLeft = '-' + this.getPosition(this.auxiliaries.currentSlide);
 		} else {
 			const animationName = this.auxiliaries.animationName + this.auxiliaries.animationIteration++;
 			const origin = this.getPosition(this.auxiliaries.previousSlide);
@@ -314,14 +310,6 @@ module.exports = function(userOptions)
 	
 	this.getPosition = function(index) {
 		return this.auxiliaries.slidesPositions[index];
-	};
-	
-	this.getScrollPosition = function() {
-		return this.elements.scrollWrapper.scrollLeft;
-	};
-	
-	this.setScrollPosition = function(position) {
-		this.elements.scrollWrapper.scrollLeft = position;
 	};
 	
 	this.insertStyleSheetRule = function(rule) {

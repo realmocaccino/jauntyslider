@@ -13,36 +13,25 @@
 {
 position: relative;
 overflow: hidden;
-
-	.jauntyslider-wrapper-scroll
-	{
-	height: 100%;
-	width: 100%;
-	overflow: hidden;
-	position: relative;
-	left: 0;
-	top: 0;
 		
-		ul
+	ul
+	{
+	padding: 0;
+	margin: 0;
+	height: 100%;
+	list-style-type: none;
+		
+		li
 		{
-		padding: 0;
-		margin: 0;
-		height: 100%;
-		list-style-type: none;
-			
-			li
+		transition: width 0.3s ease;
+		position: relative;
+		float: left;
+		
+			img
 			{
-			transition: width 0.3s ease;
-			position: relative;
-			float: left;
-			
-				img
-				{
-				@include user-select('none');
-				}
-
+			@include user-select('none');
 			}
-			
+
 		}
 		
 	}
@@ -74,6 +63,7 @@ overflow: hidden;
 	padding: 0;
 	margin: 0;
 	position: absolute;
+	height: 10px;
 	left: 50%;
 	bottom: 3%;
 	display: table;
