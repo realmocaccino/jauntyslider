@@ -168,7 +168,7 @@ module.exports = function(userOptions)
 		this.elements.wrapper.style.width = this.options.width;
 		this.elements.wrapper.style.height = this.options.height;
 		
-		this.elements.list.style.width = this.auxiliaries.listWidth + this.auxiliaries.defaultUnit;
+		this.elements.list.style.width = this.concatenateUnit(this.auxiliaries.listWidth);
 		
 		this.move(true);
 		
@@ -178,7 +178,7 @@ module.exports = function(userOptions)
 		}
 		
 		if(this.options.navigation) {
-			this.elements.navigation.style.marginLeft = '-' + (this.elements.navigation.offsetWidth / 2) + this.auxiliaries.defaultUnit;
+			this.elements.navigation.style.marginLeft = this.concatenateUnit('-' + (this.elements.navigation.offsetWidth / 2));
 		}
 	};
 	
@@ -246,11 +246,11 @@ module.exports = function(userOptions)
 		
 		if(noAnimation) {
 			this.removeStyleSheetRule();
-			this.elements.list.style.marginLeft = '-' + this.getPosition(this.auxiliaries.currentSlide) + this.auxiliaries.defaultUnit;
+			this.elements.list.style.marginLeft = this.concatenateUnit('-' + this.getPosition(this.auxiliaries.currentSlide));
 		} else {
 			const animationName = this.auxiliaries.animationName + this.auxiliaries.animationIteration++;
-			const origin = this.getPosition(this.auxiliaries.previousSlide) + this.auxiliaries.defaultUnit;
-			const destination = this.getPosition(this.auxiliaries.currentSlide) + this.auxiliaries.defaultUnit;
+			const origin = this.concatenateUnit(this.getPosition(this.auxiliaries.previousSlide));
+			const destination = this.concatenateUnit(this.getPosition(this.auxiliaries.currentSlide));
 			
 			this.removeStyleSheetRule();
 			this.insertStyleSheetRule(helpers.createKeyframes(animationName, origin, destination));
@@ -322,6 +322,10 @@ module.exports = function(userOptions)
 	
 	this.setAnimationNameProperty = function(animationName) {
 		this.elements.list.style.animationName = animationName;
+	};
+	
+	this.concatenateUnit = function(value) {
+		return value + this.auxiliaries.defaultUnit;
 	};
 	
 	this.startSlideshow = function() {
