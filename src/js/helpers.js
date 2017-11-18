@@ -13,10 +13,10 @@ exports.getOptions = function(element)
 	return options;
 };
 
-exports.wrap = function(wrapperElement, wrappedElement)
+exports.wrap = function(wrapper_element, wrapped_element)
 {
-	wrappedElement.parentNode.insertBefore(wrapperElement, wrappedElement);
-	wrapperElement.appendChild(wrappedElement);
+	wrapped_element.parentNode.insertBefore(wrapper_element, wrapped_element);
+	wrapper_element.appendChild(wrapped_element);
 };
 
 exports.checkString = function(value)
@@ -30,14 +30,14 @@ exports.checkString = function(value)
 	return value;
 };
 
-exports.createKeyframes = function(animationName, currentPosition, nextPosition)
+exports.createKeyframes = function(animation_name, current_position, next_position)
 {
-	return '@keyframes ' + animationName + ' {\
+	return '@keyframes ' + animation_name + ' {\
 				0% {\
-					margin-left: -' + currentPosition + ';\
+					margin-left: -' + current_position + ';\
 				}\
 				100% {\
-					margin-left: -' + nextPosition + ';\
+					margin-left: -' + next_position + ';\
 				}\
 			}';
 };

@@ -8,9 +8,9 @@
  
 const helpers = require('./helpers.js');
 
-module.exports = function(userOptions)
+module.exports = function(user_options)
 {
-	this.userOptions = userOptions;
+	this.userOptions = user_options;
 	
 	this.options = {
 		easing: 'ease',
@@ -39,15 +39,15 @@ module.exports = function(userOptions)
 	
 	this.preloadImages = function() {
 		const images = this.elements.list.querySelectorAll('img');
-		const totalImages = images.length;
-		let loadedImages = 0;
+		const total_images = images.length;
+		let loaded_images = 0;
 			
 		images.forEach(image => {
-			const newImage = new Image();
-			newImage.onload = () => {
-				if(++loadedImages == totalImages) this.init();
+			const new_image = new Image();
+			new_image.onload = () => {
+				if(++loaded_images == total_images) this.init();
 			};
-			newImage.src = image.getAttribute('src');
+			new_image.src = image.getAttribute('src');
 		});
 	};
 
@@ -240,21 +240,21 @@ module.exports = function(userOptions)
 		this.move();
 	};
 
-	this.move = function(noAnimation = false) {
+	this.move = function(no_animation = false) {
 		this.updateArrows();
 		if(this.options.navigation) this.updateCurrentNavigationItem();
 		
-		if(noAnimation) {
+		if(no_animation) {
 			this.removeStyleSheetRule();
 			this.setListPosition('-' + this.getPosition(this.auxiliaries.currentSlide));
 		} else {
-			const animationName = this.auxiliaries.animationName + this.auxiliaries.animationIteration++;
+			const animation_name = this.auxiliaries.animationName + this.auxiliaries.animationIteration++;
 			const origin = this.concatenateUnit(this.getPosition(this.auxiliaries.previousSlide));
 			const destination = this.concatenateUnit(this.getPosition(this.auxiliaries.currentSlide));
 			
 			this.removeStyleSheetRule();
-			this.insertStyleSheetRule(helpers.createKeyframes(animationName, origin, destination));
-			this.setAnimationNameProperty(animationName);
+			this.insertStyleSheetRule(helpers.createKeyframes(animation_name, origin, destination));
+			this.setAnimationNameProperty(animation_name);
 		}
 	};
 	
@@ -303,8 +303,9 @@ module.exports = function(userOptions)
 	};
 	
 	this.updateCurrentNavigationItem = function() {
-		const activeNavigationItem = this.elements.navigation.querySelector('.' + this.auxiliaries.labelActive);
-		if(activeNavigationItem) activeNavigationItem.classList.remove(this.auxiliaries.labelActive);
+		const active_navigation_item = this.elements.navigation.querySelector('.' + this.auxiliaries.labelActive);
+		
+		if(active_navigation_item) active_navigation_item.classList.remove(this.auxiliaries.labelActive);
 		this.elements.navigationItems.item(this.auxiliaries.currentSlide).classList.add(this.auxiliaries.labelActive);
 	};
 	
