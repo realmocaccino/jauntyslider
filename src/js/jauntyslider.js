@@ -246,11 +246,11 @@ module.exports = function(userOptions)
 		
 		if(noAnimation) {
 			this.removeStyleSheetRule();
-			this.elements.list.style.marginLeft = '-' + this.getPosition(this.auxiliaries.currentSlide);
+			this.elements.list.style.marginLeft = '-' + this.getPosition(this.auxiliaries.currentSlide) + this.auxiliaries.defaultUnit;
 		} else {
 			const animationName = this.auxiliaries.animationName + this.auxiliaries.animationIteration++;
-			const origin = this.getPosition(this.auxiliaries.previousSlide);
-			const destination = this.getPosition(this.auxiliaries.currentSlide);
+			const origin = this.getPosition(this.auxiliaries.previousSlide) + this.auxiliaries.defaultUnit;
+			const destination = this.getPosition(this.auxiliaries.currentSlide) + this.auxiliaries.defaultUnit;
 			
 			this.removeStyleSheetRule();
 			this.insertStyleSheetRule(helpers.createKeyframes(animationName, origin, destination));
