@@ -30,6 +30,7 @@ module.exports = function(user_options)
 	};
 	
 	this.auxiliaries = {
+		animationBlocked: false,
 		animationIteration: 1,
 		animationName: 'jauntyslider-move',
 		defaultUnit: 'px',
@@ -172,15 +173,19 @@ module.exports = function(user_options)
 		this.elements.previousArrow.addEventListener('click', event => {
 			event.preventDefault();
 			
-			this.goBack();
-			if(this.slideshow) this.restartSlideshow();
+			if(!this.auxiliaries.animationBlocked) {
+				this.goBack();
+				if(this.slideshow) this.restartSlideshow();
+			}
 		});
 		
 		this.elements.nextArrow.addEventListener('click', event => {
 			event.preventDefault();
 			
-			this.goForward();
-			if(this.slideshow) this.restartSlideshow();
+			if(!this.auxiliaries.animationBlocked) {
+				this.goForward();
+				if(this.slideshow) this.restartSlideshow();
+			}
 		});
 		
 		if(this.options.navigation) {
@@ -188,11 +193,21 @@ module.exports = function(user_options)
 				item.addEventListener('click', event => {
 					event.preventDefault();
 				
-					this.navigate(index);
-					if(this.slideshow) this.restartSlideshow();
+					if(!this.auxiliaries.animationBlocked) {
+						this.navigate(index);
+						if(this.slideshow) this.restartSlideshow();
+					}
 				});
 			});
 		}
+		
+		this.elements.list.addEventListener('animationstart', event => {
+			this.auxiliaries.animationBlocked = true;
+		});
+		
+		this.elements.list.addEventListener('animationend', event => {
+			this.auxiliaries.animationBlocked = false;
+		});
 	};
 
 	this.goBack = function() {
@@ -229,7 +244,7 @@ module.exports = function(user_options)
 	this.move = function(no_animation = false) {
 		this.updateArrows();
 		if(this.options.navigation) this.updateCurrentNavigationItem();
-		
+	
 		if(no_animation) {
 			this.removeStyleSheetRule();
 			this.setListPosition('-' + this.getPosition(this.auxiliaries.currentSlide));
@@ -237,7 +252,7 @@ module.exports = function(user_options)
 			const animation_name = this.auxiliaries.animationName + this.auxiliaries.animationIteration++;
 			const origin = this.concatenateUnit(this.getPosition(this.auxiliaries.previousSlide));
 			const destination = this.concatenateUnit(this.getPosition(this.auxiliaries.currentSlide));
-			
+		
 			this.removeStyleSheetRule();
 			this.insertStyleSheetRule(helpers.createKeyframes(animation_name, origin, destination));
 			this.setAnimationNameProperty(animation_name);
