@@ -64,7 +64,7 @@ module.exports = function(user_options)
 	this.build = function() {
 		this.elements.list.removeAttribute('data-jauntyslider');
 	
-		this.elements.slides = this.elements.list.querySelectorAll('li');
+		this.elements.slides = this.elements.list.children;
 		
 		this.auxiliaries.totalSlides = this.elements.slides.length;
 		this.auxiliaries.lastSlide = this.elements.slides.length - 1;
