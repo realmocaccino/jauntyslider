@@ -36,20 +36,6 @@ module.exports = function(user_options)
 		firstSlide: 0,
 		labelActive: 'active'
 	};
-	
-	this.preloadImages = function() {
-		const images = this.elements.list.querySelectorAll('img');
-		const total_images = images.length;
-		let loaded_images = 0;
-			
-		images.forEach(image => {
-			const new_image = new Image();
-			new_image.onload = () => {
-				if(++loaded_images == total_images) this.init();
-			};
-			new_image.src = image.getAttribute('src');
-		});
-	};
 
 	this.init = function() {
 		this.overrideOptions();
@@ -346,6 +332,20 @@ module.exports = function(user_options)
 	this.restartSlideshow = function() {
 		this.stopSlideshow();
 		this.startSlideshow();
+	};
+	
+	this.preloadImages = function() {
+		const images = this.elements.list.querySelectorAll('img');
+		const total_images = images.length;
+		let loaded_images = 0;
+			
+		images.forEach(image => {
+			const new_image = new Image();
+			new_image.onload = () => {
+				if(++loaded_images == total_images) this.init();
+			};
+			new_image.src = image.getAttribute('src');
+		});
 	};
 	
 	this.preloadImages();
