@@ -246,7 +246,7 @@ module.exports = function(userOptions)
 		
 		if(noAnimation) {
 			this.removeStyleSheetRule();
-			this.elements.list.style.marginLeft = this.concatenateUnit('-' + this.getPosition(this.auxiliaries.currentSlide));
+			this.setListPosition('-' + this.getPosition(this.auxiliaries.currentSlide));
 		} else {
 			const animationName = this.auxiliaries.animationName + this.auxiliaries.animationIteration++;
 			const origin = this.concatenateUnit(this.getPosition(this.auxiliaries.previousSlide));
@@ -310,6 +310,10 @@ module.exports = function(userOptions)
 	
 	this.getPosition = function(index) {
 		return this.auxiliaries.slidesPositions[index];
+	};
+	
+	this.setListPosition = function(position) {
+		this.elements.list.style.marginLeft = this.concatenateUnit(position);
 	};
 	
 	this.insertStyleSheetRule = function(rule) {
