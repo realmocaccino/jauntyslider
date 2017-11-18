@@ -47,7 +47,7 @@ overflow: hidden;
 	left: 20px;
 	top: 40%;
 	cursor: pointer;
-	background: url(../img/left-arrow.png) no-repeat 0 0 transparent;
+	background: url(../img/arrows.png) no-repeat left top transparent;
 	@include user-select(none);
 	}
 
@@ -55,7 +55,7 @@ overflow: hidden;
 	{
 	left: auto;
 	right: 20px;
-	background: url(../img/right-arrow.png) no-repeat 0 0 transparent;
+	background-position: right top;
 	}
 
 	ul.jauntyslider-navigation
