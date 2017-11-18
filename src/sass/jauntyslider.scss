@@ -47,7 +47,7 @@ overflow: hidden;
 	left: 20px;
 	top: 40%;
 	cursor: pointer;
-	background: url(../img/arrows.png) no-repeat left top transparent;
+	background: url(../img/arrows.png) no-repeat left top;
 	@include user-select(none);
 	}
 
