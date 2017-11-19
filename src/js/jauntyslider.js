@@ -113,7 +113,7 @@ module.exports = function(user_options)
 	};
 	
 	this.treatInterval = function() {
-		this.options.interval = this.options.interval * 1000;
+		this.options.interval = helpers.handleSecondString(this.options.interval, 'remove') * 1000;
 	};
 
 	this.treatDuration = function() {
@@ -126,6 +126,9 @@ module.exports = function(user_options)
 			break;
 			case 'fast':
 				this.options.duration = '0.3s';
+			break;
+			default:
+				this.options.duration = helpers.handleSecondString(this.options.duration, 'add');
 			break;
 		}
 	};
