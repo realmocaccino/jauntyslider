@@ -1,6 +1,6 @@
 /*
- * Jaunty Slider v1.0 - http://jauntyslider.luizgustavoweb.com
- * The quick way to slide a HTML list
+ * Jaunty Slider v2.0 - http://jauntyslider.luizgustavoweb.com
+ * The quickest way to slide a HTML list
  *
  * Open source under the MIT License
  * © 2015 Luiz Gustavo Martins
