@@ -16,8 +16,8 @@ Jauntyslider is built upon the new features of ES6 compiled to ES5 to support ol
 In order to be able to use Jauntyslider, [download the zip file](https://github.com/lgustavoms/jauntyslider/archive/master.zip) then include the css and javascript files in your document:
 
 ```html
-<link href="css/jauntyslider.css" rel="stylesheet">
-<script src="js/jauntyslider.min.js"></script>
+<link href="dist/css/jauntyslider.min.css" rel="stylesheet">
+<script src="dist/js/jauntyslider.min.js"></script>
 ```
 
 Put the arrow images in your *img* folder as well.
