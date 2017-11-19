@@ -62,8 +62,6 @@ module.exports = function(user_options)
 	};
 	
 	this.build = function() {
-		this.elements.list.removeAttribute('data-jauntyslider');
-	
 		this.elements.slides = Array.from(this.elements.list.children);
 		
 		this.auxiliaries.totalSlides = this.elements.slides.length;
@@ -152,6 +150,8 @@ module.exports = function(user_options)
 	};
 
 	this.setup = function() {
+		this.elements.list.removeAttribute('data-jauntyslider');
+	
 		this.elements.wrapper.style.width = this.options.width;
 		this.elements.wrapper.style.height = this.options.height;
 		
