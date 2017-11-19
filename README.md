@@ -9,7 +9,7 @@ Jauntyslider lets you create a slider from your HTML list with just one step. Al
 ```
 
 ## No Requirements
-You heard it right! No jQuery. No requirements at all!<br>
+You heard it right! No jQuery. No requirements at all.<br>
 Jauntyslider is built upon the new features of ES6 compiled to ES5 to support old browsers.
 
 ## Install
