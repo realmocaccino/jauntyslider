@@ -30,9 +30,9 @@ module.exports = function(user_options)
 	};
 	
 	this.auxiliaries = {
-		animationBlocked: false,
 		animationIteration: 1,
 		animationName: 'jauntyslider-move',
+		animationRunning: false,
 		defaultUnit: 'px',
 		firstSlide: 0,
 		labelActive: 'active'
@@ -202,11 +202,11 @@ module.exports = function(user_options)
 		}
 		
 		this.elements.list.addEventListener('animationstart', event => {
-			this.auxiliaries.animationBlocked = true;
+			this.auxiliaries.animationRunning = true;
 		});
 		
 		this.elements.list.addEventListener('animationend', event => {
-			this.auxiliaries.animationBlocked = false;
+			this.auxiliaries.animationRunning = false;
 		});
 	};
 
@@ -250,9 +250,9 @@ module.exports = function(user_options)
 			this.setListPosition('-' + this.getPosition(this.auxiliaries.currentSlide));
 		} else {
 			const animation_name = this.auxiliaries.animationName + this.auxiliaries.animationIteration++;
-			const origin = this.concatenateUnit(this.getPosition(this.auxiliaries.previousSlide));
+			const origin = this.auxiliaries.animationRunning ? this.concatenateUnit(Math.abs(this.getListPosition())) : this.concatenateUnit(this.getPosition(this.auxiliaries.previousSlide));
 			const destination = this.concatenateUnit(this.getPosition(this.auxiliaries.currentSlide));
-		
+
 			this.removeStyleSheetRule();
 			this.insertStyleSheetRule(helpers.createKeyframes(animation_name, origin, destination));
 			this.setAnimationNameProperty(animation_name);
@@ -312,6 +312,10 @@ module.exports = function(user_options)
 	
 	this.getPosition = function(index) {
 		return this.auxiliaries.slidesPositions[index];
+	};
+	
+	this.getListPosition = function() {
+		return this.elements.list.offsetLeft;
 	};
 	
 	this.setListPosition = function(position) {
