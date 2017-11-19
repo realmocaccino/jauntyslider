@@ -13,6 +13,7 @@ module.exports = function(user_options)
 	this.userOptions = user_options;
 	
 	this.options = {
+		duration: 'normal',
 		easing: 'ease',
 		height: null,
 		initial: 1,
@@ -20,7 +21,6 @@ module.exports = function(user_options)
 		loop: false,
 		navigation: true,
 		slideshow: false,
-		speed: 'normal',
 		step: 1,
 		width: null
 	};
@@ -45,7 +45,7 @@ module.exports = function(user_options)
 		this.setHeight();
 		this.setInitialSlide();
 		this.treatInterval();
-		this.setDuration();
+		this.treatDuration();
 		this.setAnimationProperties();
 		this.setSlidesPositions();
 		this.setup();
@@ -116,8 +116,8 @@ module.exports = function(user_options)
 		this.options.interval = this.options.interval * 1000;
 	};
 
-	this.setDuration = function() {
-		switch(this.options.speed) {
+	this.treatDuration = function() {
+		switch(this.options.duration) {
 			case 'slow':
 				this.options.duration = '1.2s';
 			break;
@@ -126,9 +126,6 @@ module.exports = function(user_options)
 			break;
 			case 'fast':
 				this.options.duration = '0.3s';
-			break;
-			default:
-				this.options.duration = '0.7s';
 			break;
 		}
 	};

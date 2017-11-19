@@ -70,13 +70,13 @@ Jauntyslider supports multiple sliders on the same page:
 
 ## Parameters
 
-### Speed
+### Duration
 
-**[options: slow | normal | fast]**
+**[options: seconds | slow | normal | fast]**
 
 **[default: normal]**
 
-Defines the speed of the transitions.
+Defines how long the transition will run.
 
 ### Easing
 
