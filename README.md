@@ -76,7 +76,7 @@ Jauntyslider supports multiple sliders on the same page:
 
 **[default: normal]**
 
-Defines how long the transition will run.
+Defines how long the transition animation will run.
 
 ### Easing
 
@@ -84,7 +84,7 @@ Defines how long the transition will run.
 
 **[default: ease]**
 
-Defines the easing function of the transitions.
+Defines the easing function of the transition animation.
 
 ### Loop
 
