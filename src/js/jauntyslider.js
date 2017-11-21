@@ -69,6 +69,7 @@ module.exports = function(user_options)
 		
 		this.elements.wrapper = document.createElement('div');
 		this.elements.wrapper.classList.add('jauntyslider-wrapper');
+		helpers.wrap(this.elements.wrapper, this.elements.list);
 		
 		this.elements.previousArrow = document.createElement('a');
 		this.elements.previousArrow.classList.add('jauntyslider-previous');
@@ -77,8 +78,6 @@ module.exports = function(user_options)
 		this.elements.nextArrow = document.createElement('a');
 		this.elements.nextArrow.classList.add('jauntyslider-next');
 		this.elements.nextArrow.setAttribute('title', 'Next');
-		
-		helpers.wrap(this.elements.wrapper, this.elements.list);
 		
 		this.elements.wrapper.insertBefore(this.elements.previousArrow, this.elements.list);
 		this.elements.wrapper.appendChild(this.elements.nextArrow);
