@@ -43,23 +43,6 @@ exports.getOptions = function(element)
 	return options;
 };
 
-exports.handleSecondString = function(value, handle)
-{
-	const check = value.toString().indexOf('s');
-	
-	switch(handle) {
-		case 'add':
-			if(check == '-1') return value + 's';
-		break;
-		
-		case 'remove':
-			if(check != '-1') return value.replace('s', '');
-		break;
-	}
-	
-	return value;
-};
-
 exports.removeSecondSymbol = function(value)
 {
 	if(!isNaN(value)) return value;
