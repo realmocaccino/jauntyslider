@@ -173,19 +173,15 @@ module.exports = function(user_options)
 		this.elements.previousArrow.addEventListener('click', event => {
 			event.preventDefault();
 			
-			if(!this.auxiliaries.animationBlocked) {
-				this.goBack();
-				if(this.slideshow) this.restartSlideshow();
-			}
+			this.goBack();
+			if(this.slideshow) this.restartSlideshow();
 		});
 		
 		this.elements.nextArrow.addEventListener('click', event => {
 			event.preventDefault();
 			
-			if(!this.auxiliaries.animationBlocked) {
-				this.goForward();
-				if(this.slideshow) this.restartSlideshow();
-			}
+			this.goForward();
+			if(this.slideshow) this.restartSlideshow();
 		});
 		
 		if(this.options.navigation) {
@@ -193,10 +189,8 @@ module.exports = function(user_options)
 				item.addEventListener('click', event => {
 					event.preventDefault();
 				
-					if(!this.auxiliaries.animationBlocked) {
-						this.navigate(index);
-						if(this.slideshow) this.restartSlideshow();
-					}
+					this.navigate(index);
+					if(this.slideshow) this.restartSlideshow();
 				});
 			});
 		}
