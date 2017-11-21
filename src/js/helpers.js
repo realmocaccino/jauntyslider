@@ -1,3 +1,10 @@
+exports.addSecondSymbol = function(value)
+{
+	if(!isNaN(value) || value.slice(-1) != 's') return value + 's';
+	
+	return value;
+};
+
 exports.checkString = function(value)
 {
 	if(['true', 'false'].indexOf(value) != '-1')
@@ -49,6 +56,15 @@ exports.handleSecondString = function(value, handle)
 			if(check != '-1') return value.replace('s', '');
 		break;
 	}
+	
+	return value;
+};
+
+exports.removeSecondSymbol = function(value)
+{
+	if(!isNaN(value)) return value;
+	
+	if(value.slice(-1) == 's') return value.slice(0, -1);
 	
 	return value;
 };
