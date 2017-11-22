@@ -353,13 +353,13 @@ module.exports = function(user_options)
 	};
 	
 	this.startSlideshow = function() {
-		this.auxiliaries.progressSlideshow = setInterval(() => {
+		this.auxiliaries.slideshowProgress = setInterval(() => {
 			this.auxiliaries.slideshowMethod();
 		}, this.options.interval);
 	};
 
 	this.stopSlideshow = function() {
-		clearInterval(this.auxiliaries.progressSlideshow);
+		clearInterval(this.auxiliaries.slideshowProgress);
 	};
 
 	this.restartSlideshow = function() {
