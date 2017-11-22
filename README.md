@@ -14,8 +14,8 @@ Or if you need flexibility to select the element and set options, you can do thi
 document.querySelector('ul').jauntyslider();
 ```
 
-## No Requirements
-You read that right! No jQuery. No requirements at all.<br>
+## No Dependencies
+You read that right! No jQuery. No dependencies at all.<br>
 
 ## Install
 In order to be able to use Jauntyslider, [download the zip file](https://github.com/lgustavoms/jauntyslider/archive/master.zip) then include the css and javascript files in your document:
