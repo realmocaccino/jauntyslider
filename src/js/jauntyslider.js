@@ -44,13 +44,16 @@ module.exports = function(user_options)
 		this.setWidth();
 		this.setHeight();
 		this.setInitialSlide();
-		this.treatInterval();
 		this.treatDuration();
 		this.setAnimationProperties();
 		this.setSlidesPositions();
 		this.setup();
 		this.actions();
-		if(this.slideshow) this.startSlideshow();
+		
+		if(this.options.slideshow) {
+			this.treatInterval();
+			this.startSlideshow();
+		}
 	};
 	
 	this.overrideOptions = function() {
@@ -109,10 +112,6 @@ module.exports = function(user_options)
 	this.setInitialSlide = function() {
 		this.auxiliaries.currentSlide = this.options.initial - 1;
 		this.auxiliaries.previousSlide = null;
-	};
-	
-	this.treatInterval = function() {
-		this.options.interval = helpers.removeSecondSymbol(this.options.interval) * 1000;
 	};
 
 	this.treatDuration = function() {
@@ -173,14 +172,14 @@ module.exports = function(user_options)
 			event.preventDefault();
 			
 			this.goBack();
-			if(this.slideshow) this.restartSlideshow();
+			if(this.options.slideshow) this.restartSlideshow();
 		});
 		
 		this.elements.nextArrow.addEventListener('click', event => {
 			event.preventDefault();
 			
 			this.goForward();
-			if(this.slideshow) this.restartSlideshow();
+			if(this.options.slideshow) this.restartSlideshow();
 		});
 		
 		if(this.options.navigation) {
@@ -189,7 +188,7 @@ module.exports = function(user_options)
 					event.preventDefault();
 				
 					this.navigate(index);
-					if(this.slideshow) this.restartSlideshow();
+					if(this.options.slideshow) this.restartSlideshow();
 				});
 			});
 		}
@@ -331,14 +330,18 @@ module.exports = function(user_options)
 		return value + this.auxiliaries.defaultUnit;
 	};
 	
+	this.treatInterval = function() {
+		this.options.interval = helpers.removeSecondSymbol(this.options.interval) * 1000;
+	};
+	
 	this.startSlideshow = function() {
-		this.progressSlideshow = setInterval(function(){
+		this.auxiliaries.progressSlideshow = setInterval(() => {
 			this.goForward();
-		}.bind(this), this.interval);
+		}, this.options.interval);
 	};
 
 	this.stopSlideshow = function() {
-		clearInterval(this.progressSlideshow);
+		clearInterval(this.auxiliaries.progressSlideshow);
 	};
 
 	this.restartSlideshow = function() {
