@@ -165,6 +165,10 @@ The first slide is 1 and the last slide is *n*.
 
 Allows to change the number of the slides travelled by every transition.
 
+## Behind the Scenes
+Jauntyslider is built upon CSS animations modifying the keyframes on every transition. The codebase takes advantage of the new features of ES6 compiled to ES5 to support old browsers.<br>
+We're keeping an eye on Web Animations API because it has proven to be more flexible over rAF.
+
 ## Contribution
 Future versions with more options are to come.<br>
 If you want to contribute with the project, don't hesitate to fork it and send a pull request.<br>
