@@ -5,13 +5,15 @@ The quickest way to slide a HTML list<br>http://jauntyslider.luizgustavoweb.com
 Jauntyslider lets you create a slider from your HTML list with just one step. All you need to do is attach the attibute *data-jauntyslider* on the  list like the example below:
 
 ```html
-<ul data-jauntyslider>
+<ul data-jauntyslider="*options*">
 ```
 
 Or if you need flexibility to select the element and set options, you can do this way:
 
 ```js
-document.querySelector('ul').jauntyslider();
+document.querySelector('ul').jauntyslider({
+	*options*
+});
 ```
 
 ## No Requirements
@@ -25,7 +27,7 @@ In order to be able to use Jauntyslider, [download the zip file](https://github.
 <script src="dist/js/jauntyslider.min.js"></script>
 ```
 
-Put the arrow images in your *img* folder as well.
+Put the arrows image in your *img* folder as well.
 
 ## Usage
 As stated in the introduction, we start using the attribute *data-jauntyslider*.
@@ -37,9 +39,9 @@ As stated in the introduction, we start using the attribute *data-jauntyslider*.
 </ul>
 ```
 
-And there you go! The Jauntyslider is up and running in your list.<br>
-You can also set parameters to customize the slider.<br>
-If you want the slider to move faster, for instance, you can do like the example below:
+And there you go! The Jauntyslider is up and running in your list.
+
+You can also set parameters to customize the slider. For instance, you can make the slider move faster like this:
 
 ```html
 <ul data-jauntyslider="speed:fast;">
@@ -166,8 +168,7 @@ The first slide is 1 and the last slide is *n*.
 Allows to change the number of the slides travelled by every transition.
 
 ## Behind the Scenes
-Jauntyslider is built upon CSS animations modifying the keyframes on every transition. The codebase takes advantage of the new features of ES6 compiled to ES5 to support old browsers.<br>
-We're keeping an eye on Web Animations API because it has proven to be more flexible over rAF.
+Jauntyslider is built upon CSS animations modifying the keyframes on every transition. The codebase takes advantage of the new features of ES6 compiled to ES5 to support old browsers. We're keeping an eye on Web Animations API because it has proven to be more flexible over rAF.
 
 ## Contribution
 Future versions with more options are to come.<br>
