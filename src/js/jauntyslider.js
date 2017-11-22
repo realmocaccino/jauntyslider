@@ -13,6 +13,7 @@ module.exports = function(user_options)
 	this.userOptions = user_options;
 	
 	this.options = {
+		direction: 'forwards',
 		duration: 'normal',
 		easing: 'ease',
 		height: null,
@@ -51,6 +52,7 @@ module.exports = function(user_options)
 		this.actions();
 		
 		if(this.options.slideshow) {
+			this.treatDirection();
 			this.treatInterval();
 			this.startSlideshow();
 		}
@@ -211,6 +213,8 @@ module.exports = function(user_options)
 				this.incrementCurrentSlide(-this.options.step);
 				this.move();
 			}
+		} else if(this.options.slideshow) {
+			this.stopSlideshow();
 		}
 	};
 
@@ -330,13 +334,27 @@ module.exports = function(user_options)
 		return value + this.auxiliaries.defaultUnit;
 	};
 	
+	this.treatDirection = function() {
+		switch(this.options.direction) {
+			case 'forwards':
+				this.auxiliaries.slideshowMethod = this.goForward.bind(this);
+			break;
+			case 'backwards':
+				this.auxiliaries.slideshowMethod = this.goBack.bind(this);
+			break;
+			default:
+				this.auxiliaries.slideshowMethod = this.goForward.bind(this);
+			break;
+		}
+	};
+	
 	this.treatInterval = function() {
 		this.options.interval = helpers.removeSecondSymbol(this.options.interval) * 1000;
 	};
 	
 	this.startSlideshow = function() {
 		this.auxiliaries.progressSlideshow = setInterval(() => {
-			this.goForward();
+			this.auxiliaries.slideshowMethod();
 		}, this.options.interval);
 	};
 

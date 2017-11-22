@@ -119,6 +119,14 @@ If not set, it dinamically inherits the height of the original list.
 If *true*, enables an automatic transition of the slides.<br>
 The navigation is allowed even so.
 
+### Direction
+
+**[options: forwards | backwards]**
+
+**[default: forwards]**
+
+Defines the direction of the slideshow.
+
 ### Interval
 
 **[options: seconds]**
