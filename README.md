@@ -8,7 +8,7 @@ Jauntyslider lets you create a slider from your HTML list with just one step. Al
 <ul data-jauntyslider>
 ```
 
-Or if you need flexibility to select the element or set options, you can do this way:
+Or if you need flexibility to select the element and set options, you can do this way:
 
 ```js
 document.querySelector('ul').jauntyslider();
@@ -16,7 +16,6 @@ document.querySelector('ul').jauntyslider();
 
 ## No Requirements
 You heard it right! No jQuery. No requirements at all.<br>
-Jauntyslider is built upon the new features of ES6 compiled to ES5 to support old browsers.
 
 ## Install
 In order to be able to use Jauntyslider, [download the zip file](https://github.com/lgustavoms/jauntyslider/archive/master.zip) then include the css and javascript files in your document:
