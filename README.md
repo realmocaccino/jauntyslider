@@ -60,12 +60,12 @@ You can set more than one parameter at a time:
 Jauntyslider supports multiple sliders on the same page:
 
 ```html
-<ul id="slider-1" data-jauntyslider="speed:fast; loop:true;">
+<ul id="slider-1" data-jauntyslider="speed:fast; easing:linear;">
 	<li><img src="new-horizon.jpg"></li>
 	[...]
 </ul>
 
-<ul id="slider-2" data-jauntyslider="interval:3s;">
+<ul id="slider-2" data-jauntyslider="loop:true;">
 	<li><img src="my-pet.jpg"></li>
 	[...]
 </ul>
