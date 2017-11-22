@@ -51,7 +51,7 @@ You can also set parameters to customize the slider. For instance, you can make 
 You can set more than one parameter at a time:
 
 ```html
-<ul data-jauntyslider="speed:fast; loop:true;">
+<ul data-jauntyslider="speed:fast; easing:linear;">
 	<li><img src="new-horizon.jpg"></li>
 	[...]
 </ul>
