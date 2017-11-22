@@ -5,15 +5,13 @@ The quickest way to slide a HTML list<br>http://jauntyslider.luizgustavoweb.com
 Jauntyslider lets you create a slider from your HTML list with just one step. All you need to do is attach the attibute *data-jauntyslider* on the  list like the example below:
 
 ```html
-<ul data-jauntyslider="*options*">
+<ul data-jauntyslider>
 ```
 
 Or if you need flexibility to select the element and set options, you can do this way:
 
 ```js
-document.querySelector('ul').jauntyslider({
-	*options*
-});
+document.querySelector('ul').jauntyslider();
 ```
 
 ## No Requirements
