@@ -326,8 +326,8 @@ module.exports = function(user_options)
 		if(this.elements.styleSheet.sheet.cssRules.length) this.elements.styleSheet.sheet.deleteRule(0);
 	};
 	
-	this.setAnimationNameProperty = function(animationName) {
-		this.elements.list.style.animationName = animationName;
+	this.setAnimationNameProperty = function(animation_name) {
+		this.elements.list.style.animationName = animation_name;
 	};
 	
 	this.concatenateUnit = function(value) {
