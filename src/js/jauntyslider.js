@@ -13,7 +13,7 @@ module.exports = function(user_options)
 	this.userOptions = user_options;
 	
 	this.options = {
-		direction: 'forwards',
+		direction: 'forward',
 		duration: 'normal',
 		easing: 'ease',
 		height: null,
@@ -173,7 +173,7 @@ module.exports = function(user_options)
 		this.elements.previousArrow.addEventListener('click', event => {
 			event.preventDefault();
 			
-			this.goBack();
+			this.goBackward();
 			if(this.options.slideshow) this.restartSlideshow();
 		});
 		
@@ -204,8 +204,8 @@ module.exports = function(user_options)
 		});
 	};
 
-	this.goBack = function() {
-		if(this.canGoBack()) {
+	this.goBackward = function() {
+		if(this.canGoBackward()) {
 			if(this.mustGoToTheEnd()) {
 				this.updateCurrentSlide(this.auxiliaries.lastSlide);
 				this.move(true);
@@ -255,7 +255,7 @@ module.exports = function(user_options)
 		}
 	};
 	
-	this.canGoBack = function() {
+	this.canGoBackward = function() {
 		return (this.options.loop || (this.auxiliaries.currentSlide - this.options.step) >= this.auxiliaries.firstSlide);
 	};
 	
@@ -336,11 +336,11 @@ module.exports = function(user_options)
 	
 	this.treatDirection = function() {
 		switch(this.options.direction) {
-			case 'forwards':
+			case 'forward':
 				this.auxiliaries.slideshowMethod = this.goForward.bind(this);
 			break;
-			case 'backwards':
-				this.auxiliaries.slideshowMethod = this.goBack.bind(this);
+			case 'backward':
+				this.auxiliaries.slideshowMethod = this.goBackward.bind(this);
 			break;
 			default:
 				this.auxiliaries.slideshowMethod = this.goForward.bind(this);

@@ -121,9 +121,9 @@ The navigation is allowed even so.
 
 ### Direction
 
-**[options: forwards | backwards]**
+**[options: forward | backward]**
 
-**[default: forwards]**
+**[default: forward]**
 
 Defines the direction of the slideshow.
 
