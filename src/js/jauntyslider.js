@@ -31,7 +31,6 @@ module.exports = function(user_options)
 	};
 	
 	this.auxiliaries = {
-		animationIteration: 1,
 		animationName: 'jauntyslider-move',
 		animationRunning: false,
 		defaultUnit: 'px',
@@ -245,7 +244,7 @@ module.exports = function(user_options)
 			this.removeStyleSheetRule();
 			this.setListPosition('-' + this.getPosition(this.auxiliaries.currentSlide));
 		} else {
-			const animation_name = this.auxiliaries.animationName + this.auxiliaries.animationIteration++;
+			const animation_name = helpers.getUniqueName(this.auxiliaries.animationName);
 			const origin = this.auxiliaries.animationRunning ? this.concatenateUnit(Math.abs(this.getListPosition())) : this.concatenateUnit(this.getPosition(this.auxiliaries.previousSlide));
 			const destination = this.concatenateUnit(this.getPosition(this.auxiliaries.currentSlide));
 

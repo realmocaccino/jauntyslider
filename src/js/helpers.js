@@ -43,6 +43,11 @@ exports.getOptions = function(element)
 	return options;
 };
 
+exports.getUniqueName = function(string)
+{
+	return string + (new Date()).valueOf();
+};
+
 exports.removeSecondSymbol = function(value)
 {
 	if(!isNaN(value)) return value;
