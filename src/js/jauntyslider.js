@@ -178,7 +178,7 @@ function jauntyslider(list) {
 			event.preventDefault();
 		}.bind(this));
 		this.navigationSlides.on('click', function(event) {
-			this.navigate(this);
+			this.navigate(event.target);
 			event.preventDefault();
 		}.bind(this));
 		if(this.slideshow) {
