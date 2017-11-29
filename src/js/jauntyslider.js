@@ -3,7 +3,7 @@
  * The quickest way to slide a HTML list
  *
  * Open source under the MIT License
- * © 2015 Luiz Gustavo Martins
+ * © 2017 Luiz Gustavo Martins
  */
  
 const helpers = require('./helpers.js');
