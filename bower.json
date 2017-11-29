@@ -14,7 +14,7 @@
   ],
   "main": "src/js/jauntyslider.js",
   "dependencies": {
-    "jQuery": ">=1.11.3"
+    "jQuery": "~1.11.3"
   },
   "ignore": [
     "**/.*",
