@@ -6,6 +6,8 @@
  * © 2015 Luiz Gustavo Martins
  *
  */
+ 
+@import 'mixins';
 
 .slider
 {
@@ -35,6 +37,11 @@ overflow:hidden;
 			float:left;
 			}
 			
+				img
+				{
+				@include user-select(none);
+				}
+			
 		}
 		
 	}
@@ -50,6 +57,7 @@ overflow:hidden;
 	top:40%;
 	cursor:pointer;
 	background:url(../img/left-arrow.png) no-repeat 0 0 transparent;
+	@include user-select(none);
 	}
 
 	.slider-next
@@ -66,6 +74,7 @@ overflow:hidden;
 	bottom:3%;
 	display:table;
 	list-style-type:none;
+	@include user-select(none);
 
 		li
 		{
@@ -75,8 +84,8 @@ overflow:hidden;
 		height:10px;
 		float:left;
 		cursor:pointer;
+		@include user-select(none);
 
-		
 			&.active
 			{
 			background:rgba(255, 255, 255, 0.9);
