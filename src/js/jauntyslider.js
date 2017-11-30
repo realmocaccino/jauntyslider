@@ -3,7 +3,7 @@
  * The quickest way to slide a HTML list
  *
  * Open source under the MIT License
- * © 2015 Luiz Gustavo Martins
+ * © 2017 Luiz Gustavo Martins
  */
  
 const helpers = require('./helpers.js');
@@ -245,7 +245,7 @@ module.exports = function(user_options)
 			this.setListPosition('-' + this.getPosition(this.auxiliaries.currentSlide));
 		} else {
 			const animation_name = helpers.getUniqueName(this.auxiliaries.animationName);
-			const origin = this.auxiliaries.animationRunning ? this.concatenateUnit(Math.abs(this.getListPosition())) : this.concatenateUnit(this.getPosition(this.auxiliaries.previousSlide));
+			const origin = this.concatenateUnit((this.auxiliaries.animationRunning ? Math.abs(this.getListPosition()) : this.getPosition(this.auxiliaries.previousSlide)));
 			const destination = this.concatenateUnit(this.getPosition(this.auxiliaries.currentSlide));
 
 			this.removeStyleSheetRule();
