@@ -330,7 +330,11 @@ module.exports = function(user_options)
 	};
 	
 	this.concatenateUnit = function(value) {
-		return value + this.auxiliaries.defaultUnit;
+		if(!helpers.checkUnit(value)) {
+			return value + this.auxiliaries.defaultUnit;
+		} else {
+			return value;
+		}
 	};
 	
 	this.treatDirection = function() {

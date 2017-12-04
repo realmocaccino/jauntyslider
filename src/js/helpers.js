@@ -16,6 +16,15 @@ exports.checkString = function(value)
 	return value;
 };
 
+exports.checkUnit = function(value)
+{
+	const units = ['em', 'ex', '%', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ch', 'rem', 'vh', 'vw', 'vmin', 'vmax', 'vm'];
+	
+	let valueWithoutDigits = value.toString().replace(/\d+/g, '');
+	
+	return (units.indexOf(valueWithoutDigits) != '-1');
+};
+
 exports.createKeyframes = function(animation_name, current_position, next_position)
 {
 	return '@keyframes ' + animation_name + ' {\
