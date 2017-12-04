@@ -60,10 +60,11 @@ overflow: hidden;
 
 	ul.jauntyslider-navigation
 	{
+	width: auto !important;
+	height: 10px !important;
 	padding: 0;
 	margin: 0;
 	position: absolute;
-	height: 10px;
 	left: 50%;
 	bottom: 3%;
 	list-style-type: none;
