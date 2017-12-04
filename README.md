@@ -83,7 +83,7 @@ Defines how long the transition animation will run.
 
 ### Easing
 
-**[options: linear | ease | ease-in | ease-out | ease-in-out]**
+**[options: linear | ease | ease-in | ease-out | ease-in-out | cubic-bezier(n,n,n,n)]**
 
 **[default: ease]**
 
