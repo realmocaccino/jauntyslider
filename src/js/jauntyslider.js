@@ -107,7 +107,7 @@ module.exports = function(user_options)
 	};
 	
 	this.setHeight = function() {
-		if(!this.userOptions.height) this.options.height = this.elements.list.offsetHeight;
+		if(!this.userOptions.height) this.options.height = this.elements.list.offsetHeight || this.elements.slides[0].offsetHeight;
 	};
 	
 	this.setInitialSlide = function() {
@@ -153,8 +153,9 @@ module.exports = function(user_options)
 		
 		this.elements.wrapper.style.setProperty('width', this.concatenateUnit(this.options.width));
 		this.elements.wrapper.style.setProperty('height', this.concatenateUnit(this.options.height));
-		
+
 		this.elements.list.style.setProperty('width', this.concatenateUnit(this.auxiliaries.listWidth), 'important');
+		this.elements.list.style.setProperty('height', this.concatenateUnit(this.options.height));
 		
 		this.move(true);
 		
