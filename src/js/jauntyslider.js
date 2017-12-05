@@ -43,10 +43,10 @@ module.exports = function(user_options)
 		this.build();
 		this.setWidth();
 		this.setHeight();
-		this.setInitialSlide();
 		this.treatDuration();
 		this.setAnimationProperties();
 		this.setSlidesPositions();
+		this.setSlidesAuxiliaries();
 		this.setup();
 		this.actions();
 		
@@ -109,11 +109,6 @@ module.exports = function(user_options)
 	this.setHeight = function() {
 		if(!this.userOptions.height) this.options.height = this.elements.list.offsetHeight || this.elements.slides[0].offsetHeight;
 	};
-	
-	this.setInitialSlide = function() {
-		this.auxiliaries.currentSlide = this.options.initial - 1;
-		this.auxiliaries.previousSlide = null;
-	};
 
 	this.treatDuration = function() {
 		switch(this.options.duration) {
@@ -146,6 +141,12 @@ module.exports = function(user_options)
 			this.auxiliaries.slidesPositions.push(this.auxiliaries.listWidth);
 			this.auxiliaries.listWidth += slide.offsetWidth;
 		});
+	};
+	
+	this.setSlidesAuxiliaries = function() {
+		this.auxiliaries.currentSlide = this.options.initial - 1;
+		this.auxiliaries.nextSlide = this.auxiliaries.currentSlide;
+		this.auxiliaries.previousSlide = null;
 	};
 
 	this.setup = function() {
@@ -207,10 +208,10 @@ module.exports = function(user_options)
 	this.goBackward = function() {
 		if(this.canGoBackward()) {
 			if(this.mustGoToTheEnd()) {
-				this.updateCurrentSlide(this.auxiliaries.lastSlide);
+				this.updateNextSlide(this.auxiliaries.lastSlide);
 				this.move(true);
 			} else {
-				this.incrementCurrentSlide(-this.options.step);
+				this.updateNextSlide(this.auxiliaries.currentSlide - this.options.step);
 				this.move();
 			}
 		} else if(this.options.slideshow) {
@@ -221,10 +222,10 @@ module.exports = function(user_options)
 	this.goForward = function() {
 		if(this.canGoForward()) {
 			if(this.mustGoToTheBeggining()) {
-				this.updateCurrentSlide(this.auxiliaries.firstSlide);
+				this.updateNextSlide(this.auxiliaries.firstSlide);
 				this.move(true);
 			} else {
-				this.incrementCurrentSlide(this.options.step);
+				this.updateNextSlide(this.auxiliaries.currentSlide + this.options.step);
 				this.move();
 			}
 		} else if(this.options.slideshow) {
@@ -233,7 +234,7 @@ module.exports = function(user_options)
 	};
 	
 	this.navigate = function(index) {
-		this.updateCurrentSlide(index);
+		this.updateNextSlide(index);
 		this.move();
 	};
 
@@ -243,16 +244,18 @@ module.exports = function(user_options)
 	
 		if(no_animation) {
 			this.removeStyleSheetRule();
-			this.setListPosition('-' + this.getPosition(this.auxiliaries.currentSlide));
+			this.setListPosition('-' + this.getPosition(this.auxiliaries.nextSlide));
 		} else {
 			const animation_name = helpers.getUniqueName(this.auxiliaries.animationName);
-			const origin = this.concatenateUnit((this.auxiliaries.animationRunning ? Math.abs(this.getListPosition()) : this.getPosition(this.auxiliaries.previousSlide)));
-			const destination = this.concatenateUnit(this.getPosition(this.auxiliaries.currentSlide));
+			const origin = this.concatenateUnit((this.auxiliaries.animationRunning ? Math.abs(this.getListPosition()) : this.getPosition(this.auxiliaries.currentSlide)));
+			const destination = this.concatenateUnit(this.getPosition(this.auxiliaries.nextSlide));
 
 			this.removeStyleSheetRule();
 			this.insertStyleSheetRule(helpers.createKeyframes(animation_name, origin, destination));
 			this.setAnimationNameProperty(animation_name);
 		}
+		
+		this.updateCurrentSlide(this.auxiliaries.nextSlide);
 	};
 	
 	this.canGoBackward = function() {
@@ -271,9 +274,8 @@ module.exports = function(user_options)
 		return (this.options.loop && (this.auxiliaries.currentSlide + this.options.step) > this.auxiliaries.lastSlide);
 	};
 	
-	this.incrementCurrentSlide = function(increment) {
-		this.updatePreviousSlide();
-		this.auxiliaries.currentSlide += increment;
+	this.updateNextSlide = function(index) {
+		this.auxiliaries.nextSlide = index;
 	};
 	
 	this.updateCurrentSlide = function(index) {
@@ -286,15 +288,15 @@ module.exports = function(user_options)
 	};
 
 	this.updateArrows = function() {
-		if(this.auxiliaries.currentSlide != this.auxiliaries.firstSlide) {
+		if(this.auxiliaries.nextSlide != this.auxiliaries.firstSlide) {
 			this.elements.previousArrow.style.display = 'block';
-		} else if(!this.options.loop && this.auxiliaries.currentSlide == this.auxiliaries.firstSlide) {
+		} else if(!this.options.loop && this.auxiliaries.nextSlide == this.auxiliaries.firstSlide) {
 			this.elements.previousArrow.style.display = 'none';
 		}
 		
-		if(this.auxiliaries.currentSlide != this.auxiliaries.lastSlide) {
+		if(this.auxiliaries.nextSlide != this.auxiliaries.lastSlide) {
 			this.elements.nextArrow.style.display = 'block';
-		} else if(!this.options.loop && this.auxiliaries.currentSlide == this.auxiliaries.lastSlide) {
+		} else if(!this.options.loop && this.auxiliaries.nextSlide == this.auxiliaries.lastSlide) {
 			this.elements.nextArrow.style.display = 'none';
 		}
 	};
@@ -303,7 +305,7 @@ module.exports = function(user_options)
 		const active_navigation_item = this.elements.navigation.querySelector('.' + this.auxiliaries.labelActive);
 		
 		if(active_navigation_item) active_navigation_item.classList.remove(this.auxiliaries.labelActive);
-		this.elements.navigationItems[this.auxiliaries.currentSlide].classList.add(this.auxiliaries.labelActive);
+		this.elements.navigationItems[this.auxiliaries.nextSlide].classList.add(this.auxiliaries.labelActive);
 	};
 	
 	this.getPosition = function(index) {
