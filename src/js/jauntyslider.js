@@ -151,7 +151,7 @@ module.exports = function(user_options)
 
 	this.setup = function() {
 		this.elements.list.removeAttribute('data-jauntyslider');
-		
+		console.log(this.concatenateUnit(this.options.height));
 		this.elements.wrapper.style.setProperty('width', this.concatenateUnit(this.options.width));
 		this.elements.wrapper.style.setProperty('height', this.concatenateUnit(this.options.height));
 

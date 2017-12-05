@@ -11,16 +11,16 @@ exports.checkString = function(value)
 		return (value === 'true');
 	
 	else if(!isNaN(value))
-		return parseInt(value);
+		return Number(value);
 	
-	return value;
+	return value.toLowerCase();
 };
 
 exports.checkUnit = function(value)
 {
 	const units = ['em', 'ex', '%', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ch', 'rem', 'vh', 'vw', 'vmin', 'vmax', 'vm'];
 	
-	let valueWithoutDigits = value.toString().replace(/\d+/g, '');
+	let valueWithoutDigits = value.toString().replace(/[.,\d]+/g, '');
 	
 	return (units.indexOf(valueWithoutDigits) != '-1');
 };
@@ -45,7 +45,7 @@ exports.getOptions = function(element)
 	data_options.forEach(option => {
 		if(option) {
 			const [property, value] = option.split(':');
-			options[property.toLowerCase()] = exports.checkString(value.toLowerCase());
+			options[property.toLowerCase()] = exports.checkString(value);
 		}
 	});
 	
