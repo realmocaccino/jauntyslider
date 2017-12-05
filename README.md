@@ -8,21 +8,24 @@ Jauntyslider lets you create a slider from your HTML list with just one step. Al
 <ul data-jauntyslider>
 ```
 
-## Requirements
-- jQuery
-- HTML5
+Or you can do it by the classic way in your script:
 
-If you're using Bower, jQuery is already included in the json file as a component of the project.
+```js
+document.querySelector('ul').jauntyslider();
+```
+
+## No Dependencies
+You read that right! No jQuery. No dependencies at all.<br>
 
 ## Install
 In order to be able to use Jauntyslider, [download the zip file](https://github.com/lgustavoms/jauntyslider/archive/master.zip) then include the css and javascript files in your document:
 
 ```html
-<link href="css/jauntyslider.css" rel="stylesheet">
-<script src="js/jauntyslider.min.js"></script>
+<link href="dist/css/jauntyslider.min.css" rel="stylesheet">
+<script src="dist/js/jauntyslider.min.js"></script>
 ```
 
-Put the arrow images in your *img* folder as well.
+Put the arrows image in your *img* folder as well.
 
 ## Usage
 As stated in the introduction, we start using the attribute *data-jauntyslider*.
@@ -34,9 +37,9 @@ As stated in the introduction, we start using the attribute *data-jauntyslider*.
 </ul>
 ```
 
-And there you go! The Jauntyslider is up and running in your list.<br>
-You can also set parameters to customize the slider.<br>
-If you want the slider to move faster, for instance, you can do like the example below:
+And there you go! The Jauntyslider is up and running in your list.
+
+You can also set parameters to customize the slider. For instance, you can make the slider move faster like this:
 
 ```html
 <ul data-jauntyslider="speed:fast;">
@@ -48,7 +51,7 @@ If you want the slider to move faster, for instance, you can do like the example
 You can set more than one parameter at a time:
 
 ```html
-<ul data-jauntyslider="speed:fast; loop:true;">
+<ul data-jauntyslider="speed:fast; easing:linear;">
 	<li><img src="new-horizon.jpg"></li>
 	[...]
 </ul>
@@ -57,12 +60,12 @@ You can set more than one parameter at a time:
 Jauntyslider supports multiple sliders on the same page:
 
 ```html
-<ul id="slider-1" data-jauntyslider="speed:fast; loop:true;">
+<ul id="slider-1" data-jauntyslider="speed:fast; easing:linear;">
 	<li><img src="new-horizon.jpg"></li>
 	[...]
 </ul>
 
-<ul id="slider-2" data-jauntyslider="interval:3s;">
+<ul id="slider-2" data-jauntyslider="loop:true;">
 	<li><img src="my-pet.jpg"></li>
 	[...]
 </ul>
@@ -70,13 +73,21 @@ Jauntyslider supports multiple sliders on the same page:
 
 ## Parameters
 
-### Speed
+### Duration
 
-**[options: slow | normal | fast | easein | easeout | easeinout]**
+**[options: seconds | slow | normal | fast]**
 
 **[default: normal]**
 
-Defines the speed of the transitions.
+Defines how long the transition animation will run.
+
+### Easing
+
+**[options: linear | ease | ease-in | ease-out | ease-in-out | cubic-bezier(n,n,n,n)]**
+
+**[default: ease]**
+
+Defines the easing function of the transition animation.
 
 ### Loop
 
@@ -113,13 +124,21 @@ If not set, it dinamically inherits the height of the original list.
 If *true*, enables an automatic transition of the slides.<br>
 The navigation is allowed even so.
 
+### Direction
+
+**[options: forward | backward]**
+
+**[default: forward]**
+
+Defines the direction of the slideshow.
+
 ### Interval
 
 **[options: seconds]**
 
-**[default: 5s]**
+**[default: 5]**
 
-Defines the interval between the transitions of the slideshow.
+Defines the interval in seconds between the transitions of the slideshow.
 
 ### Navigation
 
@@ -129,7 +148,7 @@ Defines the interval between the transitions of the slideshow.
 
 If *false* hides the navigation on the bottom.
 
-### Start
+### Initial
 
 **[options: integer]**
 
@@ -145,6 +164,9 @@ The first slide is 1 and the last slide is *n*.
 **[default: 1]**
 
 Allows to change the number of the slides travelled by every transition.
+
+## Behind the Scenes
+Jauntyslider is built upon CSS animations modifying the keyframes on every transition. The codebase takes advantage of the new features of ES6 compiled to ES5 to support old browsers. We're keeping an eye on Web Animations API because it has proven to be more flexible over rAF.
 
 ## Contribution
 Future versions with more options are to come.<br>

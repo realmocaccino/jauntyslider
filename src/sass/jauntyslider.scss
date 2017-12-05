@@ -1,85 +1,91 @@
 /*
- * Jaunty Slider v1.0 - http://jauntyslider.luizgustavoweb.com
- * The quick way to slide a HTML list
+ * Jaunty Slider v2.0 - http://jauntyslider.luizgustavoweb.com
+ * The quickest way to slide a HTML list
  *
  * Open source under the MIT License
- * © 2015 Luiz Gustavo Martins
+ * © 2017 Luiz Gustavo Martins
  *
  */
+ 
+@import 'mixins';
 
-.slider
+.jauntyslider-wrapper
 {
-position:relative;
-overflow:hidden;
-
-	.slider-scroll
-	{
-	height:100%;
-	width:100%;
-	overflow:hidden;
-	position:relative;
-	left:0;
-	top:0;
+position: relative;
+overflow: hidden;
 		
-		ul
+	ul
+	{
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+		
+		li
 		{
-		height:100%;
-		padding:0;
-		margin:0;
-		list-style-type:none;
-			
-			li
+		transition: width 0.3s ease;
+		float: left;
+		
+			img
 			{
-			transition:width 0.3s ease;
-			position:relative;
-			float:left;
+			vertical-align: middle;
+			@include user-select('none');
 			}
-			
+
 		}
 		
 	}
 
-	.slider-previous,
-	.slider-next
+	.jauntyslider-previous,
+	.jauntyslider-next
 	{
-	position:absolute;
-	width:35px;
-	height:65px;
-	z-index:1;
-	left:20px;
-	top:40%;
-	cursor:pointer;
-	background:url(../img/left-arrow.png) no-repeat 0 0 transparent;
+	display: none;
+	position: absolute;
+	width: 35px;
+	height: 65px;
+	z-index: 1;
+	left: 20px;
+	top: 40%;
+	cursor: pointer;
+	background: url(../img/jauntyslider.png) no-repeat 0 0;
+	@include user-select(none);
 	}
 
-	.slider-next
+	.jauntyslider-next
 	{
-	left:auto;
-	right:20px;
-	background:url(../img/right-arrow.png) no-repeat 0 0 transparent;
+	left: auto;
+	right: 20px;
+	background-position: -36px 0;
 	}
 
-	ul.navigation
+	ul.jauntyslider-navigation
 	{
-	position:absolute;
-	left:50%;
-	bottom:3%;
-	display:table;
-	list-style-type:none;
-
+	width: auto !important;
+	height: 10px !important;
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	left: 50%;
+	bottom: 3%;
+	list-style-type: none;
+	@include user-select(none);
+	
 		li
 		{
-		background:rgba(119, 119, 119, 0.7);
-		margin-left:5px;
-		width:10px;
-		height:10px;
-		float:left;
-		cursor:pointer;
-
+		background: rgba(119, 119, 119, 0.7);
+		width: 10px;
+		height: 10px;
+		float: left;
+		cursor: pointer;
+		@include user-select(none);
+		
+			&:not(:last-child)
+			{
+			margin-right: 5px;
+			}
 		
 			&.active
 			{
-			background:rgba(255, 255, 255, 0.9);
+			background: rgba(255, 255, 255, 0.9);
 			}
 			
 		}
