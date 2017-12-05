@@ -92,7 +92,7 @@ module.exports = function(user_options)
 			this.elements.navigation.classList.add('jauntyslider-navigation');
 		
 			this.elements.slides.forEach(() => this.elements.navigation.appendChild(document.createElement('li')));
-			this.elements.navigationItems = this.elements.navigation.querySelectorAll('li');
+			this.elements.navigationItems = Array.from(this.elements.navigation.querySelectorAll('li'));
 			
 			this.elements.wrapper.appendChild(this.elements.navigation);
 			
@@ -303,7 +303,7 @@ module.exports = function(user_options)
 		const active_navigation_item = this.elements.navigation.querySelector('.' + this.auxiliaries.labelActive);
 		
 		if(active_navigation_item) active_navigation_item.classList.remove(this.auxiliaries.labelActive);
-		this.elements.navigationItems.item(this.auxiliaries.currentSlide).classList.add(this.auxiliaries.labelActive);
+		this.elements.navigationItems[this.auxiliaries.currentSlide].classList.add(this.auxiliaries.labelActive);
 	};
 	
 	this.getPosition = function(index) {
@@ -372,7 +372,7 @@ module.exports = function(user_options)
 	};
 	
 	this.preloadImages = function() {
-		const images = this.elements.list.querySelectorAll('img');
+		const images = Array.from(this.elements.list.querySelectorAll('img'));
 		const total_images = images.length;
 		let loaded_images = 0;
 			
