@@ -81,6 +81,14 @@ Jauntyslider supports multiple sliders on the same page:
 
 Defines the transition animation.
 
+### Direction
+
+**[options: forward | backward]**
+
+**[default: forward]**
+
+Defines the direction of the slideshow.
+
 ### Duration
 
 **[options: seconds | slow | normal | fast]**
@@ -97,23 +105,6 @@ Defines how long the transition animation will run.
 
 Defines the easing function of the transition animation.
 
-### Loop
-
-**[options: true | false]**
-
-**[default: false]**
-
-If *true*, when reaching the end of the slider, it'll come back to the beginning.
-
-### Width
-
-**[options: %, px, pt, em, in...]**
-
-**[default: inheritance]**
-
-Sets the width of the slider.<br>
-If not set, it dinamically inherits the width of the original list.
-
 ### Height
 
 **[options: %, px, pt, em, in...]**
@@ -122,39 +113,6 @@ If not set, it dinamically inherits the width of the original list.
 
 Sets the height of the slider.<br>
 If not set, it dinamically inherits the height of the original list.
-
-### Slideshow
-
-**[options: true | false]**
-
-**[default: false]**
-
-If *true*, enables an automatic transition of the slides.<br>
-The navigation is allowed even so.
-
-### Direction
-
-**[options: forward | backward]**
-
-**[default: forward]**
-
-Defines the direction of the slideshow.
-
-### Interval
-
-**[options: seconds]**
-
-**[default: 5]**
-
-Defines the interval in seconds between the transitions of the slideshow.
-
-### Navigation
-
-**[options: true | false]**
-
-**[default: true]**
-
-If *false* hides the navigation on the bottom.
 
 ### Initial
 
@@ -165,6 +123,39 @@ If *false* hides the navigation on the bottom.
 Defines in which slide the slider will start.<br>
 The first slide is 1 and the last slide is *n*.
 
+### Interval
+
+**[options: seconds]**
+
+**[default: 5]**
+
+Defines the interval in seconds between the transitions of the slideshow.
+
+### Loop
+
+**[options: true | false]**
+
+**[default: false]**
+
+If *true*, when reaching the end of the slider, it'll come back to the beginning.
+
+### Navigation
+
+**[options: true | false]**
+
+**[default: true]**
+
+If *false* hides the navigation on the bottom.
+
+### Slideshow
+
+**[options: true | false]**
+
+**[default: false]**
+
+If *true*, enables an automatic transition of the slides.<br>
+The navigation is allowed even so.
+
 ### Step
 
 **[options: integer]**
@@ -172,6 +163,15 @@ The first slide is 1 and the last slide is *n*.
 **[default: 1]**
 
 Allows to change the number of the slides travelled by every transition.
+
+### Width
+
+**[options: %, px, pt, em, in...]**
+
+**[default: inheritance]**
+
+Sets the width of the slider.<br>
+If not set, it dinamically inherits the width of the original list.
 
 ## Behind the Scenes
 Jauntyslider is built upon CSS animations modifying the keyframes on every transition. The codebase takes advantage of the new features of ES6 compiled to ES5 to support old browsers. We're keeping an eye on Web Animations API because it has proven to be more flexible over rAF.
