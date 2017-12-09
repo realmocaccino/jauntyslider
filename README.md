@@ -73,6 +73,14 @@ Jauntyslider supports multiple sliders on the same page:
 
 ## Parameters
 
+### Animation
+
+**[options: move | none]**
+
+**[default: move]**
+
+Defines the transition animation.
+
 ### Duration
 
 **[options: seconds | slow | normal | fast]**
