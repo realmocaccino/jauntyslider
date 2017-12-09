@@ -13,6 +13,7 @@ module.exports = function(user_options)
 	this.userOptions = user_options;
 	
 	this.options = {
+		animation: 'move',
 		direction: 'forward',
 		duration: 'normal',
 		easing: 'ease',
@@ -151,7 +152,7 @@ module.exports = function(user_options)
 
 	this.setup = function() {
 		this.elements.list.removeAttribute('data-jauntyslider');
-
+		
 		this.elements.wrapper.style.setProperty('width', this.concatenateUnit(this.options.width));
 		this.elements.wrapper.style.setProperty('height', this.concatenateUnit(this.options.height));
 
@@ -242,10 +243,10 @@ module.exports = function(user_options)
 		this.updateArrows();
 		if(this.options.navigation) this.updateCurrentNavigationItem();
 	
-		if(no_animation) {
+		if(this.options.animation == 'none' || no_animation) {
 			this.removeStyleSheetRule();
 			this.setListPosition('-' + this.getPosition(this.auxiliaries.nextSlide));
-		} else {
+		} else if(this.options.animation == 'move') {
 			const animation_name = helpers.getUniqueName(this.auxiliaries.animationName);
 			const origin = this.concatenateUnit((this.auxiliaries.animationRunning ? Math.abs(this.getListPosition()) : this.getPosition(this.auxiliaries.currentSlide)));
 			const destination = this.concatenateUnit(this.getPosition(this.auxiliaries.nextSlide));
