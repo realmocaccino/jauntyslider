@@ -302,9 +302,7 @@ module.exports = function(user_options)
 	};
 	
 	this.updateCurrentNavigationItem = function() {
-		const active_navigation_item = this.elements.navigation.querySelector('.' + this.auxiliaries.labelActive);
-		
-		if(active_navigation_item) active_navigation_item.classList.remove(this.auxiliaries.labelActive);
+		this.elements.navigationItems[this.auxiliaries.currentSlide].classList.remove(this.auxiliaries.labelActive);
 		this.elements.navigationItems[this.auxiliaries.nextSlide].classList.add(this.auxiliaries.labelActive);
 	};
 	
