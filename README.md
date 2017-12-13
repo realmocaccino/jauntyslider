@@ -178,7 +178,6 @@ Jauntyslider is built upon CSS transitions. The codebase takes advantage of the 
 
 ## Contribution
 Future versions with more options are to come. If you want to contribute with the project, don't hesitate to fork it and send a pull request.<br>
-Thanks for using!
 
 ## License
 Jauntyslider is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
