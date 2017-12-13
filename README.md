@@ -177,8 +177,7 @@ If not set, it dinamically inherits the width of the original list.
 Jauntyslider is built upon CSS transitions. The codebase takes advantage of the new features of ES6 compiled to ES5 to support old browsers. We're keeping an eye on Web Animations API because it has proven to be more flexible over rAF.
 
 ## Contribution
-Future versions with more options are to come.<br>
-If you want to contribute with the project, don't hesitate to fork it and send a pull request.<br>
+Future versions with more options are to come. If you want to contribute with the project, don't hesitate to fork it and send a pull request.<br>
 Thanks for using!
 
 ## License
