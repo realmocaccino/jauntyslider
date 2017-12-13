@@ -34,7 +34,6 @@ module.exports = function(user_options)
 	this.auxiliaries = {
 		animationRunning: false,
 		defaultUnit: 'px',
-		firstSlide: 0,
 		labelActive: 'active'
 	};
 
@@ -67,9 +66,6 @@ module.exports = function(user_options)
 	
 	this.build = function() {
 		this.elements.slides = Array.from(this.elements.list.children);
-		
-		this.auxiliaries.totalSlides = this.elements.slides.length;
-		this.auxiliaries.lastSlide = this.elements.slides.length - 1;
 		
 		this.elements.wrapper = document.createElement('div');
 		this.elements.wrapper.classList.add('jauntyslider-wrapper');
@@ -147,6 +143,9 @@ module.exports = function(user_options)
 		this.auxiliaries.currentSlide = this.options.initial - 1;
 		this.auxiliaries.nextSlide = this.auxiliaries.currentSlide;
 		this.auxiliaries.previousSlide = null;
+		this.auxiliaries.firstSlide = 0;
+		this.auxiliaries.lastSlide = this.elements.slides.length - 1;
+		this.auxiliaries.totalSlides = this.elements.slides.length;
 	};
 
 	this.setup = function() {
@@ -297,9 +296,7 @@ module.exports = function(user_options)
 	};
 	
 	this.updateCurrentNavigationItem = function() {
-		const active_navigation_item = this.elements.navigation.querySelector('.' + this.auxiliaries.labelActive);
-		
-		if(active_navigation_item) active_navigation_item.classList.remove(this.auxiliaries.labelActive);
+		this.elements.navigationItems[this.auxiliaries.currentSlide].classList.remove(this.auxiliaries.labelActive);
 		this.elements.navigationItems[this.auxiliaries.nextSlide].classList.add(this.auxiliaries.labelActive);
 	};
 	
