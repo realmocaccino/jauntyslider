@@ -25,18 +25,6 @@ exports.checkUnit = function(value)
 	return (units.indexOf(valueWithoutDigits) != '-1');
 };
 
-exports.createKeyframes = function(animation_name, current_position, next_position)
-{
-	return '@keyframes ' + animation_name + ' {\
-				0% {\
-					margin-left: -' + current_position + ';\
-				}\
-				100% {\
-					margin-left: -' + next_position + ';\
-				}\
-			}';
-};
-
 exports.getOptions = function(element)
 {
 	let options = {};
@@ -50,11 +38,6 @@ exports.getOptions = function(element)
 	});
 	
 	return options;
-};
-
-exports.getUniqueName = function(string)
-{
-	return string + (new Date()).valueOf();
 };
 
 exports.removeSecondSymbol = function(value)

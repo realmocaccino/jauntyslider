@@ -32,7 +32,6 @@ module.exports = function(user_options)
 	};
 	
 	this.auxiliaries = {
-		animationName: 'jauntyslider-move',
 		animationRunning: false,
 		defaultUnit: 'px',
 		labelActive: 'active'
@@ -44,7 +43,6 @@ module.exports = function(user_options)
 		this.setWidth();
 		this.setHeight();
 		this.treatDuration();
-		this.setAnimationProperties();
 		this.setSlidesPositions();
 		this.setSlidesAuxiliaries();
 		this.setup();
@@ -124,12 +122,6 @@ module.exports = function(user_options)
 		}
 	};
 	
-	this.setAnimationProperties = function() {
-		this.elements.list.style.animationDuration = this.options.duration;
-		this.elements.list.style.animationTimingFunction = this.options.easing;
-		this.elements.list.style.animationFillMode = 'forwards';
-	};
-	
 	this.setSlidesPositions = function() {
 		this.auxiliaries.listWidth = 0;
 		this.auxiliaries.slidesPositions = [];
@@ -147,6 +139,18 @@ module.exports = function(user_options)
 		this.auxiliaries.firstSlide = 0;
 		this.auxiliaries.lastSlide = this.elements.slides.length - 1;
 		this.auxiliaries.totalSlides = this.elements.slides.length;
+	};
+	
+	this.setTransitionProperties = function() {
+		this.elements.list.style.transitionProperty = 'margin-left';
+		this.elements.list.style.transitionDuration = this.options.duration;
+		this.elements.list.style.transitionTimingFunction = this.options.easing;
+	};
+	
+	this.removeTransitionProperties = function() {
+		this.elements.list.style.transitionProperty = null;
+		this.elements.list.style.transitionDuration = null;
+		this.elements.list.style.transitionTimingFunction = null;
 	};
 
 	this.setup = function() {
@@ -196,11 +200,11 @@ module.exports = function(user_options)
 			});
 		}
 		
-		this.elements.list.addEventListener('animationstart', event => {
+		this.elements.list.addEventListener('transitionstart', event => {
 			this.auxiliaries.animationRunning = true;
 		});
 		
-		this.elements.list.addEventListener('animationend', event => {
+		this.elements.list.addEventListener('transitionend', event => {
 			this.auxiliaries.animationRunning = false;
 		});
 	};
@@ -243,16 +247,11 @@ module.exports = function(user_options)
 		if(this.options.navigation) this.updateCurrentNavigationItem();
 	
 		if(this.options.animation == 'none' || no_animation) {
-			this.removeStyleSheetRule();
+			this.removeTransitionProperties();
 			this.setListPosition('-' + this.getPosition(this.auxiliaries.nextSlide));
 		} else if(this.options.animation == 'move') {
-			const animation_name = helpers.getUniqueName(this.auxiliaries.animationName);
-			const origin = this.concatenateUnit((this.auxiliaries.animationRunning ? Math.abs(this.getListPosition()) : this.getPosition(this.auxiliaries.currentSlide)));
-			const destination = this.concatenateUnit(this.getPosition(this.auxiliaries.nextSlide));
-
-			this.removeStyleSheetRule();
-			this.insertStyleSheetRule(helpers.createKeyframes(animation_name, origin, destination));
-			this.setAnimationNameProperty(animation_name);
+			this.setTransitionProperties();
+			this.setListPosition('-' + this.getPosition(this.auxiliaries.nextSlide));
 		}
 		
 		this.updateCurrentSlide(this.auxiliaries.nextSlide);
@@ -316,18 +315,6 @@ module.exports = function(user_options)
 	
 	this.setListPosition = function(position) {
 		this.elements.list.style.marginLeft = this.concatenateUnit(position);
-	};
-	
-	this.insertStyleSheetRule = function(rule) {
-		this.elements.styleSheet.sheet.insertRule(rule, 0);
-	};
-	
-	this.removeStyleSheetRule = function() {
-		if(this.elements.styleSheet.sheet.cssRules.length) this.elements.styleSheet.sheet.deleteRule(0);
-	};
-	
-	this.setAnimationNameProperty = function(animation_name) {
-		this.elements.list.style.animationName = animation_name;
 	};
 	
 	this.concatenateUnit = function(value) {

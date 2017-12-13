@@ -174,7 +174,7 @@ Sets the width of the slider.<br>
 If not set, it dinamically inherits the width of the original list.
 
 ## Behind the Scenes
-Jauntyslider is built upon CSS animations modifying the keyframes on every transition. The codebase takes advantage of the new features of ES6 compiled to ES5 to support old browsers. We're keeping an eye on Web Animations API because it has proven to be more flexible over rAF.
+Jauntyslider is built upon CSS transitions. The codebase takes advantage of the new features of ES6 compiled to ES5 to support old browsers. We're keeping an eye on Web Animations API because it has proven to be more flexible over rAF.
 
 ## Contribution
 Future versions with more options are to come.<br>
