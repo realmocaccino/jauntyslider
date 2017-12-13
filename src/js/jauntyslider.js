@@ -43,7 +43,6 @@ module.exports = function(user_options)
 		this.setWidth();
 		this.setHeight();
 		this.treatDuration();
-		this.setAnimationProperties();
 		this.setSlidesPositions();
 		this.setSlidesAuxiliaries();
 		this.setup();
@@ -123,12 +122,6 @@ module.exports = function(user_options)
 		}
 	};
 	
-	this.setAnimationProperties = function() {
-		this.elements.list.style.property = 'margin-left';
-		this.elements.list.style.transitionDuration = this.options.duration;
-		this.elements.list.style.transitionTimingFunction = this.options.easing;
-	};
-	
 	this.setSlidesPositions = function() {
 		this.auxiliaries.listWidth = 0;
 		this.auxiliaries.slidesPositions = [];
@@ -146,6 +139,18 @@ module.exports = function(user_options)
 		this.auxiliaries.firstSlide = 0;
 		this.auxiliaries.lastSlide = this.elements.slides.length - 1;
 		this.auxiliaries.totalSlides = this.elements.slides.length;
+	};
+	
+	this.setTransitionProperties = function() {
+		this.elements.list.style.transitionProperty = 'margin-left';
+		this.elements.list.style.transitionDuration = this.options.duration;
+		this.elements.list.style.transitionTimingFunction = this.options.easing;
+	};
+	
+	this.removeTransitionProperties = function() {
+		this.elements.list.style.transitionProperty = null;
+		this.elements.list.style.transitionDuration = null;
+		this.elements.list.style.transitionTimingFunction = null;
 	};
 
 	this.setup = function() {
@@ -242,10 +247,10 @@ module.exports = function(user_options)
 		if(this.options.navigation) this.updateCurrentNavigationItem();
 	
 		if(this.options.animation == 'none' || no_animation) {
-			this.elements.list.style.property = null;
+			this.removeTransitionProperties();
 			this.setListPosition('-' + this.getPosition(this.auxiliaries.nextSlide));
 		} else if(this.options.animation == 'move') {
-			this.elements.list.style.property = 'margin-left';
+			this.setTransitionProperties();
 			this.setListPosition('-' + this.getPosition(this.auxiliaries.nextSlide));
 		}
 		
