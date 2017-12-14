@@ -39,9 +39,9 @@ overflow: hidden;
 	{
 	display: none;
 	position: absolute;
+	z-index: 1;
 	width: 35px;
 	height: 65px;
-	z-index: 1;
 	left: 20px;
 	top: 40%;
 	cursor: pointer;
@@ -58,11 +58,12 @@ overflow: hidden;
 
 	ul.jauntyslider-navigation
 	{
+	position: absolute;
+	z-index: 1;
 	width: auto !important;
 	height: 10px !important;
 	padding: 0;
 	margin: 0;
-	position: absolute;
 	left: 50%;
 	bottom: 3%;
 	list-style-type: none;
