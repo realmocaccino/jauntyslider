@@ -312,10 +312,6 @@ module.exports = function(user_options)
 		return this.auxiliaries.slidesPositions[index];
 	};
 	
-	this.getListPosition = function() {
-		return this.elements.list.offsetLeft;
-	};
-	
 	this.setListPosition = function(position) {
 		this.elements.list.style.marginLeft = this.concatenateUnit(position);
 	};
