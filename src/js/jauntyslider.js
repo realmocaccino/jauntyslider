@@ -249,12 +249,22 @@ module.exports = function(user_options)
 		if(!this.options.loop) this.updateArrows();
 		if(this.options.navigation) this.updateCurrentNavigationItem();
 	
-		if(this.options.animation == 'none' || is_loop) {
-			this.removeTransitionProperties();
+		if(is_loop) {
+			this.elements.list.style.opacity = 0;
+			this.elements.list.style.transitionProperty = 'opacity';
+			this.elements.list.style.opacity = 1;
 			this.setListPosition('-' + this.getPosition(this.auxiliaries.nextSlide));
-		} else if(this.options.animation == 'move') {
-			this.setTransitionProperties();
-			this.setListPosition('-' + this.getPosition(this.auxiliaries.nextSlide));
+		} else {
+			switch(this.options.animation) {
+				case 'move':
+					this.setTransitionProperties();
+					this.setListPosition('-' + this.getPosition(this.auxiliaries.nextSlide));
+				break;
+				case 'none':
+					this.removeTransitionProperties();
+					this.setListPosition('-' + this.getPosition(this.auxiliaries.nextSlide));
+				break;
+			}
 		}
 		
 		this.updateCurrentSlide(this.auxiliaries.nextSlide);
