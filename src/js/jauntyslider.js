@@ -32,7 +32,7 @@ module.exports = function(user_options)
 	};
 	
 	this.auxiliaries = {
-		animationRunning: false,
+		transitionRunning: false,
 		defaultUnit: 'px',
 		labelActive: 'active'
 	};
@@ -204,11 +204,11 @@ module.exports = function(user_options)
 		}
 		
 		this.elements.list.addEventListener('transitionstart', event => {
-			this.auxiliaries.animationRunning = true;
+			this.auxiliaries.transitionRunning = true;
 		});
 		
 		this.elements.list.addEventListener('transitionend', event => {
-			this.auxiliaries.animationRunning = false;
+			this.auxiliaries.transitionRunning = false;
 		});
 	};
 
