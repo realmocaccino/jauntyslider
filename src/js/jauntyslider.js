@@ -245,11 +245,11 @@ module.exports = function(user_options)
 		this.move();
 	};
 
-	this.move = function(no_animation = false) {
+	this.move = function(is_loop = false) {
 		if(!this.options.loop) this.updateArrows();
 		if(this.options.navigation) this.updateCurrentNavigationItem();
 	
-		if(this.options.animation == 'none' || no_animation) {
+		if(this.options.animation == 'none' || is_loop) {
 			this.removeTransitionProperties();
 			this.setListPosition('-' + this.getPosition(this.auxiliaries.nextSlide));
 		} else if(this.options.animation == 'move') {
