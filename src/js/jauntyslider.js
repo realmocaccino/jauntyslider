@@ -161,15 +161,18 @@ module.exports = function(user_options)
 
 		this.elements.list.style.setProperty('width', this.concatenateUnit(this.auxiliaries.listWidth), 'important');
 		this.elements.list.style.setProperty('height', this.concatenateUnit(this.options.height));
-		
-		this.move(true);
+
+		this.setListPosition('-' + this.getPosition(this.auxiliaries.nextSlide));
 		
 		if(this.options.loop && this.auxiliaries.totalSlides > 1) {
 			this.elements.nextArrow.style.display = 'block';
 			this.elements.previousArrow.style.display = 'block';
+		} else {
+			this.updateArrows();
 		}
 		
 		if(this.options.navigation) {
+			this.updateCurrentNavigationItem();
 			this.elements.navigation.style.marginLeft = this.concatenateUnit('-' + (this.elements.navigation.offsetWidth / 2));
 		}
 	};
