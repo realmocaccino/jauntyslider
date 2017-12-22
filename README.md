@@ -75,7 +75,7 @@ Jauntyslider supports multiple sliders on the same page:
 
 ### Animation
 
-**[options: move | none]**
+**[options: move | fade | none]**
 
 **[default: move]**
 
