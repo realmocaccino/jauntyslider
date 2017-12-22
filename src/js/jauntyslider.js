@@ -34,6 +34,7 @@ module.exports = function(user_options)
 	this.auxiliaries = {
 		transitionRunning: false,
 		defaultUnit: 'px',
+		isLoop: false,
 		labelActive: 'active'
 	};
 
@@ -140,18 +141,6 @@ module.exports = function(user_options)
 		this.auxiliaries.lastSlide = this.elements.slides.length - 1;
 		this.auxiliaries.totalSlides = this.elements.slides.length;
 	};
-	
-	this.setTransitionProperties = function() {
-		this.elements.list.style.transitionProperty = 'margin-left';
-		this.elements.list.style.transitionDuration = this.options.duration;
-		this.elements.list.style.transitionTimingFunction = this.options.easing;
-	};
-	
-	this.removeTransitionProperties = function() {
-		this.elements.list.style.transitionProperty = null;
-		this.elements.list.style.transitionDuration = null;
-		this.elements.list.style.transitionTimingFunction = null;
-	};
 
 	this.setup = function() {
 		this.elements.list.removeAttribute('data-jauntyslider');
@@ -162,7 +151,7 @@ module.exports = function(user_options)
 		this.elements.list.style.setProperty('width', this.concatenateUnit(this.auxiliaries.listWidth), 'important');
 		this.elements.list.style.setProperty('height', this.concatenateUnit(this.options.height));
 
-		this.setListPosition('-' + this.getPosition(this.auxiliaries.nextSlide));
+		this.updateListPosition();
 		
 		if(this.options.loop && this.auxiliaries.totalSlides > 1) {
 			this.elements.nextArrow.style.display = 'block';
@@ -216,11 +205,11 @@ module.exports = function(user_options)
 		if(this.canGoBackward()) {
 			if(this.mustGoToTheEnd()) {
 				this.updateNextSlide(this.auxiliaries.lastSlide);
-				this.move(true);
+				this.auxiliaries.isLoop = true;
 			} else {
 				this.updateNextSlide(this.auxiliaries.currentSlide - this.options.step);
-				this.move();
 			}
+			this.move();
 		} else if(this.options.slideshow) {
 			this.stopSlideshow();
 		}
@@ -230,11 +219,11 @@ module.exports = function(user_options)
 		if(this.canGoForward()) {
 			if(this.mustGoToTheBeggining()) {
 				this.updateNextSlide(this.auxiliaries.firstSlide);
-				this.move(true);
+				this.auxiliaries.isLoop = true;
 			} else {
 				this.updateNextSlide(this.auxiliaries.currentSlide + this.options.step);
-				this.move();
 			}
+			this.move();
 		} else if(this.options.slideshow) {
 			this.stopSlideshow();
 		}
@@ -245,19 +234,29 @@ module.exports = function(user_options)
 		this.move();
 	};
 
-	this.move = function(no_animation = false) {
-		if(!this.options.loop) this.updateArrows();
-		if(this.options.navigation) this.updateCurrentNavigationItem();
-	
-		if(this.options.animation == 'none' || no_animation) {
-			this.removeTransitionProperties();
-			this.setListPosition('-' + this.getPosition(this.auxiliaries.nextSlide));
-		} else if(this.options.animation == 'move') {
-			this.setTransitionProperties();
-			this.setListPosition('-' + this.getPosition(this.auxiliaries.nextSlide));
-		}
-		
+	this.move = function() {
+		this.updateOSD();
+		this.animate();
+		this.updateListPosition();
 		this.updateCurrentSlide(this.auxiliaries.nextSlide);
+	};
+	
+	this.animate = function() {
+		if(this.options.animation != 'none') {
+			if(this.auxiliaries.isLoop) {
+				 this.fade();
+				 this.auxiliaries.isLoop = false;
+			} else {
+				switch(this.options.animation) {
+					case 'move':
+						this.setTransitionProperties('margin-left');
+					break;
+					case 'fade':
+						this.fade();
+					break;
+				}
+			}
+		}
 	};
 	
 	this.canGoBackward = function() {
@@ -288,6 +287,11 @@ module.exports = function(user_options)
 	this.updatePreviousSlide = function() {
 		this.auxiliaries.previousSlide = this.auxiliaries.currentSlide;
 	};
+	
+	this.updateOSD = function() {
+		if(!this.options.loop) this.updateArrows();
+		if(this.options.navigation) this.updateCurrentNavigationItem();
+	};
 
 	this.updateArrows = function() {
 		if(this.auxiliaries.nextSlide != this.auxiliaries.firstSlide) {
@@ -316,12 +320,27 @@ module.exports = function(user_options)
 		this.elements.list.style.marginLeft = this.concatenateUnit(position);
 	};
 	
+	this.updateListPosition = function() {
+		this.setListPosition('-' + this.getPosition(this.auxiliaries.nextSlide));
+	};
+	
 	this.concatenateUnit = function(value) {
 		if(!helpers.checkUnit(value)) {
 			return value + this.auxiliaries.defaultUnit;
 		} else {
 			return value;
 		}
+	};
+	
+	this.setTransitionProperties = function(property, duration = null, easing = null) {
+		var duration = duration || this.options.duration;
+		var easing = easing || this.options.easing;
+		
+		this.elements.list.style.transition = [property, duration, easing].join(' ');
+	};
+	
+	this.removeTransitionProperties = function() {
+		this.elements.list.style.transition = null;
 	};
 	
 	this.treatDirection = function() {
@@ -355,6 +374,19 @@ module.exports = function(user_options)
 	this.restartSlideshow = function() {
 		this.stopSlideshow();
 		this.startSlideshow();
+	};
+	
+	this.fade = function() {
+		this.removeTransitionProperties();
+		this.elements.list.style.opacity = 0;
+		setTimeout(() => {
+			if(this.options.animation == 'fade') {
+				this.setTransitionProperties('opacity');
+			} else {
+				this.setTransitionProperties('opacity', '0.5s', 'ease');
+			}
+			this.elements.list.style.opacity = 1;
+		}, 20);
 	};
 	
 	this.preloadImages = function() {
