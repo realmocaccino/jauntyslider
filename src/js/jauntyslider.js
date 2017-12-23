@@ -52,7 +52,7 @@ module.exports = function(userOptions)
 		if(this.options.slideshow) {
 			this.treatDirection();
 			this.treatInterval();
-			this.startSlideshow();
+			this.moveBySlideshow();
 		}
 	};
 	
@@ -169,25 +169,25 @@ module.exports = function(userOptions)
 	this.actions = function() {
 		this.elements.previousArrow.addEventListener('click', event => {
 			event.preventDefault();
+			if(this.options.slideshow) this.cancelMoveBySlideshow();
 			
 			this.goBackward();
-			if(this.options.slideshow) this.restartSlideshow();
 		});
 		
 		this.elements.nextArrow.addEventListener('click', event => {
 			event.preventDefault();
+			if(this.options.slideshow) this.cancelMoveBySlideshow();
 			
 			this.goForward();
-			if(this.options.slideshow) this.restartSlideshow();
 		});
 		
 		if(this.options.navigation) {
 			this.elements.navigationItems.forEach((item, index) => {
 				item.addEventListener('click', event => {
 					event.preventDefault();
-				
+					if(this.options.slideshow) this.cancelMoveBySlideshow();
+					
 					this.navigate(index);
-					if(this.options.slideshow) this.restartSlideshow();
 				});
 			});
 		}
@@ -198,7 +198,37 @@ module.exports = function(userOptions)
 		
 		this.elements.list.addEventListener('transitionend', event => {
 			this.auxiliaries.transitionRunning = false;
+			
+			if(this.options.slideshow) this.moveBySlideshow();
 		});
+	};
+	
+	this.treatDirection = function() {
+		switch(this.options.direction) {
+			case 'forward':
+				this.auxiliaries.slideshowMethod = this.goForward.bind(this);
+			break;
+			case 'backward':
+				this.auxiliaries.slideshowMethod = this.goBackward.bind(this);
+			break;
+			default:
+				this.auxiliaries.slideshowMethod = this.goForward.bind(this);
+			break;
+		}
+	};
+	
+	this.treatInterval = function() {
+		this.options.interval = helpers.removeSecondSymbol(this.options.interval) * 1000;
+	};
+	
+	this.moveBySlideshow = function() {
+		this.auxiliaries.slideshowTimeout = setTimeout(() => {
+			this.auxiliaries.slideshowMethod();
+		}, this.options.interval);
+	};
+	
+	this.cancelMoveBySlideshow = function() {
+		clearTimeout(this.auxiliaries.slideshowTimeout);
 	};
 
 	this.goBackward = function() {
@@ -210,8 +240,6 @@ module.exports = function(userOptions)
 				this.updateNextSlide(this.auxiliaries.currentSlide - this.options.step);
 			}
 			this.move();
-		} else if(this.options.slideshow) {
-			this.stopSlideshow();
 		}
 	};
 
@@ -224,8 +252,6 @@ module.exports = function(userOptions)
 				this.updateNextSlide(this.auxiliaries.currentSlide + this.options.step);
 			}
 			this.move();
-		} else if(this.options.slideshow) {
-			this.stopSlideshow();
 		}
 	};
 	
@@ -341,39 +367,6 @@ module.exports = function(userOptions)
 	
 	this.removeTransitionProperties = function() {
 		this.elements.list.style.transition = null;
-	};
-	
-	this.treatDirection = function() {
-		switch(this.options.direction) {
-			case 'forward':
-				this.auxiliaries.slideshowMethod = this.goForward.bind(this);
-			break;
-			case 'backward':
-				this.auxiliaries.slideshowMethod = this.goBackward.bind(this);
-			break;
-			default:
-				this.auxiliaries.slideshowMethod = this.goForward.bind(this);
-			break;
-		}
-	};
-	
-	this.treatInterval = function() {
-		this.options.interval = helpers.removeSecondSymbol(this.options.interval) * 1000;
-	};
-	
-	this.startSlideshow = function() {
-		this.auxiliaries.slideshowProgress = setInterval(() => {
-			this.auxiliaries.slideshowMethod();
-		}, this.options.interval);
-	};
-
-	this.stopSlideshow = function() {
-		clearInterval(this.auxiliaries.slideshowProgress);
-	};
-
-	this.restartSlideshow = function() {
-		this.stopSlideshow();
-		this.startSlideshow();
 	};
 	
 	this.fade = function() {
