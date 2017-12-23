@@ -8,9 +8,9 @@
  
 const helpers = require('./helpers.js');
 
-module.exports = function(user_options)
+module.exports = function(userOptions)
 {
-	this.userOptions = user_options;
+	this.userOptions = userOptions;
 	
 	this.options = {
 		animation: 'move',

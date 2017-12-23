@@ -49,8 +49,8 @@ exports.removeSecondSymbol = function(value)
 	return value;
 };
 
-exports.wrap = function(wrapper_element, wrapped_element)
+exports.wrap = function(wrapperElement, wrappedElement)
 {
-	wrapped_element.parentNode.insertBefore(wrapper_element, wrapped_element);
-	wrapper_element.appendChild(wrapped_element);
+	wrappedElement.parentNode.insertBefore(wrapperElement, wrappedElement);
+	wrapperElement.appendChild(wrappedElement);
 };
