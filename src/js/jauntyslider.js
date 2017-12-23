@@ -14,15 +14,15 @@ module.exports = function(userOptions)
 	
 	this.options = {
 		animation: 'move',
-		direction: 'forward',
 		duration: 'normal',
 		easing: 'ease',
 		height: null,
 		initial: 1,
-		interval: 5,
 		loop: false,
 		navigation: true,
 		slideshow: false,
+		slideshowDirection: 'forward',
+		slideshowInterval: 5,
 		step: 1,
 		width: null
 	};
@@ -50,8 +50,8 @@ module.exports = function(userOptions)
 		this.actions();
 		
 		if(this.options.slideshow) {
-			this.treatDirection();
-			this.treatInterval();
+			this.treatSlideshowDirection();
+			this.treatSlideshowInterval();
 			this.moveBySlideshow();
 		}
 	};
@@ -203,8 +203,8 @@ module.exports = function(userOptions)
 		});
 	};
 	
-	this.treatDirection = function() {
-		switch(this.options.direction) {
+	this.treatSlideshowDirection = function() {
+		switch(this.options.slideshowDirection) {
 			case 'forward':
 				this.auxiliaries.slideshowMethod = this.goForward.bind(this);
 			break;
@@ -217,14 +217,14 @@ module.exports = function(userOptions)
 		}
 	};
 	
-	this.treatInterval = function() {
-		this.options.interval = helpers.removeSecondSymbol(this.options.interval) * 1000;
+	this.treatSlideshowInterval = function() {
+		this.options.slideshowInterval = helpers.removeSecondSymbol(this.options.slideshowInterval) * 1000;
 	};
 	
 	this.moveBySlideshow = function() {
 		this.auxiliaries.slideshowTimeout = setTimeout(() => {
 			this.auxiliaries.slideshowMethod();
-		}, this.options.interval);
+		}, this.options.slideshowInterval);
 	};
 	
 	this.cancelMoveBySlideshow = function() {
