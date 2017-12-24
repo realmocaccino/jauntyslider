@@ -44,8 +44,8 @@ module.exports = function(userOptions)
 		this.setWidth();
 		this.setHeight();
 		this.treatDuration();
-		this.setSlidesPositions();
 		this.setSlidesAuxiliaries();
+		this.setSlidesPositions();
 		this.setup();
 		this.actions();
 		
@@ -123,16 +123,6 @@ module.exports = function(userOptions)
 		}
 	};
 	
-	this.setSlidesPositions = function() {
-		this.auxiliaries.listWidth = 0;
-		this.auxiliaries.slidesPositions = [];
-		
-		this.elements.slides.forEach(slide => {
-			this.auxiliaries.slidesPositions.push(this.auxiliaries.listWidth);
-			this.auxiliaries.listWidth += slide.offsetWidth;
-		});
-	};
-	
 	this.setSlidesAuxiliaries = function() {
 		this.auxiliaries.currentSlide = this.options.initial - 1;
 		this.auxiliaries.nextSlide = this.auxiliaries.currentSlide;
@@ -140,6 +130,26 @@ module.exports = function(userOptions)
 		this.auxiliaries.firstSlide = 0;
 		this.auxiliaries.lastSlide = this.elements.slides.length - 1;
 		this.auxiliaries.totalSlides = this.elements.slides.length;
+	};
+	
+	this.setSlidesPositions = function() {
+		const sliderWidth = this.options.width.toString().replace('px', '');
+		
+		this.auxiliaries.listWidth = 0;
+		this.auxiliaries.slidesPositions = [];
+		
+		this.elements.slides.forEach((slide, index) => {
+			if(index == this.auxiliaries.lastSlide && slide.offsetWidth < sliderWidth) {
+				let alreadyShown = sliderWidth - this.elements.slides[index - 1].offsetWidth;
+				let leftToShow = slide.offsetWidth - alreadyShown;
+				
+				this.auxiliaries.slidesPositions.push(this.auxiliaries.slidesPositions[index - 1] + leftToShow);
+			} else {
+				this.auxiliaries.slidesPositions.push(this.auxiliaries.listWidth);
+			}
+			
+			this.auxiliaries.listWidth += slide.offsetWidth;
+		});
 	};
 
 	this.setup = function() {
