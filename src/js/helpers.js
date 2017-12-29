@@ -25,6 +25,32 @@ exports.checkUnit = function(value)
 	return (units.indexOf(valueWithoutDigits) != '-1');
 };
 
+exports.getPositions = function(slides, sliderWidth, listWidth)
+{
+	let slidesPositions = [];
+	let onGoingWidth = 0;
+	var sliderWidth = sliderWidth.toString().replace('px', '');
+	
+	slides.every((slide, index) => {
+		if((listWidth - onGoingWidth) < sliderWidth) {
+			let alreadyShown = sliderWidth - slides[index - 1].offsetWidth;
+			let leftToShow = listWidth - (onGoingWidth + alreadyShown);
+			let lastPosition = slidesPositions[index - 1] + leftToShow;
+			
+			for(let i = index; i <= (slides.length - 1); i++) slidesPositions.push(lastPosition);
+			
+			return false;
+		} else {
+			slidesPositions.push(onGoingWidth);
+			onGoingWidth += slide.offsetWidth;
+			
+			return true;
+		}
+	});
+	
+	return slidesPositions;
+};
+
 exports.getOptions = function(element)
 {
 	let options = {};
