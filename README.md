@@ -73,7 +73,7 @@ Jauntyslider supports multiple sliders on the same page:
 
 ## Parameters
 
-### Animation
+### animation
 
 **[options: move | fade | none]**
 
@@ -81,7 +81,7 @@ Jauntyslider supports multiple sliders on the same page:
 
 Defines the transition animation.
 
-### Direction
+### direction
 
 **[options: forward | backward]**
 
@@ -89,7 +89,7 @@ Defines the transition animation.
 
 Defines the direction of the slideshow.
 
-### Duration
+### duration
 
 **[options: seconds | slow | normal | fast]**
 
@@ -97,7 +97,7 @@ Defines the direction of the slideshow.
 
 Defines how long the transition animation will run.
 
-### Easing
+### easing
 
 **[options: linear | ease | ease-in | ease-out | ease-in-out | cubic-bezier(n,n,n,n)]**
 
@@ -105,7 +105,7 @@ Defines how long the transition animation will run.
 
 Defines the easing function of the transition animation.
 
-### Height
+### height
 
 **[options: %, px, pt, em, in...]**
 
@@ -114,7 +114,7 @@ Defines the easing function of the transition animation.
 Sets the height of the slider.<br>
 If not set, it dinamically inherits the height of the original list.
 
-### Initial
+### initial
 
 **[options: integer]**
 
@@ -123,7 +123,7 @@ If not set, it dinamically inherits the height of the original list.
 Defines in which slide the slider will start.<br>
 The first slide is 1 and the last slide is *n*.
 
-### Interval
+### interval
 
 **[options: seconds]**
 
@@ -131,7 +131,7 @@ The first slide is 1 and the last slide is *n*.
 
 Defines the interval in seconds between the transitions of the slideshow.
 
-### Loop
+### loop
 
 **[options: true | false]**
 
@@ -139,7 +139,7 @@ Defines the interval in seconds between the transitions of the slideshow.
 
 If *true*, when reaching the end of the slider, it'll come back to the beginning.
 
-### Navigation
+### navigation
 
 **[options: true | false]**
 
@@ -147,7 +147,7 @@ If *true*, when reaching the end of the slider, it'll come back to the beginning
 
 If *false* hides the navigation on the bottom.
 
-### Slideshow
+### slideshow
 
 **[options: true | false]**
 
@@ -156,7 +156,7 @@ If *false* hides the navigation on the bottom.
 If *true*, enables an automatic transition of the slides.<br>
 The navigation is allowed even so.
 
-### Step
+### step
 
 **[options: integer]**
 
@@ -164,7 +164,7 @@ The navigation is allowed even so.
 
 Allows to change the number of the slides travelled by every transition.
 
-### Width
+### width
 
 **[options: %, px, pt, em, in...]**
 
