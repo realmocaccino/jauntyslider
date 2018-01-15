@@ -156,6 +156,23 @@ If *false* hides the navigation on the bottom.
 If *true*, enables an automatic transition of the slides.<br>
 The navigation is allowed even so.
 
+### slideshowDirection
+
+**[options: forward | backward]**
+
+**[default: forward]**
+
+Defines the direction of the slideshow.
+
+### slideshowInterval
+
+**[options: seconds]**
+
+**[default: 5]**
+
+Defines the interval in seconds between the transitions of the slideshow.<br>
+It begins to count only when the current transition is completed.
+
 ### step
 
 **[options: integer]**

@@ -59,7 +59,9 @@ exports.getOptions = function(element)
 	data_options.forEach(option => {
 		if(option) {
 			const [property, value] = option.split(':');
-			options[property.toLowerCase()] = exports.checkString(value);
+			let propertyInitialLowercase = property.charAt(0).toLowerCase() + property.slice(1);
+			
+			options[propertyInitialLowercase] = exports.checkString(value);
 		}
 	});
 	
