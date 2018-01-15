@@ -93,9 +93,6 @@ module.exports = function(userOptions)
 			this.elements.wrapper.appendChild(this.elements.navigation);
 			
 		}
-		
-		this.elements.styleSheet = document.createElement('style');
-		this.elements.wrapper.appendChild(this.elements.styleSheet);
 	};
 	
 	this.setWidth = function() {
