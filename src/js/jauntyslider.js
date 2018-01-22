@@ -325,7 +325,7 @@ module.exports = function(userOptions)
 	};
 	
 	this.concatenateUnit = function(value) {
-		if(!helpers.checkUnit(value)) {
+		if(!helpers.hasUnit(value)) {
 			return value + this.auxiliaries.defaultUnit;
 		} else {
 			return value;
