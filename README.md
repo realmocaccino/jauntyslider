@@ -81,14 +81,6 @@ Jauntyslider supports multiple sliders on the same page:
 
 Defines the transition animation.
 
-### Direction
-
-**[options: forward | backward]**
-
-**[default: forward]**
-
-Defines the direction of the slideshow.
-
 ### Duration
 
 **[options: seconds | slow | normal | fast]**
@@ -123,14 +115,6 @@ If not set, it dinamically inherits the height of the original list.
 Defines in which slide the slider will start.<br>
 The first slide is 1 and the last slide is *n*.
 
-### Interval
-
-**[options: seconds]**
-
-**[default: 5]**
-
-Defines the interval in seconds between the transitions of the slideshow.
-
 ### Loop
 
 **[options: true | false]**
@@ -155,6 +139,23 @@ If *false* hides the navigation on the bottom.
 
 If *true*, enables an automatic transition of the slides.<br>
 The navigation is allowed even so.
+
+### slideshowDirection
+
+**[options: forward | backward]**
+
+**[default: forward]**
+
+Defines the direction of the slideshow.
+
+### slideshowInterval
+
+**[options: seconds]**
+
+**[default: 5]**
+
+Defines the interval in seconds between the transitions of the slideshow.<br>
+It begins to count only when the current transition is completed.
 
 ### Step
 
