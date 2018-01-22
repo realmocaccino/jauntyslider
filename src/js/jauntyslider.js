@@ -280,12 +280,12 @@ module.exports = function(userOptions)
 	};
 	
 	this.updateCurrentSlide = function(index) {
-		this.updatePreviousSlide();
+		this.updatePreviousSlide(this.auxiliaries.currentSlide);
 		this.auxiliaries.currentSlide = index;
 	};
 	
-	this.updatePreviousSlide = function() {
-		this.auxiliaries.previousSlide = this.auxiliaries.currentSlide;
+	this.updatePreviousSlide = function(index) {
+		this.auxiliaries.previousSlide = index;
 	};
 	
 	this.updateOSD = function() {
