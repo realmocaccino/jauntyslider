@@ -1,5 +1,5 @@
-const helpers = require('./helpers.js');
-const jauntyslider = require('./jauntyslider.js');
+import * as helpers from './helpers.js';
+import { jauntyslider } from './jauntyslider.js';
 
 HTMLElement.prototype.jauntyslider = jauntyslider;
 

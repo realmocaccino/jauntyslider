@@ -6,9 +6,9 @@
  * © 2017 Luiz Gustavo Martins
  */
  
-const helpers = require('./helpers.js');
+import * as helpers from './helpers.js';
 
-module.exports = function(userOptions)
+export const jauntyslider = function(userOptions)
 {
 	this.userOptions = userOptions;
 	

@@ -1,11 +1,11 @@
-exports.addSecondSymbol = function(value)
+export const addSecondSymbol = function(value)
 {
 	if(!isNaN(value) || value.slice(-1) != 's') return value + 's';
 	
 	return value;
 };
 
-exports.checkString = function(value)
+export const checkString = function(value)
 {
 	if(['true', 'false'].indexOf(value) != '-1')
 		return (value === 'true');
@@ -16,7 +16,7 @@ exports.checkString = function(value)
 	return value.toLowerCase();
 };
 
-exports.getPositions = function(slides, sliderWidth, listWidth)
+export const getPositions = function(slides, sliderWidth, listWidth)
 {
 	let slidesPositions = [];
 	let onGoingWidth = 0;
@@ -42,7 +42,7 @@ exports.getPositions = function(slides, sliderWidth, listWidth)
 	return slidesPositions;
 };
 
-exports.getOptions = function(element)
+export const getOptions = function(element)
 {
 	let options = {};
 	const data_options = element.dataset.jauntyslider.replace(/['"\s]+/g, '').split(';');
@@ -52,14 +52,14 @@ exports.getOptions = function(element)
 			const [property, value] = option.split(':');
 			let propertyInitialLowercase = property.charAt(0).toLowerCase() + property.slice(1);
 			
-			options[propertyInitialLowercase] = exports.checkString(value);
+			options[propertyInitialLowercase] = checkString(value);
 		}
 	});
 	
 	return options;
 };
 
-exports.hasUnit = function(value)
+export const hasUnit = function(value)
 {
 	const units = ['em', 'ex', '%', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ch', 'rem', 'vh', 'vw', 'vmin', 'vmax', 'vm'];
 	
@@ -68,7 +68,7 @@ exports.hasUnit = function(value)
 	return (units.indexOf(valueWithoutDigits) != '-1');
 };
 
-exports.removeSecondSymbol = function(value)
+export const removeSecondSymbol = function(value)
 {
 	if(!isNaN(value)) return value;
 	
@@ -77,7 +77,7 @@ exports.removeSecondSymbol = function(value)
 	return value;
 };
 
-exports.wrap = function(wrapperElement, wrappedElement)
+export const wrap = function(wrapperElement, wrappedElement)
 {
 	wrappedElement.parentNode.insertBefore(wrapperElement, wrappedElement);
 	wrapperElement.appendChild(wrappedElement);
