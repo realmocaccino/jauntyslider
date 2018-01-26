@@ -42,7 +42,7 @@ export const getPositions = function(slides, sliderWidth, listWidth)
 	return slidesPositions;
 };
 
-export const getOptions = function(element)
+export const getOptionsFromDataAttribute = function(element)
 {
 	let options = {};
 	const data_options = element.dataset.jauntyslider.replace(/['"\s]+/g, '').split(';');

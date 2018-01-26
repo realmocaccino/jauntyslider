@@ -12,6 +12,6 @@ NodeList.prototype.jauntyslider = function(options) {
 // From data-jauntyslider
 document.addEventListener('DOMContentLoaded', () => {
 	Array.from(document.querySelectorAll('[data-jauntyslider]')).forEach(list => {
-		list.jauntyslider(helpers.getOptions(list));
+		list.jauntyslider(helpers.getOptionsFromDataAttribute(list));
 	});
 });
