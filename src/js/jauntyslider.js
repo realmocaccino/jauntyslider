@@ -8,7 +8,7 @@
  
 import * as helpers from './helpers.js';
 
-export const jauntyslider = function(userOptions)
+export const jauntyslider = function(userOptions = {})
 {
 	this.userOptions = userOptions;
 	
