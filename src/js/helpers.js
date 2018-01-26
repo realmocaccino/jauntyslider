@@ -16,6 +16,23 @@ export const checkString = function(value)
 	return value.toLowerCase();
 };
 
+export const getOptionsFromDataAttribute = function(element)
+{
+	let options = {};
+	const data_options = element.dataset.jauntyslider.replace(/['"\s]+/g, '').split(';');
+	
+	data_options.forEach(option => {
+		if(option) {
+			const [property, value] = option.split(':');
+			let propertyInitialLowercase = property.charAt(0).toLowerCase() + property.slice(1);
+			
+			options[propertyInitialLowercase] = checkString(value);
+		}
+	});
+	
+	return options;
+};
+
 export const getPositions = function(slides, sliderWidth, listWidth)
 {
 	let slidesPositions = [];
@@ -40,23 +57,6 @@ export const getPositions = function(slides, sliderWidth, listWidth)
 	});
 	
 	return slidesPositions;
-};
-
-export const getOptionsFromDataAttribute = function(element)
-{
-	let options = {};
-	const data_options = element.dataset.jauntyslider.replace(/['"\s]+/g, '').split(';');
-	
-	data_options.forEach(option => {
-		if(option) {
-			const [property, value] = option.split(':');
-			let propertyInitialLowercase = property.charAt(0).toLowerCase() + property.slice(1);
-			
-			options[propertyInitialLowercase] = checkString(value);
-		}
-	});
-	
-	return options;
 };
 
 export const hasUnit = function(value)
