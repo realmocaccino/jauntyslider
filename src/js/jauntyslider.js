@@ -242,7 +242,7 @@ export const jauntyslider = function(userOptions = {})
 
 	this.goForward = function() {
 		if(this.canGoForward()) {
-			if(this.mustGoToTheBeggining()) {
+			if(this.mustGoToTheBeginning()) {
 				this.updateNextSlide(this.auxiliaries.firstSlide);
 				this.auxiliaries.isLoop = true;
 			} else {
@@ -294,7 +294,7 @@ export const jauntyslider = function(userOptions = {})
 		return (this.options.loop && (this.auxiliaries.currentSlide - this.options.step) < this.auxiliaries.firstSlide);
 	};
 	
-	this.mustGoToTheBeggining = function() {
+	this.mustGoToTheBeginning = function() {
 		return (this.options.loop && (this.auxiliaries.currentSlide + this.options.step) > this.auxiliaries.lastSlide);
 	};
 	
