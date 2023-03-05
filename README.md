@@ -1,5 +1,5 @@
 # Jauntyslider
-The quick way to slide a HTML list<br>https://jauntyslider.luizgustavoweb.com
+The quick way to slide a HTML list<br>https://jauntyslider.luizgustavomartins.com
 
 ## Introduction
 Jauntyslider lets you create a slider from your HTML list with just one step. All you need to do is attach the attibute *data-jauntyslider* on the  list like the example below:
@@ -18,7 +18,7 @@ document.querySelector('ul').jauntyslider();
 You read that right! No jQuery. No dependencies at all.<br>
 
 ## Install
-In order to be able to use Jauntyslider, [download the zip file](https://github.com/lgustavoms/jauntyslider/archive/master.zip) then include the css and javascript files in your document:
+In order to be able to use Jauntyslider, [download the zip file](https://github.com/realmocaccino/jauntyslider/archive/master.zip) then include the css and javascript files in your document:
 
 ```html
 <link href="dist/css/jauntyslider.min.css" rel="stylesheet">
@@ -200,4 +200,4 @@ Future versions with more options are to come. If you want to contribute with th
 Jauntyslider is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
 
 ## Author
-[www.luizgustavoweb.com](http://www.luizgustavoweb.com)
+[www.luizgustavomartins.com](http://www.luizgustavomartins.com)
