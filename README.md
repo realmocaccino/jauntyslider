@@ -11,7 +11,7 @@ Jauntyslider lets you create a slider from your HTML list with just one step. Al
 Or you can do it by the classic way in your script:
 
 ```js
-document.querySelector('ul').jauntyslider();
+document.querySelector('ul').jauntyslider()
 ```
 
 ## No Dependencies
