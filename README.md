@@ -15,10 +15,10 @@ document.querySelector('ul').jauntyslider()
 ```
 
 ## No Dependencies
-You read that right! No jQuery. No dependencies at all.<br>
+You read that right! No dependencies at all 🙂.<br>
 
 ## Install
-In order to be able to use Jauntyslider, [download the zip file](https://github.com/realmocaccino/jauntyslider/archive/master.zip) then include the css and javascript files in your document:
+In order to use Jauntyslider, [download the zip file](https://github.com/realmocaccino/jauntyslider/archive/master.zip), extract it, then include both css and javascript files in your HTML:
 
 ```html
 <link href="dist/css/jauntyslider.min.css" rel="stylesheet">
@@ -28,7 +28,7 @@ In order to be able to use Jauntyslider, [download the zip file](https://github.
 Put the arrows image in your *img* folder as well.
 
 ## Usage
-As stated in the introduction, we start using the attribute *data-jauntyslider*.
+As stated in the introduction, you initialize it with the attribute *data-jauntyslider*.
 
 ```html
 <ul data-jauntyslider>
@@ -37,9 +37,9 @@ As stated in the introduction, we start using the attribute *data-jauntyslider*.
 </ul>
 ```
 
-And there you go! The Jauntyslider is up and running in your list.
+And there you go! Jauntyslider is up and running in your list.
 
-You can also set parameters to customize the slider. For instance, you can make the slider move faster like this:
+You can also set parameters to customize the slider. For instance, you can make the slider to move faster:
 
 ```html
 <ul data-jauntyslider="duration:fast;">
