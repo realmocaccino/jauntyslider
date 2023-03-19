@@ -18,7 +18,7 @@ document.querySelector('ul').jauntyslider()
 You read that right. No dependencies at all 🙂!<br>
 
 ## Install
-In order to use Jauntyslider, [download the zip file](https://github.com/realmocaccino/jauntyslider/archive/master.zip), extract it, then include both css and javascript files in your HTML:
+In order to use Jauntyslider, [download the zip file](https://github.com/realmocaccino/jauntyslider/archive/master.zip), unzip it, then include both css and javascript files in your HTML:
 
 ```html
 <link href="dist/css/jauntyslider.min.css" rel="stylesheet">
