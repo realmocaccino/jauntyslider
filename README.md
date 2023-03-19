@@ -42,7 +42,7 @@ And there you go! Jauntyslider is up and running in your list.
 You can also customize the slider by setting parameters.
 
 ```html
-<ul data-jauntyslider="duration: fast;">
+<ul data-jauntyslider="duration:fast;">
 	<li><img src="new-horizon.jpg"></li>
 	[...]
 </ul>
@@ -51,7 +51,7 @@ You can also customize the slider by setting parameters.
 You can set more than one parameter at a time:
 
 ```html
-<ul data-jauntyslider="duration: fast; easing: linear;">
+<ul data-jauntyslider="duration:fast; easing:linear;">
 	<li><img src="new-horizon.jpg"></li>
 	[...]
 </ul>
@@ -60,12 +60,12 @@ You can set more than one parameter at a time:
 Jauntyslider supports multiple sliders on the same page:
 
 ```html
-<ul id="slider-1" data-jauntyslider="duration: fast; easing: linear;">
+<ul id="slider-1" data-jauntyslider="duration:fast; easing:linear;">
 	<li><img src="new-horizon.jpg"></li>
 	[...]
 </ul>
 
-<ul id="slider-2" data-jauntyslider="loop: true;">
+<ul id="slider-2" data-jauntyslider="loop:true;">
 	<li><img src="my-pet.jpg"></li>
 	[...]
 </ul>
