@@ -39,7 +39,9 @@ As stated in the introduction, you initialize it with the attribute *data-jaunty
 
 And there you go! Jauntyslider is up and running in your list.
 
-You can also set parameters to customize the slider. For instance, you can make the slider to move faster:
+You can also customize the slider by setting parameters.
+
+For instance, you can make the slider to move faster:
 
 ```html
 <ul data-jauntyslider="duration:fast;">
