@@ -2,13 +2,13 @@
 The quickest way to slide a HTML list<br>https://jauntyslider.luizgustavomartins.com
 
 ## Introduction
-Jauntyslider lets you create a slider from your HTML list with just one step. All you need to do is attach the attibute *data-jauntyslider* on the  list like the example below:
+Jauntyslider allows you to create a slider from your HTML list with just one step. Simply add the attribute *data-jauntyslider*  to the list element, as shown in the example below:
 
 ```html
 <ul data-jauntyslider>
 ```
 
-Or you can do it by the classic way in your script:
+Alternatively, you can initialize JavaScript in your script:
 
 ```js
 document.querySelector('ul').jauntyslider()
@@ -191,10 +191,10 @@ Sets the width of the slider.<br>
 If not set, it dinamically inherits the width of the original list.
 
 ## Behind the Scenes
-Jauntyslider is built upon CSS transitions. The codebase takes advantage of the new features of ES6 compiled to ES5 to support old browsers. We're keeping an eye on Web Animations API because it has proven to be more flexible over rAF.
+Jauntyslider is built upon CSS transitions. The codebase takes advantage of ES6+ features compiled to ES5 to support old browsers. We're keeping an eye on Web Animations API as it has been proving to be more flexible over rAF.
 
 ## Contribution
-Future versions with more options are to come. If you want to contribute with the project, don't hesitate to fork it and send a pull request.<br>
+If you want to contribute to the project, feel free to send a pull request.<br>
 
 ## License
 Jauntyslider is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
