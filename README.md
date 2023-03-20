@@ -8,7 +8,7 @@ Jauntyslider allows you to create a slider from your HTML list with just one ste
 <ul data-jauntyslider>
 ```
 
-Alternatively, you can initialize JavaScript in your script:
+Alternatively, you can initialize Jauntyslider in your script:
 
 ```js
 document.querySelector('ul').jauntyslider()
