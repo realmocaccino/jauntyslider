@@ -25,8 +25,6 @@ In order to use Jauntyslider, [download the zip file](https://github.com/realmoc
 <script src="dist/js/jauntyslider.min.js"></script>
 ```
 
-Put the arrows image in your *img* folder as well.
-
 ## Usage
 As stated in the introduction, you initialize it with the attribute *data-jauntyslider*.
 

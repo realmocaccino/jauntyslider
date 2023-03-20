@@ -39,21 +39,35 @@ overflow: hidden;
 	{
 	display: none;
 	position: absolute;
-	z-index: 1;
-	width: 35px;
-	height: 65px;
-	left: 20px;
-	top: 40%;
+	width: 40px;
+	height: 40px;
+	left: 25px;
+	top: 44%;
 	cursor: pointer;
-	background: url(../img/jauntyslider.png) no-repeat 0 0;
+	z-index: 1;
 	@include user-select(none);
 	}
 
-	.jauntyslider-next
-	{
+	.jauntyslider-next {
 	left: auto;
-	right: 20px;
-	background-position: -36px 0;
+	right: 40px;
+	}
+
+	.jauntyslider-previous::before,
+	.jauntyslider-next::before
+	{
+	content: '';
+	border: solid #FFF;
+	border-width: 0 7px 7px 0;
+	display: inline-block;
+	padding: 3px;
+	transform: rotate(-45deg);
+	width: 100%;
+	height: 100%;
+	}
+
+	.jauntyslider-previous::before {
+	transform: rotate(135deg);
 	}
 
 	ul.jauntyslider-navigation
