@@ -2,7 +2,7 @@
 The quickest way to slide a HTML list<br>https://jauntyslider.luizgustavomartins.com
 
 ## Introduction
-Jauntyslider allows you to create a slider from your HTML list with just one step. Simply add the attribute *data-jauntyslider*  to the list element, as shown in the example below:
+Jauntyslider is a lightweight library that allows you to quickly create a slider from your HTML list. Simply add the attribute *data-jauntyslider* to the list element, as shown in the example below:
 
 ```html
 <ul data-jauntyslider>
