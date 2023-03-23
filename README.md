@@ -63,13 +63,6 @@ You can set more than one parameter at a time:
 </ul>
 ```
 
-```javascript
-document.querySelector('ul').jauntyslider({
-	duration: 'fast',
-	easing: 'linear'
-})
-```
-
 Jauntyslider supports multiple sliders on the same page:
 
 ```html
@@ -83,6 +76,8 @@ Jauntyslider supports multiple sliders on the same page:
 	[...]
 </ul>
 ```
+
+Alternatively in your script:
 
 ```javascript
 document.querySelector('#slider-1').jauntyslider({
