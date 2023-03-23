@@ -46,6 +46,14 @@ You can also customize the slider by setting parameters.
 </ul>
 ```
 
+As stated in the introduction, Jauntyslider can also be handled by JavaScript.
+
+```javascript
+document.querySelector('ul').jauntyslider({
+	duration: 'fast'
+})
+```
+
 You can set more than one parameter at a time:
 
 ```html
@@ -53,6 +61,13 @@ You can set more than one parameter at a time:
 	<li><img src="new-horizon.jpg"></li>
 	[...]
 </ul>
+```
+
+```javascript
+document.querySelector('ul').jauntyslider({
+	duration: 'fast',
+	easing: 'linear'
+})
 ```
 
 Jauntyslider supports multiple sliders on the same page:
@@ -67,6 +82,17 @@ Jauntyslider supports multiple sliders on the same page:
 	<li><img src="my-pet.jpg"></li>
 	[...]
 </ul>
+```
+
+```javascript
+document.querySelector('#slider-1').jauntyslider({
+	duration: 'fast',
+	easing: 'linear'
+})
+
+document.querySelector('#slider-2').jauntyslider({
+	loop: 'true'
+})
 ```
 
 ## Parameters
