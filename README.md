@@ -26,7 +26,7 @@ In order to use Jauntyslider, [download the zip file](https://github.com/realmoc
 ```
 
 ## Usage
-As stated in the introduction, you initialize it with the attribute *data-jauntyslider*.
+ Initializing Jauntyslider is as easy as adding the *data-jauntyslider* attribute to your HTML list element.
 
 ```html
 <ul data-jauntyslider>
