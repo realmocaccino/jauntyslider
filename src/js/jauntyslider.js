@@ -100,7 +100,10 @@ export const jauntyslider = function(userOptions = {})
 	}
 	
 	this.setHeight = function() {
-		if(!this.userOptions.height) this.options.height = this.elements.list.offsetHeight || this.elements.slides[0].offsetHeight
+		if(!this.userOptions.height) {
+			const heights = this.elements.slides.map(slide => slide.offsetHeight)
+			this.options.height = Math.max(...heights)
+		}
 	}
 
 	this.treatDuration = function() {

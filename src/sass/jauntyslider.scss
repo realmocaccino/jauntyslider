@@ -34,6 +34,13 @@ overflow: hidden;
 		
 	}
 
+	ul::after
+	{
+	content: '';
+	display: block;
+	clear: both;
+	}
+
 	.jauntyslider-previous,
 	.jauntyslider-next
 	{
