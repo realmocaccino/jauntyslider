@@ -1,15 +1,23 @@
 {
-	"private": true,
-	"devDependencies": {
-		"gulp": "~3.9.0",
-		"gulp-babel": "~5.0.0",
-		"gulp-changed": "~3.1.0",
-		"gulp-concat": "~2.6.0",
-		"gulp-image": "~4.0.0",
-		"gulp-minify-css": "~1.2.1",
-		"gulp-sass": "~3.1.0",
-		"gulp-uglify": "~1.4.2",
-		"event-stream": "~3.3.2",
-		"webpack-stream": "~4.0.0"
+  "name": "jauntyslider",
+  "version": "1.0.0",
+  "description": "The quickest way to slide a HTML list.",
+  "type": "module",
+  "author": "Luiz Gustavo Martins",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/realmocaccino/jauntyslider"
+  },
+  "homepage": "https://jauntyslider.luizgustavomartins.com/",
+  "devDependencies": {
+	"gulp": "~3.9.0",
+	"gulp-babel": "~5.0.0",
+	"gulp-concat": "~2.6.0",
+	"gulp-minify-css": "~1.2.1",
+	"gulp-sass": "~3.1.0",
+	"gulp-uglify": "~1.4.2",
+	"event-stream": "~3.3.2",
+	"webpack-stream": "~4.0.0"
 	}
 }
