@@ -96,13 +96,15 @@ export const jauntyslider = function(userOptions = {})
 	}
 	
 	this.setWidth = function() {
-		if(!this.userOptions.width) this.options.width = this.elements.list.offsetWidth
+		if(!this.userOptions.width) this.options.width = this.elements.wrapper.offsetWidth
+		this.elements.slides.forEach(slide => {
+			slide.style.width = this.concatenateUnit(this.options.width)
+		})
 	}
 	
 	this.setHeight = function() {
 		if(!this.userOptions.height) {
-			const heights = this.elements.slides.map(slide => slide.offsetHeight)
-			this.options.height = Math.max(...heights)
+			this.options.height = Math.max(...this.elements.slides.map(slide => slide.offsetHeight))
 		}
 	}
 
