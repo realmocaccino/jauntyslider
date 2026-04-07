@@ -1,4 +1,0 @@
-# Run "git config merge.theirs.driver true"
-
-dist/css/jauntyslider.min.css merge=theirs
-dist/js/jauntyslider.min.js merge=theirs
