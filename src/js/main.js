@@ -1,5 +1,6 @@
 import * as helpers from './helpers.js'
 import { jauntyslider } from './jauntyslider.js'
+import '../scss/jauntyslider.scss';
 
 // From querySelector
 HTMLElement.prototype.jauntyslider = jauntyslider
